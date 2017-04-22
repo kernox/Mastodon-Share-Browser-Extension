@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Param&egrave;tres</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<style>
+	input{
+		padding:5px;
+	}
+
+	#options{
+		margin-top: 20px;
+	}
+	</style>
+</head>
+<body>
+
+<div id="options" class="container well">
+
+	<div class="row item">
+		<div class="col-md-12">
+			<label>URL de l'instance Mastodon :</label>
+			<input id="instanceUrl" type="text">
+		</div>
+	</div>
+
+	<div id="status"></div>
+	<button class="btn btn-primary" id="save">Sauvegarder</button>
+</div>
+
+<script src="options.js"></script>
+</body>
+</html>
