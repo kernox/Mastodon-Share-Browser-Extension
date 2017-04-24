@@ -1,26 +1,21 @@
 var instanceUrl = '';
 var message = '';
 
-browser.storage.sync.get('instanceUrl', function(items){
-	console.log(items);
-	instanceUrl = items.instanceUrl;
-});
+browser.storage.sync.get(null , function(items){
 
-browser.storage.sync.get('message', function(items){
-	message = items.message;
-
-	if(document.location.href.match('^'+instanceUrl))
+	if(items)
 	{
-		var field = document.querySelector('.autosuggest-textarea__textarea');
-		if(field != undefined)
-		{
-			field.value = message;
+		instanceUrl = items.instanceUrl;
+		message = items.message;
 
-			browser.storage.sync.set({
-		    	message: ''
-			});
+		if(document.location.href.match('^'+instanceUrl))
+		{
+			var field = document.querySelector('textarea.autosuggest-textarea__textarea');
+			if(field != undefined)
+			{
+				field.value = message;
+				browser.storage.sync.set({ message: ''});
+			}
 		}
 	}
-
 });
-

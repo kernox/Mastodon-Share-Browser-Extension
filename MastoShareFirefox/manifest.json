@@ -2,23 +2,20 @@
   "manifest_version": 2,
   "applications": {
     "gecko":{
-      "id": "{09b14d46-21c3-4a7d-b244-e756f497935b}",
+      "id": "mastoshare@hellexis.fr",
       "strict_min_version": "42.0"
     }
   },
-
   "name": "Mastodon Share",
   "description": "Un bouton de partage social pour les instances Mastodon",
-  "version": "0.1.2",
+  "version": "0.2",
   "options_ui": {
     "page": "options.html"
   },
-
   "browser_action": {
     "default_icon": "icon.png",
     "default_popup": "popup.html"
   },
-
   "content_scripts": [
     {
       "matches": ["https://*/*"],
@@ -26,6 +23,7 @@
     }
   ],
   "permissions": [
+    "https://frama.link/*",
     "activeTab",
     "storage"
   ]

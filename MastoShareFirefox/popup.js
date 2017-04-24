@@ -1,24 +1,62 @@
 var instanceUrl = '';
-
 var message = '';
+var url = '';
+
 browser.tabs.query({active: true}, function(tabs){
-	browser.storage.sync.set({
-	    message: tabs[0].url
-	});
+	message = tabs[0].url;
+	browser.storage.sync.set({message: message});
 });
 
-browser.storage.sync.get('instanceUrl', function(items){
+browser.storage.sync.get(null, function(items){
 
-	if(items.instanceUrl == undefined || items.instanceUrl == '')
+	shortner = items.shortner;
+	if (items.instanceUrl == undefined || items.instanceUrl == '')
 	{
-		var options_url = browser.extension.getURL("options.html");
-		browser.tabs.create({url: options_url});
+		url = browser.extension.getURL("options.html");
+		browser.tabs.create({url: url});
 	}
 	else
 	{
-		browser.tabs.create({url: items.instanceUrl + '/web/statuses/new'});
+		url = items.instanceUrl + '/web/statuses/new';
+
+		if (shortner)
+		{
+			var xhr = new XMLHttpRequest();
+			xhr.open('POST', 'https://frama.link/a', true);
+			xhr.onreadystatechange = function(event){
+				if (this.readyState === XMLHttpRequest.DONE)
+				{
+					if (this.status === 200)
+					{
+						console.log("Réponse reçu: %s", this.responseText);
+						var data = JSON.parse(this.responseText);
+
+						if(data.success == true)
+						{
+							chrome.storage.sync.set({
+								message: data.short
+							});
+							browser.tabs.create({url: url});
+							window.close();
+						}
+					}
+					else
+					{
+						console.log("Status de la réponse: %d (%s)", this.status, this.statusText);
+					}
+				}
+			};
+
+			var params = new FormData();
+			params.append('lsturl', message);
+			params.append('format', 'json');
+
+			xhr.send(params);
+		}
+		else
+		{
+			browser.tabs.create({url: url});
+			window.close();
+		}
 	}
-
-	window.close();
-
 });
