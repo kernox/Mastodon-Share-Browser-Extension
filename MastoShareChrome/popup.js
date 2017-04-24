@@ -1,41 +1,46 @@
 var instanceUrl = '';
-var finalUrl = '';
 var shortner = false;
-chrome.storage.sync.get('instanceUrl', function(items){
+
+chrome.storage.sync.get(null, function(items){
+
 	instanceUrl = items.instanceUrl;
-
-	if(instanceUrl == '' || instanceUrl == undefined)
-		window.open('options.html');
-});
-
-chrome.storage.sync.get('shortner', function(items){
-
 	shortner = items.shortner;
 
-	chrome.tabs.getSelected(null, function(tab) {
+	//If mastodon instance not configured
+	if (instanceUrl == '' || instanceUrl == undefined)
+	{
+		window.open('options.html');
+	}
+	else
+	{
+		//Get current tab
+		chrome.tabs.getSelected(null, function(tab) {
 
-		if(shortner)
-		{
-			$.post('https://frama.link/a', {format:"json", lsturl: tab.url}, function(data){
-				if(data.success)
-				{
-					chrome.storage.sync.set({
-				    	message: data.short
-					});
-				}
+			if (shortner)
+			{
+				//Use the url shortner
+				$.post('https://frama.link/a', {format:"json", lsturl: tab.url}, function(data){
 
-				window.open(instanceUrl);
-			});
+					if(data.success)
+					{
+						chrome.storage.sync.set({
+							message: data.short
+						});
+					}
 
-		}
-		else
-		{
-			chrome.storage.sync.set({
-		    	message: tab.url
-			});
+					window.open(instanceUrl+'/web/statuses/new');
+				});
 
-			window.open(instanceUrl);
-		}
-	});
+			}
+			else
+			{
+				chrome.storage.sync.set({
+					message: tab.url
+				});
+
+				window.open(instanceUrl+'/web/statuses/new');
+			}
+		});
+	}
 });
 

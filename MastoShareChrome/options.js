@@ -1,5 +1,5 @@
-function save_options() {
-
+function save_options()
+{
   var instanceUrl = document.getElementById('instanceUrl').value;
   var shortner = $('#shortner').prop('checked');
 
@@ -7,19 +7,20 @@ function save_options() {
     instanceUrl: instanceUrl,
     shortner: shortner
   }, function() {
-    // Update status to let user know options were saved.
     var status = document.getElementById('status');
     status.textContent = 'Options sauvegardee.';
     status.className = 'alert alert-success';
+
     setTimeout(function() {
       status.textContent = '';
       status.className = '';
     }, 1000);
+
   });
 }
 
-function restore_options() {
-
+function restore_options()
+{
   chrome.storage.sync.get({
     instanceUrl: 'https://',
     shortner: false
@@ -30,5 +31,4 @@ function restore_options() {
 }
 
 document.addEventListener('DOMContentLoaded', restore_options);
-document.getElementById('save').addEventListener('click',
-    save_options);
+document.getElementById('save').addEventListener('click', save_options);

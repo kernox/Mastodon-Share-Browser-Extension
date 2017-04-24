@@ -1,11 +1,8 @@
 var instanceUrl = '';
 var message = '';
 
-chrome.storage.sync.get('instanceUrl', function(items){
+chrome.storage.sync.get(null, function(items){
 	instanceUrl = items.instanceUrl;
-});
-
-chrome.storage.sync.get('message', function(items){
 	message = items.message;
 
 	if(document.location.href.match('^'+instanceUrl))
@@ -16,9 +13,8 @@ chrome.storage.sync.get('message', function(items){
 			field.value = message;
 
 			chrome.storage.sync.set({
-		    message: ''
+				message: ''
 			});
 		}
 	}
-
 });
