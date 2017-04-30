@@ -7,9 +7,9 @@ chrome.storage.sync.get(null, function(items){
 	shortner = items.shortner;
 
 	//If mastodon instance not configured
-	if (instanceUrl == '' || instanceUrl == undefined)
+	if (instanceUrl == '' || instanceUrl == undefined || instanceUrl == 'https://')
 	{
-		window.open('options.html');
+		window.open('options.html#start');
 	}
 	else
 	{

@@ -1,3 +1,8 @@
+if(document.location.hash == '#start')
+{
+    $('#startInfo').removeClass('hide');
+}
+
 function save_options()
 {
   var instanceUrl = document.getElementById('instanceUrl').value;
@@ -7,13 +12,12 @@ function save_options()
     instanceUrl: instanceUrl,
     shortner: shortner
   }, function() {
-    var status = document.getElementById('status');
-    status.textContent = 'Options sauvegardées.';
-    status.className = 'alert alert-success';
+
+    $('#status').removeClass('hide');
+    $('#startInfo').addClass('hide');
 
     setTimeout(function() {
-      status.textContent = '';
-      status.className = '';
+      $('#status').addClass('hide');
     }, 1000);
 
   });

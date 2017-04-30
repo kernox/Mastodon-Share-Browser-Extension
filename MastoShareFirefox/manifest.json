@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "applications": {
     "gecko":{
-      "id": "mastoshare@hellexis.fr",
+      "id": "{09b14d46-21c3-4a7d-b244-e756f497935b}",
       "strict_min_version": "42.0"
     }
   },
