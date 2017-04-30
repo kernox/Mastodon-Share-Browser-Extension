@@ -8,7 +8,7 @@ function save_options() {
     shortner: shortner
   }, function() {
     var status = document.getElementById('status');
-    status.textContent = 'Options sauvegardee.';
+    status.textContent = 'Options sauvegardées.';
     status.className = 'alert alert-success';
 
     setTimeout(function() {
