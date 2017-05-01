@@ -18,3 +18,13 @@ chrome.storage.sync.get(null, function(items){
 		}
 	}
 });
+
+
+console.log('debug:',chrome.contextMenu);
+/*chrome.contextMenus.create({
+ title: "Envoyer la séléction à Mastodon",
+ contexts:["selection"],  // ContextType
+ onclick: function(){
+ 	alert('test');
+ }
+});*/
