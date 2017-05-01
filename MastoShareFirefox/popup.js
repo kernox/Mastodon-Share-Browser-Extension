@@ -2,18 +2,18 @@ var instanceUrl = '';
 var message = '';
 var url = '';
 
-browser.tabs.query({active: true}, function(tabs){
+chrome.tabs.query({active: true}, function(tabs){
 	message = tabs[0].url;
-	browser.storage.sync.set({message: message});
+	chrome.storage.sync.set({message: message});
 });
 
-browser.storage.sync.get(null, function(items){
+chrome.storage.sync.get(null, function(items){
 
 	shortner = items.shortner;
 	if (items.instanceUrl == undefined || items.instanceUrl == '')
 	{
-		url = browser.extension.getURL("options.html");
-		browser.tabs.create({url: url});
+		url = chrome.extension.getURL("options.html");
+		chrome.tabs.create({url: url});
 	}
 	else
 	{
@@ -36,7 +36,7 @@ browser.storage.sync.get(null, function(items){
 							chrome.storage.sync.set({
 								message: data.short
 							});
-							browser.tabs.create({url: url});
+							chrome.tabs.create({url: url});
 							window.close();
 						}
 					}
@@ -55,7 +55,7 @@ browser.storage.sync.get(null, function(items){
 		}
 		else
 		{
-			browser.tabs.create({url: url});
+			chrome.tabs.create({url: url});
 			window.close();
 		}
 	}
