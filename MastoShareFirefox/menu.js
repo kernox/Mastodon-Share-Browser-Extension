@@ -1,5 +1,5 @@
 chrome.contextMenus.create({
-	title: "Partager la séléction sur Mastodon",
+	title: "Partager la sélection sur Mastodon",
 	contexts: ["selection"],
 	onclick: function(){
 		chrome.tabs.executeScript( {
