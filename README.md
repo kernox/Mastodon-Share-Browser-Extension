@@ -1,10 +1,33 @@
 # Mastoshare
 Un bouton de partage social pour Mastodon
 
-![Image of Mastodon Share Options Panel](githubpic01.png)
+##Premiere utilisation
+Cliquez sur le bouton Mastodon Share et configurez l'url de votre instance Mastodon.
 
-## Extension Google Chrome
+Pour partager sur Mastodon, cliquez de nouveau sur le bouton.
+
+
+
+##En images
+
+###Partagez une selection de texte sur Mastodon
+![Partage d'une selection de texte](share-selection-feature.png)
+
+#### Partagez sur Mastodon directement depuis Twitter
+
+![Partage depuis Twitter](share-from-twitter-feature.png)
+
+#### Panneau des paramètres
+![Panneaux de configuration](settings.png)
+
+
+##L'extension
+#### Google Chrome
 https://chrome.google.com/webstore/detail/mastodon-share/ngkommdldcakheaeoafgakbbiinkohom?hl=fr
 
-## Extension Mozilla Firefox
+#### Mozilla Firefox
 https://addons.mozilla.org/fr/firefox/addon/mastodon-share/
+
+
+
+
