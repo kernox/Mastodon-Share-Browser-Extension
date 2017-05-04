@@ -15,6 +15,14 @@
     {
       "matches": ["https://*/*", "http://*/*"],
       "js": ["assets/scripts/core.js"]
+    },
+    {
+      "matches" : ["https://twitter.com/*"],
+      "js": [
+        "assets/scripts/zepto.min.js",
+        "assets/scripts/functions.js",
+        "assets/scripts/twitter.js"
+      ]
     }
   ],
   "background" : {

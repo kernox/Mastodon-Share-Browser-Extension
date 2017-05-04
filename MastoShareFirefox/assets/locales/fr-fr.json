@@ -1,0 +1,10 @@
+{
+    "settings": "Paramètres",
+    "instance_url": "URL de l'instance Mastodon",
+    "url_form_needed": "L'URL de l'instance doit être de la forme : http(s)://domain.ext",
+    "short_url_checkbox": "Raccourcir les URL (frama.link)",
+    "save": "Sauvegarder",
+    "options_saved": "Options sauvegardées.",
+    "mastodon_instance_opening": "Ouverture de l'instance Mastodon",
+    "start_info": "Vous devez parametrer votre instance Mastodon avant de cliquer sur le bouton pour la première fois."
+}

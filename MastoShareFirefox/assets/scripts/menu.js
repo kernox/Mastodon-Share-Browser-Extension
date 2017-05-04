@@ -5,7 +5,6 @@ chrome.contextMenus.create({
 		chrome.tabs.executeScript( {
 			code: "window.getSelection().toString();"
 		}, function(selection) {
-			selection = selection.toString();
 
 			chrome.tabs.query({active: true}, function(tabs){
 				currentUrl = tabs[0].url;

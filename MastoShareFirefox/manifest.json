@@ -8,22 +8,30 @@
   },
   "name": "Mastodon Share",
   "description": "Un bouton de partage social pour les instances Mastodon",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "options_ui": {
     "page": "options.html"
   },
   "browser_action": {
-    "default_icon": "icon.png",
+    "default_icon": "assets/images/icon.png",
     "default_popup": "popup.html"
   },
   "content_scripts": [
     {
       "matches": ["https://*/*", "http://*/*"],
-      "js": ["core.js"]
+      "js": ["assets/scripts/core.js"]
+    },
+    {
+      "matches" : ["https://twitter.com/*"],
+      "js": [
+        "assets/scripts/zepto.min.js",
+        "assets/scripts/functions.js",
+        "assets/scripts/twitter.js"
+      ]
     }
   ],
   "background" : {
-    "scripts": ["zepto.min.js", "menu.js", "functions.js"]
+    "scripts": ["assets/scripts/zepto.min.js", "assets/scripts/menu.js", "assets/scripts/functions.js"]
   },
   "permissions": [
     "https://frama.link/*",
@@ -35,6 +43,6 @@
     "notifications"
   ],
   "icons": {
-    "16": "icon16.png"
+    "16": "assets/images/icon16.png"
   }
 }

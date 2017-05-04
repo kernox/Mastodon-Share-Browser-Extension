@@ -19,8 +19,7 @@ function sendToMastodonFromTwitter(instanceUrl, message){
 }
 
 function loadLocale(code){
-	$.get('assets/locales/' + code + '.json', function(data){
-		var lang = JSON.parse(data);
+	$.getJSON('assets/locales/' + code + '.json', function(lang){
 
 		//Apply translation
 		$('#startInfo').html(lang.start_info);
