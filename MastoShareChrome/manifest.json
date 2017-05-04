@@ -3,22 +3,22 @@
 
   "name": "Mastodon Share",
   "description": "Un bouton de partage social pour les instances Mastodon",
-  "version": "0.2.3",
+  "version": "0.2.5",
   "options_page": "options.html",
 
   "browser_action": {
-    "default_icon": "icon.png",
+    "default_icon": "assets/images/icon.png",
     "default_popup": "popup.html"
   },
 
   "content_scripts": [
     {
-      "matches": ["https://*/*"],
-      "js": ["core.js"]
+      "matches": ["https://*/*", "http://*/*"],
+      "js": ["assets/scripts/core.js"]
     }
   ],
   "background" : {
-    "scripts": ["menu.js"]
+    "scripts": ["assets/scripts/zepto.min.js","assets/scripts/menu.js", "assets/scripts/functions.js"]
   },
   "permissions": [
     "contextMenus",
@@ -26,6 +26,6 @@
     "storage"
   ],
   "icons": {
-    "16": "icon16.png"
+    "16": "assets/images/icon16.png"
   }
 }

@@ -1,0 +1,10 @@
+{
+	"settings": "Settings",
+	"instance_url": "Mastodon's instance URL",
+	"url_form_needed": "Instance URL need to be like : http(s)://domain.ext",
+	"short_url_checkbox": "Shortcut URL (frama.link)",
+	"save": "Save",
+	"options_saved": "Options saved.",
+	"mastodon_instance_opening": "Mastodon instance opening",
+	"start_info": "You need to set your Mastodon instance before click on the button, for the first time."
+}

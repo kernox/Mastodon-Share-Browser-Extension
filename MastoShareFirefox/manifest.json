@@ -8,7 +8,7 @@
   },
   "name": "Mastodon Share",
   "description": "Un bouton de partage social pour les instances Mastodon",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "options_ui": {
     "page": "options.html"
   },
@@ -23,7 +23,7 @@
     }
   ],
   "background" : {
-    "scripts": ["menu.js"]
+    "scripts": ["zepto.min.js", "menu.js", "functions.js"]
   },
   "permissions": [
     "https://frama.link/*",
@@ -31,7 +31,8 @@
     "http://*/*",
     "contextMenus",
     "activeTab",
-    "storage"
+    "storage",
+    "notifications"
   ],
   "icons": {
     "16": "icon16.png"
