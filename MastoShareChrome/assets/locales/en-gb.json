@@ -7,5 +7,6 @@
 	"options_saved": "Options saved.",
 	"mastodon_instance_opening": "Mastodon instance opening",
 	"start_info": "You need to set your Mastodon instance before click on the button, for the first time.",
-	"language": "Language"
+	"language": "Language",
+	"share_selection": "Share this selection on Mastodon"
 }
