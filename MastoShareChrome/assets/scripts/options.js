@@ -48,9 +48,6 @@ function saveOptions(e){
 
     loadLocale($('#language').val());
 
-    setTimeout(function(){
-      chrome.runtime.reload();
-    },1000);
   });
 }
 
