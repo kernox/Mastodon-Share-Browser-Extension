@@ -27,9 +27,13 @@ function loadLocale(code){
 		$('#options .panel-heading').html(lang.settings);
 		$('label[for="instanceUrl"]').html(lang.instance_url);
 		$('label[for="shortner"]').html(lang.short_url_checkbox);
+		$('label[for="language"]').html(lang.language);
 		$('#instanceUrlHelp').html(lang.url_form_needed);
 		$('#save').val(lang.save);
 
-		chrome.storage.sync.set({loading_message: lang.mastodon_instance_opening.split(' ').join('&nbsp;')});
+		chrome.storage.sync.set({
+			loading_message: lang.mastodon_instance_opening.split(' ').join('&nbsp;'),
+			share_selection: lang.share_selection
+		});
 	});
 }

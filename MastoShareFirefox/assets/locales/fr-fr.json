@@ -6,5 +6,7 @@
     "save": "Sauvegarder",
     "options_saved": "Options sauvegardées.",
     "mastodon_instance_opening": "Ouverture de l'instance Mastodon",
-    "start_info": "Vous devez parametrer votre instance Mastodon avant de cliquer sur le bouton pour la première fois."
+    "start_info": "Vous devez parametrer votre instance Mastodon avant de cliquer sur le bouton pour la première fois.",
+    "language": "Langue",
+    "share_selection": "Partager la sélection sur Mastodon"
 }

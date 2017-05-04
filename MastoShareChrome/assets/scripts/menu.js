@@ -14,7 +14,6 @@ chrome.storage.sync.get(null, function(items){
 						currentUrl = tabs[0].url;
 					});
 
-
 					var instanceUrl = items.instanceUrl;
 
 					if(items.shortner)
@@ -33,5 +32,4 @@ chrome.storage.sync.get(null, function(items){
 			}
 		});
 	}
-
 });
