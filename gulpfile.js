@@ -1,8 +1,15 @@
 var gulp = require('gulp');
+var zip = require('gulp-zip');
 
-gulp.task('default',['copy']);
+gulp.task('default',['pack']);
 
-gulp.task('copy', function(){
-	gulp.src('MastoShareChrome/*.html').pipe(gulp.dest('./MastoShareFirefox'));
-	gulp.src('MastoShareChrome/assets/locales/*.json').pipe(gulp.dest('./MastoShareFirefox/assets/locales'));
+gulp.task('pack', function(){
+
+	gulp.src('MastoShareFirefox/**/*')
+		.pipe(zip('MastoShareFirefox.zip'))
+		.pipe(gulp.dest('.'))
+
+	gulp.src('MastoShareChrome/**/*')
+		.pipe(zip('MastoShareChrome.zip'))
+		.pipe(gulp.dest('.'))
 });
