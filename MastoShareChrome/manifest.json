@@ -19,14 +19,16 @@
     {
       "matches" : ["https://twitter.com/*"],
       "js": [
-        "assets/scripts/zepto.min.js",
         "assets/scripts/functions.js",
         "assets/scripts/twitter.js"
       ]
     }
   ],
   "background" : {
-    "scripts": ["assets/scripts/zepto.min.js","assets/scripts/menu.js", "assets/scripts/functions.js"]
+    "scripts": [
+      "assets/scripts/menu.js", 
+      "assets/scripts/functions.js"
+    ]
   },
   "permissions": [
     "contextMenus",
