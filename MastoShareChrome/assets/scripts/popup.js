@@ -7,7 +7,7 @@ chrome.storage.sync.get(null, function(items){
 	shortner = items.shortner;
 	loading_message = items.loading_message;
 
-	$('body').html(loading_message);
+	document.body.innerHTML = loading_message;
 
 	//If mastodon instance not configured
 	if (instanceUrl == '' || instanceUrl == undefined || instanceUrl == 'https://')
