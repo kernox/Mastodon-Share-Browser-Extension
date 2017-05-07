@@ -36,6 +36,8 @@
     "storage"
   ],
   "icons": {
-    "16": "assets/images/icon16.png"
+    "16": "assets/images/icon16.png",
+    "32": "assets/images/icon32.png",
+    "64": "assets/images/icon64.png"
   }
 }
