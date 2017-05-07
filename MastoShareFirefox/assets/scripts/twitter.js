@@ -1,25 +1,50 @@
-$('#stream-items-id').delegate('.ProfileTweet-action', 'click', function(){
-	$('.share-via-mastodon').remove();
+var stream = document.querySelector('#stream-items-id');
 
-	$('li.share-via-dm').before(
-		'<li class="share-via-mastodon" data-nav="share_tweet_dm" role="presentation">'+
-			'<button type="button" class="dropdown-link" role="menuitem">Partager via Mastodon</button>'+
-			'</li>'
-	);
+stream.addEventListener('click', addMenu);
 
-	$('.share-via-mastodon button').on('click', function(){
-		var content = $(this).parents('.tweet');
-		var author_fullname = content.data('name');
-		var author_username = '@'+content.data('screen-name');
-		var permalink = 'https://twitter.com'+content.data('permalink-path');
-		var tweet = content.find('.tweet-text').text();
+function addMenu(event){
 
+	if(event.target.className.match('Icon'))
+	{
+		var menu = document.createElement('li');
+		menu.className='share-via-mastodon';
+		menu.dataset.nav = 'share_tweet_dm';
+		menu.setAttribute('role', 'presentation');
+		menu.addEventListener('click', shareViaMastodon);
 
-		chrome.storage.sync.get(null, function(items){
-			instanceUrl = items.instanceUrl;
-			var message = author_fullname + "  " + author_username + "\n" + tweet + "\n\n" + permalink;
-			sendToMastodonFromTwitter(instanceUrl, message);
-		});
+		var button = document.createElement('button');
+		button.type = 'button';
+		button.className ='dropdown-link';
+		button.setAttribute('role', 'menuitem');
+		button.innerHTML = 'Partager via Mastodon';
 
-	})
-});
+		menu.appendChild(button);
+
+		var that = event.target;
+		var menu_action = that.parentNode.parentNode.nextElementSibling.querySelector('ul');
+
+		var firstElementOfMenu = menu_action.firstElementChild;
+
+		if(firstElementOfMenu.className!=menu.className)
+			menu_action.insertBefore(menu, firstElementOfMenu);
+	}
+
+	return false;
+}
+
+function shareViaMastodon(event){
+
+	var tweetDIV = event.target.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode;
+	var author_fullname = tweetDIV.dataset.name;
+	var author_username = tweetDIV.dataset.screenName;
+	var permalink = 'https://twitter.com'+tweetDIV.dataset.permalinkPath;
+	var tweet = tweetDIV.querySelector('.tweet-text').innerText;
+
+	var message = author_fullname + "  " + author_username + "\n" + tweet + "\n\n" + permalink;
+
+	chrome.storage.sync.get(null, function(items){
+		instanceUrl = items.instanceUrl;
+		sendToMastodonFromTwitter(instanceUrl, message);
+	});
+
+}

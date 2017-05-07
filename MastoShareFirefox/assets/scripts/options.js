@@ -1,16 +1,23 @@
-$(document).ready(function(){
+function init()
+{
+  getJSON('assets/locales/locales.json', function(list){
 
-  $.getJSON('assets/locales/locales.json', function(data){
-    $.each(data, function(i, val) {
-      $('#language').append('<option value="'+ i +'">'+ val +'</option>');
-    });
+    for(id in list)
+    {
+      var option = document.createElement('option');
+      option.value=id;
+      option.innerHTML = list[id];
+
+      document.querySelector('#language').appendChild(option);
+    }
+
   });
 
   if(document.location.hash == '#start')
-    $('#startInfo').removeClass('hide');
+    document.querySelector('#startInfo').classList.remove('hide');
 
   loadOptions();
-});
+}
 
 function loadOptions(){
     chrome.storage.sync.get({
@@ -19,35 +26,39 @@ function loadOptions(){
     language: 'fr-fr'
   }, function(items) {
 
-    $('#instanceUrl').val(items.instanceUrl);
-    $('#shortner').prop("checked", items.shortner);
+    document.querySelector('#instanceUrl').value = items.instanceUrl;
+    document.querySelector('#shortner').checked = items.shortner;
 
     var lang = items.language;
 
     loadLocale(lang);
-    $('#language').val(lang);
+    document.querySelector('#language').value = lang;
   });
 }
 
 function saveOptions(e){
   e.preventDefault();
 
+  var status = document.querySelector('#status');
+
   chrome.storage.sync.set({
-    instanceUrl: $('#instanceUrl').val(),
-    shortner: $('#shortner').prop('checked'),
-    language: $('#language').val()
+    instanceUrl: document.querySelector('#instanceUrl').value,
+    shortner: document.querySelector('#shortner').checked,
+    language: document.querySelector('#language').value
   }, function() {
 
-    $('#status').removeClass('hide');
-    $('#startInfo').addClass('hide');
+    status.classList.remove('hide');
+    document.querySelector('#startInfo').classList.add('hide');
 
     setTimeout(function() {
-      $('#status').addClass('hide');
+      status.classList.add('hide');
     }, 1000);
 
-    loadLocale($('#language').val());
+    var lang = document.querySelector('#language').value;
+    loadLocale(lang);
 
   });
 }
 
-$('#options').on('submit', saveOptions);
+document.addEventListener('DOMContentLoaded', init);
+document.querySelector('#options').addEventListener('submit', saveOptions);

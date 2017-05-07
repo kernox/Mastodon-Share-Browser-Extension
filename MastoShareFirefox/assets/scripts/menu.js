@@ -11,6 +11,7 @@ chrome.storage.sync.get(null, function(items){
 				}, function(selection) {
 
 					chrome.tabs.query({active: true}, function(tabs){
+						console.log(tabs[0]);
 						currentUrl = tabs[0].url;
 					});
 

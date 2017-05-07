@@ -1,33 +1,37 @@
 var instanceUrl = '';
-var message = '';
-var url = '';
+var shortner = false;
 
-chrome.tabs.query({active: true}, function(tabs){
-	url = tabs[0].url;
-	chrome.storage.sync.get(null, function(items){
-		var shortner = items.shortner;
+chrome.storage.sync.get(null, function(items){
 
-		if (items.instanceUrl == undefined || items.instanceUrl == '')
-		{
-			url = chrome.extension.getURL("options.html");
-			chrome.tabs.create({url: url});
-		}
-		else
-		{
-			instanceUrl = items.instanceUrl;
+	instanceUrl = items.instanceUrl;
+	shortner = items.shortner;
+	loading_message = items.loading_message;
 
-			if(shortner)
+	document.body.innerHTML = loading_message;
+
+	//If mastodon instance not configured
+	if (instanceUrl == '' || instanceUrl == undefined || instanceUrl == 'https://')
+	{
+		chrome.tabs.create({url: 'options.html#start'});
+	}
+	else
+	{
+		//Get current tab
+		chrome.tabs.query({active: true}, function(tabs){
+
+			var tab = tabs[0];
+
+			if (shortner)
 			{
-				getShortUrl(url, function(url){
+				getShortUrl(tab.url, function(url){
 					sendToMastodon(instanceUrl, url);
-					window.close();
 				});
 			}
 			else
 			{
-				sendToMastodon(instanceUrl, url)
-				window.close();
+				sendToMastodon(instanceUrl, tab.url);
 			}
-		}
-	});
+		});
+	}
+
 });
