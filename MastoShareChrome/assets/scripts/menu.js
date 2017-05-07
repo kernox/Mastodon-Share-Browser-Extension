@@ -12,21 +12,20 @@ chrome.storage.sync.get(null, function(items){
 
 					chrome.tabs.query({active: true}, function(tabs){
 						currentUrl = tabs[0].url;
+
+						var instanceUrl = items.instanceUrl;
+
+						if(items.shortner)
+						{
+							getShortUrl(currentUrl, function(url){
+								sendToMastodon(instanceUrl, selection + "\n\n" + url);
+							});
+						}
+						else
+						{
+							sendToMastodon(instanceUrl, selection + "\n\n" + currentUrl);
+						}
 					});
-
-					var instanceUrl = items.instanceUrl;
-
-					if(items.shortner)
-					{
-						getShortUrl(currentUrl, function(url){
-							sendToMastodon(instanceUrl, selection + "\n\n" + url);
-						});
-					}
-					else
-					{
-						sendToMastodon(instanceUrl, selection + "\n\n" + currentUrl);
-					}
-
 
 				});
 			}
