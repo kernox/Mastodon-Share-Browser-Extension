@@ -4,7 +4,9 @@ stream.addEventListener('click', addMenu);
 
 function addMenu(event){
 
-	if(event.target.className.match('Icon'))
+	var that = event.target;
+
+	if(that.className.match('ProfileTweet-actionButton'))
 	{
 		var menu = document.createElement('li');
 		menu.className='share-via-mastodon';
@@ -20,9 +22,7 @@ function addMenu(event){
 
 		menu.appendChild(button);
 
-		var that = event.target;
-		var menu_action = that.parentNode.parentNode.nextElementSibling.querySelector('ul');
-
+		var menu_action = that.parentNode.parentNode.parentNode.querySelector('ul');
 		var firstElementOfMenu = menu_action.firstElementChild;
 
 		if(firstElementOfMenu.className!=menu.className)
@@ -40,7 +40,7 @@ function shareViaMastodon(event){
 	var permalink = 'https://twitter.com'+tweetDIV.dataset.permalinkPath;
 	var tweet = tweetDIV.querySelector('.tweet-text').innerText;
 
-	var message = author_fullname + "  " + author_username + "\n" + tweet + "\n\n" + permalink;
+	var message = author_fullname + "  @" + author_username + "\n" + tweet + "\n\n" + permalink;
 
 	chrome.storage.sync.get(null, function(items){
 		instanceUrl = items.instanceUrl;

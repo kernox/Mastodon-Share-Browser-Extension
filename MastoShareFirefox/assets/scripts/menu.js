@@ -11,23 +11,22 @@ chrome.storage.sync.get(null, function(items){
 				}, function(selection) {
 
 					chrome.tabs.query({active: true}, function(tabs){
-						console.log(tabs[0]);
+
 						currentUrl = tabs[0].url;
+
+						var instanceUrl = items.instanceUrl;
+
+						if(items.shortner)
+						{
+							getShortUrl(currentUrl, function(url){
+								sendToMastodon(instanceUrl, selection + "\n\n" + url);
+							});
+						}
+						else
+						{
+							sendToMastodon(instanceUrl, selection + "\n\n" + currentUrl);
+						}
 					});
-
-					var instanceUrl = items.instanceUrl;
-
-					if(items.shortner)
-					{
-						getShortUrl(currentUrl, function(url){
-							sendToMastodon(instanceUrl, selection + "\n\n" + url);
-						});
-					}
-					else
-					{
-						sendToMastodon(instanceUrl, selection + "\n\n" + currentUrl);
-					}
-
 
 				});
 			}

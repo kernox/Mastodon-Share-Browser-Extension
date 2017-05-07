@@ -8,7 +8,7 @@
   },
   "name": "Mastodon Share",
   "description": "Un bouton de partage social pour les instances Mastodon",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "options_ui": {
     "page": "options.html"
   },
@@ -45,6 +45,8 @@
     "notifications"
   ],
   "icons": {
-    "16": "assets/images/icon16.png"
+    "16": "assets/images/icon16.png",
+    "32": "assets/images/icon32.png",
+    "64": "assets/images/icon64.png"
   }
 }

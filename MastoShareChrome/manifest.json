@@ -26,7 +26,7 @@
   ],
   "background" : {
     "scripts": [
-      "assets/scripts/menu.js", 
+      "assets/scripts/menu.js",
       "assets/scripts/functions.js"
     ]
   },

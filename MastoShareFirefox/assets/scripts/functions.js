@@ -1,7 +1,6 @@
 function getShortUrl(url, callback)
 {
 	post('https://frama.link/a', {format: 'json', lsturl: url}, 'json', function(data){
-		console.log(data);
 
 		if(data.success)
 			return callback(data.short);
@@ -52,6 +51,7 @@ function ajax(method, url, data, type, callback)
 {
 	var xhr = new XMLHttpRequest();
 	xhr.open(method, url, true);
+	xhr.overrideMimeType('application/json');
 
 	xhr.onload = function(){
 		if(xhr.status >= 200 && xhr.status < 400)
