@@ -31,7 +31,7 @@ function loadLocale(code){
 		document.querySelector('#save').value = lang.save;
 
 		chrome.storage.sync.set({
-			loading_message: lang.mastodon_instance_opening.split(' ').join('&nbsp;'),
+			loading_message: lang.mastodon_instance_opening.split(' ').join('\u00a0'),
 			share_selection: lang.share_selection
 		});
 	});
