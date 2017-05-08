@@ -16,7 +16,7 @@ function addMenu(event){
 		button.type = 'button';
 		button.className ='dropdown-link';
 		button.setAttribute('role', 'menuitem');
-		button.innerHTML = 'Partager via Mastodon';
+		button.innerText = 'Partager via Mastodon';
 
 		menu.appendChild(button);
 

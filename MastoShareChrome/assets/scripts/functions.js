@@ -20,13 +20,13 @@ function sendToMastodonFromTwitter(instanceUrl, message){
 function loadLocale(code){
 
 	getJSON('assets/locales/' + code + '.json', function(lang){
-		document.querySelector('#startInfo').innerHTML= lang.start_info;
-		document.querySelector('#status').innerHTML=lang.options_saved;
-		document.querySelector('#options .panel-heading').innerHTML=lang.settings;
-		document.querySelector('label[for="instanceUrl"]').innerHTML=lang.instance_url;
-		document.querySelector('label[for="shortner"]').innerHTML=lang.short_url_checkbox;
-		document.querySelector('label[for="language"]').innerHTML=lang.language;
-		document.querySelector('#instanceUrlHelp').innerHTML=lang.url_form_needed;
+		document.querySelector('#startInfo').innerText= lang.start_info;
+		document.querySelector('#status').innerText=lang.options_saved;
+		document.querySelector('#options .panel-heading').innerText=lang.settings;
+		document.querySelector('label[for="instanceUrl"]').innerText=lang.instance_url;
+		document.querySelector('label[for="shortner"]').innerText=lang.short_url_checkbox;
+		document.querySelector('label[for="language"]').innerText=lang.language;
+		document.querySelector('#instanceUrlHelp').innerText=lang.url_form_needed;
 		document.querySelector('#save').value = lang.save;
 
 		chrome.storage.sync.set({
