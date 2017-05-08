@@ -8,7 +8,7 @@
   },
   "name": "Mastodon Share",
   "description": "Un bouton de partage social pour les instances Mastodon",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "options_ui": {
     "page": "options.html"
   },

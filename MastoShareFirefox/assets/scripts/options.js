@@ -25,7 +25,6 @@ function loadOptions(){
     shortner: false,
     language: 'fr-fr'
   }, function(items) {
-
     document.querySelector('#instanceUrl').value = items.instanceUrl;
     document.querySelector('#shortner').checked = items.shortner;
 
