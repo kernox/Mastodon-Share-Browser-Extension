@@ -6,7 +6,7 @@ function init()
     {
       var option = document.createElement('option');
       option.value=id;
-      option.innerHTML = list[id];
+      option.innerText = list[id];
 
       document.querySelector('#language').appendChild(option);
     }
