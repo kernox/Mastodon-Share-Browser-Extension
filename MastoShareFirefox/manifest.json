@@ -41,8 +41,7 @@
     "http://*/*",
     "contextMenus",
     "activeTab",
-    "storage",
-    "notifications"
+    "storage"
   ],
   "icons": {
     "16": "assets/images/icon16.png",
