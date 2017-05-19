@@ -1,0 +1,12 @@
+{
+	"settings": "Setări",
+	"instance_url": "URL-ul instanței Mastodon",
+	"url_form_needed": "URL-ul instanței trebuie să fie de genul: http(s)://domeniu.ext",
+	"short_url_checkbox": "URL-ul scurtăturii (frama.link)",
+	"save": "Salvează",
+	"options_saved": "Opțiuni salvate.",
+	"mastodon_instance_opening": "Deschiderea instanței Mastodon",
+	"start_info": "Trebuie să setezi instanța Mastodon înainte de a da clic pe buton pentru prima dată.",
+	"language": "Limbă",
+	"share_selection": "Partajează această selecție pe Mastodon"
+}
