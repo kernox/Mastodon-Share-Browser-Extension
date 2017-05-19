@@ -10,18 +10,20 @@ Pour partager sur Mastodon, cliquez de nouveau sur le bouton.
 
 ## En images
 
-### Partagez une selection de texte sur Mastodon
-![Partage d'une selection de texte](share-selection-feature.png)
+#### Partagez une selection de texte sur Mastodon
+![Partage d'une selection de texte](captures/share-selection-feature.png)
 
 #### Partagez sur Mastodon directement depuis Twitter
 
-![Partage depuis Twitter](share-from-twitter-feature.png)
+![Partage depuis Twitter](captures/share-from-twitter-feature.png)
 
 #### Panneau des paramètres
-![Panneaux de configuration](settings.png)
+![Panneaux de configuration](captures/settings.png)
+
 
 
 ## L'extension
+
 #### Google Chrome
 https://chrome.google.com/webstore/detail/mastodon-share/ngkommdldcakheaeoafgakbbiinkohom?hl=fr
 
