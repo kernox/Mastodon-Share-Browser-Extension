@@ -3,7 +3,7 @@
 
   "name": "Mastodon Share",
   "description": "Un bouton de partage social pour les instances Mastodon",
-  "version": "0.2.9",
+  "version": "0.3.0",
   "options_page": "options.html",
 
   "browser_action": {
@@ -32,6 +32,7 @@
   },
   "permissions": [
     "contextMenus",
+    "tabs",
     "activeTab",
     "storage"
   ],

@@ -63,7 +63,7 @@ function ajax(method, url, data, type, callback)
 		}
 		else
 		{
-			console.log('erf');
+			console.log(xhr);
 		}
 	}
 

@@ -17,7 +17,7 @@ chrome.storage.sync.get(null, function(items){
 	else
 	{
 		//Get current tab
-		chrome.tabs.query({active: true}, function(tabs){
+		chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
 
 			var tab = tabs[0];
 
