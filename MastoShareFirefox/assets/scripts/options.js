@@ -23,7 +23,7 @@ function loadOptions(){
     chrome.storage.sync.get({
     instanceUrl: 'https://',
     shortner: false,
-    language: 'fr-fr'
+    language: 'fr'
   }, function(items) {
     document.querySelector('#instanceUrl').value = items.instanceUrl;
     document.querySelector('#shortner').checked = items.shortner;

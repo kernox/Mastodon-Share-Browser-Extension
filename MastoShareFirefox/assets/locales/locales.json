@@ -1,7 +1,8 @@
 {
-	"fr-fr": "Français",
-	"en-gb": "English",
-	"sr-rs": "Српски",
+	"fr": "Français",
+	"en": "English",
+	"sr": "Српски",
 	"ro": "Românesc",
-	"ca": "Català"
+	"ca": "Català",
+	"oc": "Occitan"
 }
