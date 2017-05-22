@@ -1,0 +1,12 @@
+{
+	"settings": "Postavke",
+	"instance_url": "Mastodonski URL primjer",
+	"url_form_needed": "URL primjer mora biti ovako: http(s)://domain.ext",
+	"short_url_checkbox": "URL precac (frama.link)",
+	"save": "Sacuvaj",
+	"options_saved": "Opcije sacuvane.",
+	"mastodon_instance_opening": "Otvaranje primjera Mastodona",
+	"start_info": "Morate da podesite Mastodon instancu prije klika na dugme po prvi put.",
+	"language": "Jezik",
+	"share_selection": "Podijelite ovaj izbor na Mastodonu"
+}
