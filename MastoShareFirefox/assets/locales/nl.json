@@ -1,0 +1,12 @@
+{
+	"settings": "Instellingen",
+	"instance_url": "Mastodon's instance-URL",
+	"url_form_needed": "Instance-URL dient er uit te zien als: http(s)://domein.ext",
+	"short_url_checkbox": "Verkorte URL (frama.link)",
+	"save": "Opslaan",
+	"options_saved": "Opties opgeslagen.",
+	"mastodon_instance_opening": "Mastodon-instance wordt geopend",
+	"start_info": "U dient uw Mastodon-instance in te stellen voordat u voor het eerst op de knop klikt.",
+	"language": "Taal",
+	"share_selection": "Deze selectie op Mastodon delen"
+}
