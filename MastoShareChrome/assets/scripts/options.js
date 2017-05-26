@@ -2,6 +2,8 @@ function init()
 {
   getJSON('assets/locales/locales.json', function(list){
 
+    console.log(list);
+
     for(id in list)
     {
       var option = document.createElement('option');

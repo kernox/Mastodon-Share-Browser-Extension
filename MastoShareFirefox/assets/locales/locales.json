@@ -1,9 +1,10 @@
 {
-	"fr": "Français",
-	"en": "English",
-	"sr": "Српски",
-	"ro": "Românesc",
 	"ca": "Català",
+	"sr": "Српски",
+	"en": "English",
+	"fr": "Français",
+	"it": "Italiano",
+	"hu": "Magyar",
 	"oc": "Occitan",
-	"hu": "Magyar"
+	"ro": "Românesc"
 }

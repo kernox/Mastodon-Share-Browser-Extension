@@ -14,7 +14,8 @@
   "content_scripts": [
     {
       "matches": ["https://*/*", "http://*/*"],
-      "js": ["assets/scripts/core.js"]
+      "js": ["assets/scripts/core.js"],
+      "css": ["assets/styles/core.css"]
     },
     {
       "matches" : ["https://twitter.com/*"],
@@ -22,6 +23,7 @@
         "assets/scripts/functions.js",
         "assets/scripts/twitter.js"
       ]
+
     }
   ],
   "background" : {
