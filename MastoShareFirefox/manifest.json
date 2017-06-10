@@ -3,12 +3,12 @@
   "applications": {
     "gecko":{
       "id": "{09b14d46-21c3-4a7d-b244-e756f497935b}",
-      "strict_min_version": "42.0"
+      "strict_min_version": "53.0"
     }
   },
   "name": "Mastodon Share",
   "description": "Un bouton de partage social pour les instances Mastodon",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "options_ui": {
     "page": "options.html"
   },

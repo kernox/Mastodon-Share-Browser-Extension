@@ -20,16 +20,19 @@ chrome.storage.sync.get(null, function(items){
 		chrome.tabs.query({active: true}, function(tabs){
 
 			var tab = tabs[0];
+			var message = tab.title + "\n";
 
 			if (shortner)
 			{
 				getShortUrl(tab.url, function(url){
-					sendToMastodon(instanceUrl, url);
+					message += url;
+					sendToMastodon(instanceUrl, message);
 				});
 			}
 			else
 			{
-				sendToMastodon(instanceUrl, tab.url);
+				message += tab.url;
+				sendToMastodon(instanceUrl, message);
 			}
 		});
 	}
