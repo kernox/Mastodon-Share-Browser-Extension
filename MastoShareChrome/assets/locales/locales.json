@@ -1,10 +1,12 @@
 {
+	"bs": "Bosanski",
 	"ca": "Català",
+	"sr": "Српски",
 	"en": "English",
 	"fr": "Français",
-	"sr": "Српски",
+	"it": "Italiano",
+	"hu": "Magyar",
+	"nl": "Neerlandais",
 	"oc": "Occitan",
-	"ro": "Românesc",
-	"ca": "Català",
-	"hu": "Magyar"
+	"ro": "Românesc"
 }

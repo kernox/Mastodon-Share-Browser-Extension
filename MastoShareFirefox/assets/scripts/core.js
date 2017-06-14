@@ -1,12 +1,9 @@
-var instanceUrl = '';
-var message = '';
-
 chrome.storage.sync.get(null, function(items){
 
 	if(items)
 	{
-		instanceUrl = items.instanceUrl;
-		message = items.message;
+		var instanceUrl = items.instanceUrl;
+		var message = items.message;
 
 		if(document.location.href.match('^'+instanceUrl))
 		{
