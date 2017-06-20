@@ -1,3 +1,5 @@
 .idea
 *.zip
 node_modules
+MastoShareChrome/assets/locales
+MastoShareFirefox/assets/locales

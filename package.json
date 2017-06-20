@@ -1,0 +1,17 @@
+{
+  "name": "mastoshare",
+  "description": "Un plugin/bouton de partage pour le réseau Mastodon",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kernox/Mastoshare.git"
+  },
+  "dependencies": {
+  	"gulp": "latest",
+  	"gulp-watch": "latest",
+  	"gulp-zip": "latest"
+  },
+  "bugs": {
+    "url": "https://github.com/kernox/Mastoshare/issues"
+  },
+  "homepage": "https://github.com/kernox/Mastoshare#readme"
+}
