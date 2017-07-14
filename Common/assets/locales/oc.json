@@ -1,7 +1,7 @@
 {
     "settings": "Configuracion",
     "instance_url": "URL de l'instància a Mastodon",
-    "url_form_needed": "L'URL de l'instància deu aver la forma seguenta : http(s)://domeni.ext",
+    "url_form_needed": "L'URL de l'instància deu aver la forma seguenta : http(s)://domeni.tld",
     "short_url_checkbox": "Acorchir las URL (frama.link)",
     "save": "Salvagardar",
     "options_saved": "Opcions salvagardadas.",

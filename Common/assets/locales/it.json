@@ -1,7 +1,7 @@
 {
 	"settings": "Impostazioni",
 	"instance_url": "URL dell'istanza Mastodon",
-	"url_form_needed": "L'URL dell'istanza deve essere del tipo: http(s)://domain.ext",
+	"url_form_needed": "L'URL dell'istanza deve essere del tipo: http(s)://domain.tld",
 	"short_url_checkbox": "URL abbreviato (frama.link)",
 	"save": "Salva",
 	"options_saved": "Opzioni salvate",

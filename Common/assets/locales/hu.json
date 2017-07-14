@@ -1,7 +1,7 @@
 {
 	"settings": "Beállítások",
 	"instance_url": "Mastodon példányának URL-e",
-	"url_form_needed": "A példány URL-nek ilyennek kell lennie: http(s)://domain.ext",
+	"url_form_needed": "A példány URL-nek ilyennek kell lennie: http(s)://domain.tld",
 	"short_url_checkbox": "Rövidített URL (frama.link)",
 	"save": "Mentés",
 	"options_saved": "A beállítások elmentve.",
