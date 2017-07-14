@@ -1,7 +1,7 @@
 {
 	"settings": "Settings",
-	"instance_url": "Mastodon's instance URL",
-	"url_form_needed": "Instance URL must be like: http(s)://domain.ext",
+	"instance_url": "Mastodon instance URL",
+	"url_form_needed": "Instance URL must be like: http(s)://domain.tld",
 	"short_url_checkbox": "Shortcut URL (frama.link)",
 	"save": "Save",
 	"options_saved": "Options saved.",
