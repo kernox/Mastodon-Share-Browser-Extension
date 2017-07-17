@@ -6,17 +6,6 @@ function getShortUrl(url, callback)
 	});
 }
 
-
-function sendToMastodon(instanceUrl, message){
-	chrome.storage.sync.set({message: message});
-	chrome.tabs.create({url: instanceUrl+'/web/statuses/new'});
-}
-
-function sendToMastodonFromTwitter(instanceUrl, message){
-	chrome.storage.sync.set({message: message});
-	window.open(instanceUrl+'/web/statuses/new');
-}
-
 function loadLocale(code){
 
 	getJSON('assets/locales/' + code + '.json', function(lang){

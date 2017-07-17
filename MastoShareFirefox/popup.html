@@ -3,10 +3,25 @@
 <head>
 	<title>Share Popup</title>
 	<meta charset="UTF-8">
+	<link rel="stylesheet" href="assets/styles/theme.min.css">
+	<link rel="stylesheet" href="assets/styles/popup.css">
 </head>
 <body>
-	Ouverture&nbsp;de&nbsp;l'instance&nbsp;Mastodon
-	<script src="assets/scripts/functions.js"></script>
+	<div class="container-fluid">
+
+		<div class="row" style="margin-top:20px">
+			<div class="col-md-12">
+				<div class="alert alert-info">Hellexis@framapiaf.org</div>
+				<textarea name="message" id="message"></textarea>
+				<div style="margin:20px 0;">
+				<button id="btnToot" class="btn btn-success">Pouet !</button>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<script src="assets/scripts/jquery.min.js"></script>
+	<script src="assets/scripts/mastodon.js"></script>
 	<script src="assets/scripts/popup.js"></script>
 </body>
 </html>

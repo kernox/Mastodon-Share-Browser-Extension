@@ -41,10 +41,6 @@ function shareViaMastodon(event){
 	var tweet = tweetDIV.querySelector('.tweet-text').innerText;
 
 	var message = author_fullname + "  @" + author_username + "\n" + tweet + "\n\n" + permalink;
-
-	chrome.storage.sync.get(null, function(items){
-		instanceUrl = items.instanceUrl;
-		sendToMastodonFromTwitter(instanceUrl, message);
-	});
+	window.open('popup.html','mastodon-share');
 
 }

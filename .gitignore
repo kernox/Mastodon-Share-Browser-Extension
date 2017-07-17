@@ -3,3 +3,5 @@
 node_modules
 MastoShareChrome/assets/locales
 MastoShareFirefox/assets/locales
+MastoshareFirefox/*.html
+MastoshareChrome/*.html

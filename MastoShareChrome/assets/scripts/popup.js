@@ -1,37 +1,30 @@
-var instanceUrl = '';
-var shortner = false;
 
-chrome.storage.sync.get(null, function(items){
+var message = document.getElementById('message');
+var btnToot = document.getElementById('btnToot');
 
-	instanceUrl = items.instanceUrl;
-	shortner = items.shortner;
-	loading_message = items.loading_message;
+(function loadTabUrl() {
+	chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
+		message.value= tabs[0].title + "\n" + tabs[0].url;
+	});
+})();
 
-	document.body.innerHTML = loading_message;
+function toot(){
+	chrome.storage.sync.get(null, function(items) {
 
-	//If mastodon instance not configured
-	if (instanceUrl == '' || instanceUrl == undefined || instanceUrl == 'https://')
-	{
-		chrome.tabs.create({url: 'options.html#start'});
-	}
-	else
-	{
-		//Get current tab
-		chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
+	  	if(items.accessKey !=='') {
 
-			var tab = tabs[0];
+		  	var api = new MastodonAPI({
+	            instance: items.instanceUrl,
+	            api_user_token: items.accessKey
+	        });
 
-			if (shortner)
-			{
-				getShortUrl(tab.url, function(url){
-					sendToMastodon(instanceUrl, url);
-				});
-			}
-			else
-			{
-				sendToMastodon(instanceUrl, tab.url);
-			}
-		});
-	}
+	        var finalMessage = message.value;
 
-});
+		  	api.post("statuses", {status: finalMessage}, function (data) {
+		  		console.log(data);
+		  	});
+	  	}
+	});
+}
+
+btnToot.addEventListener('click', toot);
