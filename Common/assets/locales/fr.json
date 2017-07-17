@@ -1,7 +1,7 @@
 {
     "settings": "Paramètres",
     "instance_url": "URL de l'instance Mastodon",
-    "url_form_needed": "L'URL de l'instance doit être de la forme : http(s)://domain.ext",
+    "url_form_needed": "L'URL de l'instance doit être de la forme : http(s)://domaine.tld",
     "short_url_checkbox": "Raccourcir les URL (frama.link)",
     "save": "Sauvegarder",
     "options_saved": "Options sauvegardées.",
