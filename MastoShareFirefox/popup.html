@@ -5,16 +5,22 @@
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="assets/styles/theme.min.css">
 	<link rel="stylesheet" href="assets/styles/popup.css">
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      type="text/css" rel="stylesheet" />
 </head>
 <body>
 	<div class="container-fluid">
-
 		<div class="row" style="margin-top:20px">
 			<div class="col-md-12">
-				<div class="alert alert-info">Hellexis@framapiaf.org</div>
+
+				<div id="response" class="alert hidden"></div>
+
 				<textarea name="message" id="message"></textarea>
 				<div style="margin:20px 0;">
-				<button id="btnToot" class="btn btn-success">Pouet !</button>
+					<button id="btnToot" class="btn btn-success">
+						<i class="loader fa fa-spinner fa-spin hidden"></i>
+						Pouet !
+					</button>
 				</div>
 			</div>
 		</div>

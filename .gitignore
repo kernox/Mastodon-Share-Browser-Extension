@@ -1,4 +1,5 @@
 .idea
+.vscode
 *.zip
 node_modules
 MastoShareChrome/assets/locales
