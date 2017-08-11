@@ -13,11 +13,19 @@
 		<div class="row" style="margin-top:20px">
 			<div class="col-md-12">
 
-				<div id="response" class="alert hidden"></div>
+				<div id="alert" class="alert hidden"></div>
 
-				<textarea name="message" id="message"></textarea>
+				<textarea name="message" id="message" maxlength="500"></textarea>
+				<select name="tootType" id="tootType">
+					<option value="public">Public</option>
+					<option value="direct">Direct</option>
+					<option value="private">Private</option>
+					<option value="unlisted">Unlisted</option>
+				</select>
 				<div style="margin:20px 0;">
-					<button id="btnToot" class="btn btn-success">
+					<button id="btnClear" class="btn btn-warning" style="width:50%; float:left">
+					Effacer</button>
+					<button id="btnToot" class="btn btn-success" style="width:50%">
 						<i class="loader fa fa-spinner fa-spin hidden"></i>
 						Pouet !
 					</button>

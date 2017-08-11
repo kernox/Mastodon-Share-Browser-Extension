@@ -4,6 +4,7 @@ stream.addEventListener('click', addMenu);
 
 function addMenu(event){
 
+
 	if(event.target.className.match('Icon'))
 	{
 		var menu = document.createElement('li');
@@ -40,7 +41,12 @@ function shareViaMastodon(event){
 	var permalink = 'https://twitter.com'+tweetDIV.dataset.permalinkPath;
 	var tweet = tweetDIV.querySelector('.tweet-text').innerText;
 
-	var message = author_fullname + "  @" + author_username + "\n" + tweet + "\n\n" + permalink;
-	window.open('popup.html','mastodon-share');
+	chrome.runtime.sendMessage({
+		mastoshare: {
+            title: author_fullname + "  @" + author_username,
+            url: permalink,
+            textSelection: tweet
+        }
+	});
 
 }
