@@ -18,10 +18,6 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://*/*", "http://*/*"],
-      "js": ["assets/scripts/core.js"]
-    },
-    {
       "matches" : ["https://twitter.com/*"],
       "js": [
         "assets/scripts/functions.js",
@@ -31,15 +27,14 @@
   ],
   "background" : {
     "scripts": [
+      "assets/scripts/interceptor.js",
       "assets/scripts/menu.js",
       "assets/scripts/functions.js"
     ]
   },
   "permissions": [
-    "https://frama.link/*",
-    "https://*/*",
-    "http://*/*",
     "contextMenus",
+    "tabs",
     "activeTab",
     "storage"
   ],

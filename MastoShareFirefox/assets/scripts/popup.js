@@ -1,85 +1,90 @@
+var message = document.getElementById('message');
+var btnToot = document.getElementById('btnToot');
+var btnClear = document.getElementById('btnClear');
+var loaderIcon = btnToot.querySelector('.loader');
+var alert = document.getElementById('alert');
+var tootType = document.getElementById('tootType');
 
-var instance = 'https://framapiaf.org';
+(function loadTabUrl() {
 
-var api = new MastodonAPI({
-    instance: instance,
-    api_user_token: ""
-});
+    chrome.storage.sync.get(null, function(items){
 
-function run(){
+        if(items.clipboard != undefined){
 
-    chrome.storage.sync.get(null, function(items) {
-        if(items.api_user_token){
-            testAccessToken(items.api_user_token);
-        }else if(items.mastodon_auth_code){
-            getUserAccessToken(items);
-        }else{
-            openAuthDialog();
-        }
+            var clipboard = items.clipboard;
 
-    });
-}
+            var draft = clipboard.title +
+            "\n\n" + clipboard.textSelection +
+            "\n\n"+clipboard.url;
 
-function openAuthDialog(){
-    //We do not have user token, need to register the app
-    api.registerApplication("Mastodon Share", instance, ['read', 'write'],'', function(data) {
-
-        //Save id, secret and redirect_uri
-        chrome.storage.sync.set({
-            "mastodon_client_id": data["client_id"],
-            "mastodon_client_secret": data["client_secret"],
-            "mastodon_client_redirect_uri": data["redirect_uri"]
-        });
-
-        //Generate the authorization link
-        var authorization = api.generateAuthLink(data["client_id"],
-            data['redirect_uri'],
-            "code",
-            ["read", "write"]
-            );
-
-        //Open the authentification window
-        chrome.tabs.create({url: authorization});
-        window.close();
-    });
-}
-
-function getUserAccessToken(items) {
-
-    api.getAccessTokenFromAuthCode(
-        items.mastodon_client_id,
-        items.mastodon_client_secret,
-        items.mastodon_client_redirect_uri,
-        items.mastodon_auth_code,
-        function(data) {
-
-            //Save the user access token for future uses and remove the mastodon auth code
-            chrome.storage.sync.set({
-                //mastodon_auth_code: null,
-                api_user_token: data.access_token
-            }, function(){
-                run();
+            message.value = draft;
+        } else {
+            chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
+                message.value= tabs[0].title + "\n" + tabs[0].url;
             });
         }
-    );
-}
-
-function testAccessToken(token){
-    api.setConfig("api_user_token", token);
-
-    api.get('accounts/verify_credentials', function(data){
-            console.log(data);
-            if(data.username){
-
-            } else {
-                run();
-            }
     });
 
+
+})();
+
+function toot(){
+    chrome.storage.sync.get(null, function(items) {
+
+        loaderIcon.classList.remove('hidden');
+        btnToot.disabled = true;
+
+        if (items.accessKey !== '') {
+
+            var api = new MastodonAPI({
+                instance: items.instanceUrl,
+                api_user_token: items.accessKey
+            });
+
+            var finalMessage = message.value;
+
+            var request = api.post("statuses", {status: finalMessage + '@hellexis', visibility: 'direct'}, function(data){
+
+                showAlert('Message bien envoyé !', 'success');
+                loaderIcon.classList.add('hidden');
+                btnToot.disabled = false;
+
+                message.value = '';
+            });
+
+            request.fail(function(data){
+                showAlert('Can\'t connect to the instance !', 'danger');
+                btnToot.disabled = false;
+                loaderIcon.classList.add('hidden');
+
+                setTimeout(function(){
+                    hideAlert();
+                },2000);
+            });
+        }
+    });
 }
 
-function toot() {
+function clear(){
+    message.value = '';
 
+    chrome.storage.sync.remove('clipboard', function(){
+        chrome.browserAction.setBadgeText({
+            text: ''
+        });
+    });
 }
 
-run();
+function showAlert(content, type = 'info'){
+    alert.innerHTML = '<p>'+ content +'</p>';
+    alert.classList.add('alert-'+ type);
+    alert.classList.remove('hidden');
+}
+
+function hideAlert(){
+    alert.classList.add('hidden');
+    alert.classList.remove('alert-success alert-danger alert-info alert-warning');
+}
+
+btnToot.addEventListener('click', toot);
+btnClear.addEventListener('click', clear);

@@ -1,4 +1,3 @@
-
 var message = document.getElementById('message');
 var btnToot = document.getElementById('btnToot');
 var btnClear = document.getElementById('btnClear');
