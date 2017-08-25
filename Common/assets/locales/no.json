@@ -1,0 +1,12 @@
+{
+    "settings": "Innstillinger",
+    "instance_url": "Mastodon-instans URL",
+    "url_form_needed": "Instansen URL må vaere som : http(s)://domain.tld",
+    "short_url_checkbox": "Forkorte URL (frama.link)",
+    "save": "Lagre endringer",
+    "options_saved": "Vellykket lagring av endringer.",
+    "mastodon_instance_opening": "Mastodon-instans åpning",
+    "start_info": "Du må angi Mastodon-instansen din før å klikk på knappe for forste gang.",
+    "language": "Språk",
+    "share_selection": "Del dette utvalg på Mastodon"
+}

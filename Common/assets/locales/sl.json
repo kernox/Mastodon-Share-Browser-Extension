@@ -1,0 +1,12 @@
+{
+	"settings": "Nastavitve",
+	"instance_url": "Mastodonov URL primerka",
+	"url_form_needed": "URL primerka mora biti v obliki: http(s)://domain.ext",
+	"short_url_checkbox": "URL blinjice (frama.link)",
+	"save": "Shrani",
+	"options_saved": "Nastavitve shranjene",
+	"mastodon_instance_opening": "Odpiranje Mastodonovega primerka",
+	"start_info": "Preden prviè kliknete gumb, morate nastaviti Mastodonov primerek.",
+	"language": "Jezik",
+	"share_selection": "Delite izbrano v Mastodonu"
+}

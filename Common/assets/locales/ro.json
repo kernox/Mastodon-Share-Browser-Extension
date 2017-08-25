@@ -1,7 +1,7 @@
 {
 	"settings": "Setări",
 	"instance_url": "URL-ul instanței Mastodon",
-	"url_form_needed": "URL-ul instanței trebuie să fie de genul: http(s)://domeniu.ext",
+	"url_form_needed": "URL-ul instanței trebuie să fie de genul: http(s)://domeniu.tld",
 	"short_url_checkbox": "URL-ul scurtăturii (frama.link)",
 	"save": "Salvează",
 	"options_saved": "Opțiuni salvate.",
