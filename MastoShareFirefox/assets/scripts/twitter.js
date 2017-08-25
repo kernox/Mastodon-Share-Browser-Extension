@@ -40,23 +40,11 @@ function shareViaMastodon(event){
 	var permalink = 'https://twitter.com'+tweetDIV.dataset.permalinkPath;
 	var tweet = tweetDIV.querySelector('.tweet-text').innerText;
 
-
-	chrome.storage.sync.get(null, function(items){
-
-		if(items.shortner)
-		{
-			getShortUrl(permalink, function(url){
-				var message = author_fullname + "  @" + author_username + "\n" + tweet + "\n\n" + url;
-				sendToMastodonFromTwitter(instanceUrl, message);
-			});
-		}
-		else
-		{
-			var message = author_fullname + "  @" + author_username + "\n" + tweet + "\n\n" + permalink;
-			instanceUrl = items.instanceUrl;
-			sendToMastodonFromTwitter(instanceUrl, message);
-		}
-
+	chrome.runtime.sendMessage({
+		mastoshare: {
+            title: author_fullname + "  @" + author_username,
+            url: permalink,
+            textSelection: tweet
+        }
 	});
-
 }

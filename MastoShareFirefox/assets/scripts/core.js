@@ -1,3 +1,5 @@
+console.log(chrome);
+
 var code = window.location.search.match('code=([A-z0-9]{64})');
 
 if(code != null && code.length == 2)

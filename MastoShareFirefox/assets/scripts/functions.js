@@ -14,8 +14,7 @@ function sendToMastodon(instanceUrl, message){
 }
 
 function sendToMastodonFromTwitter(instanceUrl, message){
-	chrome.storage.sync.set({message: message});
-	window.open(instanceUrl+'/web/statuses/new');
+	console.log(message);
 }
 
 function loadLocale(code){

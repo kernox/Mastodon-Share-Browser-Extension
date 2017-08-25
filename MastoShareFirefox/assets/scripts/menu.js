@@ -14,7 +14,6 @@ function shareSelection() {
 	browser.tabs.executeScript({
 		code: "window.getSelection().toString()"
 	}, function(selection) {
-		console.log(selection);
 		chrome.tabs.query({active: true}, function(tabs) {
 
 			//Save title and selection
