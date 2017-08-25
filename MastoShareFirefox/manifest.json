@@ -36,8 +36,7 @@
     "contextMenus",
     "tabs",
     "activeTab",
-    "storage",
-    "https://liberapay.com/*/**"
+    "storage"
   ],
   "icons": {
     "16": "assets/images/icon16.png",

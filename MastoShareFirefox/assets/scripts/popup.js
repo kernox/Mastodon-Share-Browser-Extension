@@ -26,7 +26,6 @@ var tootSize = 500;
         }
     });
 
-
 })();
 
 function toot(){

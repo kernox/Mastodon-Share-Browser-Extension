@@ -5,6 +5,7 @@ var loaderIcon = btnToot.querySelector('.loader');
 var alert = document.getElementById('alert');
 var tootType = document.getElementById('tootType');
 
+
 (function loadTabUrl() {
 
 	chrome.storage.sync.get(null, function(items){
@@ -25,7 +26,6 @@ var tootType = document.getElementById('tootType');
 		}
 	});
 
-
 })();
 
 function toot(){
@@ -42,8 +42,9 @@ function toot(){
 	        });
 
 	        var finalMessage = message.value;
+	        var visibility = tootType.value;
 
-		  	var request = api.post("statuses", {status: finalMessage + '@hellexis', visibility: 'direct'}, function(data){
+		  	var request = api.post("statuses", {status: finalMessage, visibility: visibility}, function(data){
 
 		  		showAlert('Message bien envoyé !', 'success');
 		  		loaderIcon.classList.add('hidden');
@@ -88,3 +89,13 @@ function hideAlert(){
 
 btnToot.addEventListener('click', toot);
 btnClear.addEventListener('click', clear);
+
+setInterval(function(){
+    var currentTootSize = message.value.toString().length;
+
+    if( currentTootSize == 0 || currentTootSize > 500){
+        btnToot.disabled = true;
+    } else {
+        btnToot.disabled = false;
+    }
+},1000);

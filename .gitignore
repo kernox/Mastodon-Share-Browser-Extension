@@ -4,5 +4,7 @@
 node_modules
 MastoShareChrome/assets/locales
 MastoShareFirefox/assets/locales
+MastoShareChrome/assets/images
+MastoShareFirefox/assets/images
 MastoshareFirefox/*.html
 MastoshareChrome/*.html
