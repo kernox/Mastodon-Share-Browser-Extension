@@ -43,8 +43,9 @@ function toot(){
             });
 
             var finalMessage = message.value;
+            var visibility = tootType.value;
 
-            var request = api.post("statuses", {status: finalMessage, visibility: 'direct'}, function(data){
+            var request = api.post("statuses", {status: finalMessage, visibility: visibility}, function(data){
 
                 showAlert('Message bien envoyé !', 'success');
                 loaderIcon.classList.add('hidden');

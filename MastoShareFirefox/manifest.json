@@ -8,7 +8,7 @@
   },
   "name": "Mastodon Share",
   "description": "Un bouton de partage social pour les instances Mastodon",
-  "version": "0.3.2",
+  "version": "0.4",
   "options_ui": {
     "page": "options.html"
   },
@@ -36,7 +36,8 @@
     "contextMenus",
     "tabs",
     "activeTab",
-    "storage"
+    "storage",
+    "https://liberapay.com/*/**"
   ],
   "icons": {
     "16": "assets/images/icon16.png",
