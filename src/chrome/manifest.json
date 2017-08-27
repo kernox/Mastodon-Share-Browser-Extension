@@ -1,0 +1,41 @@
+{
+  "manifest_version": 2,
+
+  "name": "Mastodon Share",
+  "description": "Un bouton de partage social pour les instances Mastodon",
+  "version": "0.4",
+  "options_ui": {
+    "page": "options.html"
+  },
+  "browser_action": {
+    "default_icon": "assets/images/icon.png",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches" : ["https://twitter.com/*"],
+      "js": [
+        "assets/scripts/functions.js",
+        "assets/scripts/twitter.js"
+      ]
+    }
+  ],
+  "background" : {
+    "scripts": [
+      "assets/scripts/interceptor.js",
+      "assets/scripts/menu.js",
+      "assets/scripts/functions.js"
+    ]
+  },
+  "permissions": [
+    "contextMenus",
+    "tabs",
+    "activeTab",
+    "storage"
+  ],
+  "icons": {
+    "16": "assets/images/icon16.png",
+    "32": "assets/images/icon32.png",
+    "64": "assets/images/icon64.png"
+  }
+}

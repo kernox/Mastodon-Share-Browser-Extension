@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+	<title>Share Popup</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="assets/styles/theme.min.css">
+	<link rel="stylesheet" href="assets/styles/popup.css">
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      type="text/css" rel="stylesheet" />
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row" style="margin-top:20px">
+			<div class="col-md-12">
+
+				<div id="alert" class="alert hidden"></div>
+
+				<textarea name="message" id="message" maxlength="500"></textarea>
+				<select name="tootType" id="tootType" class="form-control">
+					<option value="public">Public</option>
+					<option value="direct">Direct</option>
+					<option value="private">Private</option>
+					<option value="unlisted">Unlisted</option>
+				</select>
+				<div style="margin:20px 0;">
+					<button id="btnClear" class="btn btn-warning" style="width:50%; float:left">
+					Effacer</button>
+					<button id="btnToot" class="btn btn-success" style="width:50%">
+						<i class="loader fa fa-spinner fa-spin hidden"></i>
+						Pouet !
+					</button>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<script src="assets/scripts/jquery.min.js"></script>
+	<script src="assets/scripts/mastodon.js"></script>
+	<script src="assets/scripts/popup.js"></script>
+</body>
+</html>

@@ -3,20 +3,32 @@ var zip = require('gulp-zip');
 var watch = require('gulp-watch');
 
 gulp.task('default',[
-	'buildCommon',
+	'build',
 	'watch'
 ]);
 
 gulp.task('watch', function(){
-	return watch('Common/**/*', {verbose: true})
-	.pipe(gulp.dest('MastoShareFirefox'))
-	.pipe(gulp.dest('MastoShareChrome'))
+	watch('src/all/**/*')
+	.pipe(gulp.dest('build/firefox'))
+	.pipe(gulp.dest('build/chrome'))
+
+	watch('src/firefox/**/*')
+	.pipe(gulp.dest('build/firefox'))
+
+	watch('src/chrome/**/*')
+	.pipe(gulp.dest('build/chrome'))
 });
 
-gulp.task('buildCommon', function(){
-	gulp.src('Common/**/*')
-	.pipe(gulp.dest('MastoShareFirefox'))
-	.pipe(gulp.dest('MastoShareChrome'))
+gulp.task('build', function(){
+	gulp.src('src/all/**/*')
+	.pipe(gulp.dest('build/firefox'))
+	.pipe(gulp.dest('build/chrome'))
+
+	gulp.src('src/firefox/**/*')
+	.pipe(gulp.dest('build/firefox'))
+
+	gulp.src('src/chrome/**/*')
+	.pipe(gulp.dest('build/chrome'))
 });
 
 gulp.task('pack', function(){
