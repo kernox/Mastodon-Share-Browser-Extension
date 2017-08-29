@@ -22,6 +22,15 @@ var tootSize = 500;
         } else {
             chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
                 message.value= tabs[0].title + "\n" + tabs[0].url;
+                // extract page keywords to use as hashtags
+                chrome.tabs.executeScript( {
+                    code: "var kw = document.querySelector('meta[name=keywords]'); var keywords = kw.getAttribute('content'); keywords;"
+                }, function(keywords) {
+                    if (!keywords[0])
+                        return;
+                    // TODO: sanitize better
+                    message.value += "\n\n" + keywords[0].split(',').map(function (e) {return e ? '#' + e.trim().replace(' ', '_').replace("'", '') : '';}).join(' ');
+                });
             });
         }
     });
