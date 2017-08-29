@@ -4,9 +4,7 @@
   "name": "Mastodon Share",
   "description": "Un bouton de partage social pour les instances Mastodon",
   "version": "0.4",
-  "options_ui": {
-    "page": "options.html"
-  },
+  "options_page": "options.html",
   "browser_action": {
     "default_icon": "assets/images/icon.png",
     "default_popup": "popup.html"
@@ -29,6 +27,7 @@
   },
   "permissions": [
     "contextMenus",
+    "cookies",
     "tabs",
     "activeTab",
     "storage"

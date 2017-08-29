@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var zip = require('gulp-zip');
 var watch = require('gulp-watch');
+var preprocess = require('gulp-preprocess');
 
 gulp.task('default',[
 	'build',
@@ -8,9 +9,18 @@ gulp.task('default',[
 ]);
 
 gulp.task('watch', function(){
-	watch('src/all/**/*', {verbose: true})
+	watch(['src/all/**/*', '!src/all/**/*.html'], {verbose: true})
 	.pipe(gulp.dest('build/firefox'))
 	.pipe(gulp.dest('build/chrome'))
+
+	watch(['src/all/**/*.html'], {verbose: true})
+	.pipe(preprocess({context: {ENV: 'chrome'}}))
+	.pipe(gulp.dest('build/chrome'))
+
+	watch(['src/all/**/*.html'])
+	.pipe(preprocess({context: {ENV: 'firefox'}}))
+	.pipe(gulp.dest('build/firefox'))
+
 
 	watch('src/firefox/**/*', {verbose: true})
 	.pipe(gulp.dest('build/firefox'))
@@ -20,9 +30,17 @@ gulp.task('watch', function(){
 });
 
 gulp.task('build', function(){
-	gulp.src('src/all/**/*')
+	gulp.src(['src/all/**/*', '!src/all/**/*.html', '!src/all/**/*.js'])
 	.pipe(gulp.dest('build/firefox'))
 	.pipe(gulp.dest('build/chrome'))
+
+	gulp.src(['src/all/**/*.html', 'src/all/**/*.js'])
+	.pipe(preprocess({context: {ENV: 'chrome'}}))
+	.pipe(gulp.dest('build/chrome'))
+
+	gulp.src(['src/all/**/*.html', 'src/all/**/*.js'])
+	.pipe(preprocess({context: {ENV: 'firefox'}}))
+	.pipe(gulp.dest('build/firefox'))
 
 	gulp.src('src/firefox/**/*')
 	.pipe(gulp.dest('build/firefox'))

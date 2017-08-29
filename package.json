@@ -8,7 +8,7 @@
   "dependencies": {
   	"gulp": "latest",
   	"gulp-watch": "latest",
-  	"gulp-zip": "latest"
+    "gulp-zip": "latest"
   },
   "bugs": {
     "url": "https://github.com/kernox/Mastoshare/issues"
