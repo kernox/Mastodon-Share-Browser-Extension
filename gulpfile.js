@@ -8,14 +8,14 @@ gulp.task('default',[
 ]);
 
 gulp.task('watch', function(){
-	watch('src/all/**/*')
+	watch('src/all/**/*', {verbose: true})
 	.pipe(gulp.dest('build/firefox'))
 	.pipe(gulp.dest('build/chrome'))
 
-	watch('src/firefox/**/*')
+	watch('src/firefox/**/*', {verbose: true})
 	.pipe(gulp.dest('build/firefox'))
 
-	watch('src/chrome/**/*')
+	watch('src/chrome/**/*', {verbose: true})
 	.pipe(gulp.dest('build/chrome'))
 });
 
