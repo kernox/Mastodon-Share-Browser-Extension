@@ -21,7 +21,8 @@
 
 							<div class="form-group">
 								<label for="instanceUrl"></label>
-								<input id="instanceUrl" type="text" class="form-control" aria-describedby="instanceUrlHelp" pattern="^http(s)?://[A-z0-9\.\-\/]+[^/]$" required>
+								<input id="instanceUrl" list="instanceUrlList" type="text" class="form-control" aria-describedby="instanceUrlHelp" pattern="^http(s)?://[A-z0-9\.\-\/]+[^/]$" placeholder="https://mastodon.example.com" title="If you keep your session open in a tab we can find it automatically" required>
+								<datalist id="instanceUrlList"></datalist>
 								<span id="instanceUrlHelp" class="help-block"></span>
 								<input id="btnConnectInstance" class="btn btn-warning" type="button" value="Obtain access code">
 

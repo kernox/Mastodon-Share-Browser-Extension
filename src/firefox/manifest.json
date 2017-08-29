@@ -34,6 +34,8 @@
   },
   "permissions": [
     "contextMenus",
+    "cookies",
+    "<all_urls>",
     "tabs",
     "activeTab",
     "storage"

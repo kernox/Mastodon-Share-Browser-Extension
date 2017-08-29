@@ -18,9 +18,37 @@ function init() {
     loadOptions();
 }
 
+function loadInstancesList() {
+    /* find all instances known to the browser */
+    browser.cookies.getAll({name: "_mastodon_session"}).then((cookies) => {
+        const mastodonList = document.querySelector("#instanceUrlList");
+        const mastodonInput = document.querySelector("#instanceUrl");
+        var mastodonInstances = [];
+        for (let cookie of cookies) {
+            let url = (cookie.secure?"https://":"http://") + cookie.domain;
+            mastodonInstances.push(url);
+            let option = document.createElement("option");
+            option.setAttribute("value", url);
+            mastodonList.appendChild(option);
+        }
+        if (mastodonInput.value.length)
+            return;
+        /* none configured, pick the first one with a user session */
+        browser.cookies.getAll({name: "remember_user_token"}).then((cookies) => {
+            for (let cookie of cookies) {
+                let url = (cookie.secure?"https://":"http://") + cookie.domain;
+                if (mastodonInstances.includes(url)) {
+                    mastodonInput.value = url;
+                    return;
+                }
+            }
+        });
+    });
+}
+
 function loadOptions() {
     chrome.storage.sync.get({
-        instanceUrl: 'https://',
+        instanceUrl: '',
         shortner: false,
         language: 'fr',
         accessKey: '',
@@ -33,6 +61,8 @@ function loadOptions() {
         document.querySelector('#accessKey').value = items.accessKey;
 
         var lang = items.language;
+
+        loadInstancesList();
 
         loadLocale(lang);
         document.querySelector('#language').value = lang;
