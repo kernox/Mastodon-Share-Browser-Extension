@@ -9,18 +9,17 @@ gulp.task('default',[
 ]);
 
 gulp.task('watch', function(){
-	watch(['src/all/**/*', '!src/all/**/*.html'], {verbose: true})
+	watch(['src/all/**/*', '!src/all/**/*.html', '!src/all/**/*.js'], {verbose: true})
 	.pipe(gulp.dest('build/firefox'))
 	.pipe(gulp.dest('build/chrome'))
 
-	watch(['src/all/**/*.html'], {verbose: true})
+	watch(['src/all/**/*.html', 'src/all/**/*.js'], {verbose: true})
 	.pipe(preprocess({context: {ENV: 'chrome'}}))
 	.pipe(gulp.dest('build/chrome'))
 
-	watch(['src/all/**/*.html'])
+	watch(['src/all/**/*.html', 'src/all/**/*.js'])
 	.pipe(preprocess({context: {ENV: 'firefox'}}))
 	.pipe(gulp.dest('build/firefox'))
-
 
 	watch('src/firefox/**/*', {verbose: true})
 	.pipe(gulp.dest('build/firefox'))
@@ -51,11 +50,11 @@ gulp.task('build', function(){
 
 gulp.task('pack', function(){
 
-	gulp.src('MastoShareFirefox/**/*')
-		.pipe(zip('MastoShareFirefox.zip'))
-		.pipe(gulp.dest('.'))
+	gulp.src('build/firefox/**/*')
+		.pipe(zip('firefox.zip'))
+		.pipe(gulp.dest('build'))
 
-	gulp.src('MastoShareChrome/**/*')
-		.pipe(zip('MastoShareChrome.zip'))
-		.pipe(gulp.dest('.'))
+	gulp.src('build/chrome/**/*')
+		.pipe(zip('chrome.zip'))
+		.pipe(gulp.dest('build'))
 });
