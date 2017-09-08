@@ -1,12 +1,12 @@
 {
     "settings": "Configuracion",
-    "instance_url": "URL de l'instància a Mastodon",
-    "url_form_needed": "L'URL de l'instància deu aver la forma seguenta : http(s)://domeni.tld",
+    "instance_url": "URL de l’instància a Mastodon",
+    "url_form_needed": "L’URL de l’instància deu aver la forma seguenta : http(s)://domeni.tld",
     "short_url_checkbox": "Acorchir las URL (frama.link)",
     "save": "Salvagardar",
     "options_saved": "Opcions salvagardadas.",
-    "mastodon_instance_opening": "Dubertura de l'instància a Mastodon",
-    "start_info": "Vos cal configurar vòstra instància a Mastodon abans de clicar sul boton pel primièr còp.",
+    "mastodon_instance_opening": "Dubertura de l’instància Mastodon",
+    "start_info": "Vos cal configurar vòstra instància Mastodon abans de clicar sul boton pel primièr còp.",
     "language": "Lenga",
     "share_selection": "Partejar la seleccion dins Mastodon"
 }
