@@ -33,7 +33,6 @@ https://addons.mozilla.org/fr/firefox/addon/mastodon-share/
 
 
 ## Roadmap
-- Definir une nouvelle icone pour l'extension (Suggestions bienvenues)
 - Ajouter le partage depuis d'autres reseaux sociaux
 
 
