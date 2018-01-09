@@ -6,9 +6,10 @@
     "url": "git+https://github.com/kernox/Mastoshare.git"
   },
   "dependencies": {
-  	"gulp": "latest",
-  	"gulp-watch": "latest",
-    "gulp-zip": "latest"
+    "gulp": "^3.9.1",
+    "gulp-preprocess": "^2.0.0",
+    "gulp-watch": "^5.0.0",
+    "gulp-zip": "^4.1.0"
   },
   "bugs": {
     "url": "https://github.com/kernox/Mastoshare/issues"

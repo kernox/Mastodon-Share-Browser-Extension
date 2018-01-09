@@ -1,6 +1,9 @@
 {
     "settings": "Paramètres",
     "instance_url": "URL de l'instance Mastodon",
+    "access_code": "Code d'accès",
+    "access_key": "Clé d'accès",
+    "obtain_access_code": "Obtenir un code d'accès",
     "url_form_needed": "L'URL de l'instance doit être de la forme : http(s)://domaine.tld",
     "short_url_checkbox": "Raccourcir les URL (frama.link)",
     "save": "Sauvegarder",

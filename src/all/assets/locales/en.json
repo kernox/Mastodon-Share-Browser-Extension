@@ -1,6 +1,9 @@
 {
 	"settings": "Settings",
 	"instance_url": "Mastodon instance URL",
+	"access_code": "Access Code",
+    "access_key": "Access Key",
+    "obtain_access_code": "Obtain access code",
 	"url_form_needed": "Instance URL must be like: http(s)://domain.tld",
 	"short_url_checkbox": "Shortcut URL (frama.link)",
 	"save": "Save",
