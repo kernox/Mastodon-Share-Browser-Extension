@@ -1,7 +1,7 @@
 # Mastodon Share
 A share button for Mastodon Social Network
 
-## Premiere utilisation
+## First usage
 Go to the option panel of the plugin and set your Mastodon instance url.
 
 ## Previews
