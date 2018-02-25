@@ -1,6 +1,9 @@
 {
 	"settings": "Beállítások",
 	"instance_url": "Mastodon példányának URL-e",
+	"access_code": "Access Code",
+    "access_key": "Access Key",
+    "obtain_access_code": "Obtain access code",
 	"url_form_needed": "A példány URL-nek ilyennek kell lennie: http(s)://domain.tld",
 	"short_url_checkbox": "Rövidített URL (frama.link)",
 	"save": "Mentés",
