@@ -8,5 +8,12 @@
     "mastodon_instance_opening": "Mastodon-instans åpning",
     "start_info": "Du må angi Mastodon-instansen din før å klikk på knappe for forste gang.",
     "language": "Språk",
-    "share_selection": "Del dette utvalg på Mastodon"
+    "share_selection": "Del dette utvalg på Mastodon",
+    "clear": "Clear",
+    "toot": "Toot !",
+    "public": "Public",
+    "direct": "Direct",
+    "private": "Private",
+    "unlisted": "Unlisted",
+    "cant_connect_instance": "Can't connect to the instance"
 }

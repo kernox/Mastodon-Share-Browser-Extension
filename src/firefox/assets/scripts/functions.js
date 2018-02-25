@@ -36,6 +36,19 @@ function loadLocale(code){
 	});
 }
 
+function loadLocalePopup(code){
+
+	getJSON('assets/locales/' + code + '.json', function(lang){
+		console.log(lang);
+		document.querySelector('#btnClear').innerText = lang.clear;
+		document.querySelector('#btnToot span').innerText = lang.toot;
+		document.querySelector('#tootType option[value="public"]').innerText = lang.public;
+		document.querySelector('#tootType option[value="direct"]').innerText = lang.direct;
+		document.querySelector('#tootType option[value="private"]').innerText = lang.private;
+		document.querySelector('#tootType option[value="unlisted"]').innerText = lang.unlisted;
+	});
+}
+
 function getJSON(url, callback)
 {
 	return ajax('GET', url, null, 'json', callback);

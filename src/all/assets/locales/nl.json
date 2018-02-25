@@ -8,5 +8,12 @@
 	"mastodon_instance_opening": "Mastodon-instance wordt geopend",
 	"start_info": "U dient uw Mastodon-instance in te stellen voordat u voor het eerst op de knop klikt.",
 	"language": "Taal",
-	"share_selection": "Deze selectie op Mastodon delen"
+	"share_selection": "Deze selectie op Mastodon delen",
+	"clear": "Clear",
+	"toot": "Toot !",
+	"public": "Public",
+    "direct": "Direct",
+    "private": "Private",
+    "unlisted": "Unlisted",
+	"cant_connect_instance": "Can't connect to the instance"
 }

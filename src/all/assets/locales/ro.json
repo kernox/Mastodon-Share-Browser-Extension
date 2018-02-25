@@ -8,5 +8,12 @@
 	"mastodon_instance_opening": "Deschiderea instanței Mastodon",
 	"start_info": "Trebuie să setezi instanța Mastodon înainte de a da clic pe buton pentru prima dată.",
 	"language": "Limbă",
-	"share_selection": "Partajează această selecție pe Mastodon"
+	"share_selection": "Partajează această selecție pe Mastodon",
+	"clear": "Clear",
+	"toot": "Toot !",
+	"public": "Public",
+    "direct": "Direct",
+    "private": "Private",
+    "unlisted": "Unlisted",
+	"cant_connect_instance": "Can't connect to the instance"
 }

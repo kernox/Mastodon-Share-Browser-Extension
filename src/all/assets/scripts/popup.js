@@ -6,6 +6,14 @@ var alert = document.getElementById('alert');
 var tootType = document.getElementById('tootType');
 var tootSize = 500;
 
+
+
+(function init(){
+    chrome.storage.sync.get(null, function(items){
+        loadLocalePopup(items.language);
+    });
+})();
+
 (function loadTabUrl() {
 
     chrome.storage.sync.get(null, function(items){

@@ -11,5 +11,12 @@
     "mastodon_instance_opening": "Ouverture de l'instance Mastodon",
     "start_info": "Vous devez parametrer votre instance Mastodon avant de cliquer sur le bouton pour la première fois.",
     "language": "Langue",
-    "share_selection": "Partager la sélection sur Mastodon"
+    "share_selection": "Partager la sélection sur Mastodon",
+    "clear": "Effacer",
+    "toot": "Pouet !",
+    "public": "Public",
+    "direct": "Direct",
+    "private": "Privé",
+    "unlisted": "Non listé",
+    "cant_connect_instance": "Impossible de se connecter à l'instance"
 }

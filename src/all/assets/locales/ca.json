@@ -8,5 +8,12 @@
 	"mastodon_instance_opening": "Apertura de la instància al Mastodon",
 	"start_info": "Configureu la instància del Mastodon abans de fer clic per primera vegada al botó.",
 	"language": "Idioma",
-	"share_selection": "Comparteix la selecció mitjançant el Mastodon"
+	"share_selection": "Comparteix la selecció mitjançant el Mastodon",
+	"clear": "Clear",
+	"toot": "Toot !",
+	"public": "Public",
+    "direct": "Direct",
+    "private": "Private",
+    "unlisted": "Unlisted",
+	"cant_connect_instance": "Can't connect to the instance"
 }
