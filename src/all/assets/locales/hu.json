@@ -2,8 +2,8 @@
 	"settings": "Beállítások",
 	"instance_url": "Mastodon példányának URL-e",
 	"access_code": "Access Code",
-    "access_key": "Access Key",
-    "obtain_access_code": "Obtain access code",
+	"access_key": "Access Key",
+	"obtain_access_code": "Obtain access code",
 	"url_form_needed": "A példány URL-nek ilyennek kell lennie: http(s)://domain.tld",
 	"short_url_checkbox": "Rövidített URL (frama.link)",
 	"save": "Mentés",
@@ -15,8 +15,8 @@
 	"clear": "Clear",
 	"toot": "Toot !",
 	"public": "Public",
-    "direct": "Direct",
-    "private": "Private",
-    "unlisted": "Unlisted",
+	"direct": "Direct",
+	"private": "Private",
+	"unlisted": "Unlisted",
 	"cant_connect_instance": "Can't connect to the instance"
 }

@@ -2,8 +2,8 @@
 	"settings": "Postavke",
 	"instance_url": "Mastodonski URL primjer",
 	"access_code": "Access Code",
-    "access_key": "Access Key",
-    "obtain_access_code": "Obtain access code",
+	"access_key": "Access Key",
+	"obtain_access_code": "Obtain access code BS",
 	"url_form_needed": "URL primjer mora biti ovako: http(s)://domain.tld",
 	"short_url_checkbox": "URL precac (frama.link)",
 	"save": "Sacuvaj",
@@ -15,8 +15,8 @@
 	"clear": "Clear",
 	"toot": "Toot !",
 	"public": "Public",
-    "direct": "Direct",
-    "private": "Private",
-    "unlisted": "Unlisted",
+	"direct": "Direct",
+	"private": "Private",
+	"unlisted": "Unlisted",
 	"cant_connect_instance": "Can't connect to the instance"
 }

@@ -2,8 +2,8 @@
 	"settings": "Nastavitve",
 	"instance_url": "Mastodonov URL primerka",
 	"access_code": "Access Code",
-    "access_key": "Access Key",
-    "obtain_access_code": "Obtain access code",
+	"access_key": "Access Key",
+	"obtain_access_code": "Obtain access code",
 	"url_form_needed": "URL primerka mora biti v obliki: http(s)://domain.ext",
 	"short_url_checkbox": "URL blinjice (frama.link)",
 	"save": "Shrani",
@@ -15,8 +15,8 @@
 	"clear": "Clear",
 	"toot": "Toot !",
 	"public": "Public",
-    "direct": "Direct",
-    "private": "Private",
-    "unlisted": "Unlisted",
+	"direct": "Direct",
+	"private": "Private",
+	"unlisted": "Unlisted",
 	"cant_connect_instance": "Can't connect to the instance"
 }
