@@ -2,8 +2,8 @@
 	"settings": "Configuració",
 	"instance_url": "URL del Mastodon",
 	"access_code": "Access Code",
-    "access_key": "Access Key",
-    "obtain_access_code": "Obtain access code",
+	"access_key": "Access Key",
+	"obtain_access_code": "Obtain access code",
 	"url_form_needed": "L'URL de la instància ha de ser del tipus: http(s)://domini.tld",
 	"short_url_checkbox": "Escurça les URL (frama.link)",
 	"save": "Desa",
@@ -15,8 +15,8 @@
 	"clear": "Clear",
 	"toot": "Toot !",
 	"public": "Public",
-    "direct": "Direct",
-    "private": "Private",
-    "unlisted": "Unlisted",
+	"direct": "Direct",
+	"private": "Private",
+	"unlisted": "Unlisted",
 	"cant_connect_instance": "Can't connect to the instance"
 }
