@@ -8,5 +8,12 @@
 	"mastodon_instance_opening": "Odpiranje Mastodonovega primerka",
 	"start_info": "Preden prviè kliknete gumb, morate nastaviti Mastodonov primerek.",
 	"language": "Jezik",
-	"share_selection": "Delite izbrano v Mastodonu"
+	"share_selection": "Delite izbrano v Mastodonu",
+	"clear": "Clear",
+	"toot": "Toot !",
+	"public": "Public",
+    "direct": "Direct",
+    "private": "Private",
+    "unlisted": "Unlisted",
+	"cant_connect_instance": "Can't connect to the instance"
 }

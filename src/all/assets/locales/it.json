@@ -8,5 +8,12 @@
 	"mastodon_instance_opening": "Apertura istanza Mastodon in corso...",
 	"start_info": "Occorre impostare un'istanza Mastodon prima di fare clic sul pulsante per la prima volta",
 	"language": "Lingua",
-	"share_selection": "Condividi selezione su Mastodon"
+	"share_selection": "Condividi selezione su Mastodon",
+	"clear": "Clear",
+	"toot": "Toot !",
+	"public": "Public",
+    "direct": "Direct",
+    "private": "Private",
+    "unlisted": "Unlisted",
+	"cant_connect_instance": "Can't connect to the instance"
 }

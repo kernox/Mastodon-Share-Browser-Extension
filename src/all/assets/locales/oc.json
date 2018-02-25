@@ -8,5 +8,12 @@
     "mastodon_instance_opening": "Dubertura de l’instància Mastodon",
     "start_info": "Vos cal configurar vòstra instància Mastodon abans de clicar sul boton pel primièr còp.",
     "language": "Lenga",
-    "share_selection": "Partejar la seleccion dins Mastodon"
+    "share_selection": "Partejar la seleccion dins Mastodon",
+    "clear": "Clear",
+    "toot": "Toot !",
+    "public": "Public",
+    "direct": "Direct",
+    "private": "Private",
+    "unlisted": "Unlisted",
+    "cant_connect_instance": "Can't connect to the instance"
 }

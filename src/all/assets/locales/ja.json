@@ -8,5 +8,12 @@
 	"mastodon_instance_opening": "Mastodon インスタンスを開いています",
 	"start_info": "最初にボタンをクリックする前に、Mastodon インスタンスを設定する必要があります。",
 	"language": "言語",
-	"share_selection": "選択範囲を Mastodon で共有"
+	"share_selection": "選択範囲を Mastodon で共有",
+	"clear": "Clear",
+	"toot": "Toot !",
+	"public": "Public",
+    "direct": "Direct",
+    "private": "Private",
+    "unlisted": "Unlisted",
+	"cant_connect_instance": "Can't connect to the instance"
 }

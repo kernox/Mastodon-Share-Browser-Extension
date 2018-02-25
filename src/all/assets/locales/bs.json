@@ -8,5 +8,12 @@
 	"mastodon_instance_opening": "Otvaranje primjera Mastodona",
 	"start_info": "Morate da podesite Mastodon instancu prije klika na dugme po prvi put.",
 	"language": "Jezik",
-	"share_selection": "Podijelite ovaj izbor na Mastodonu"
+	"share_selection": "Podijelite ovaj izbor na Mastodonu",
+	"clear": "Clear",
+	"toot": "Toot !",
+	"public": "Public",
+    "direct": "Direct",
+    "private": "Private",
+    "unlisted": "Unlisted",
+	"cant_connect_instance": "Can't connect to the instance"
 }
