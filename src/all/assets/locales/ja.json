@@ -1,6 +1,9 @@
 {
 	"settings": "設定",
 	"instance_url": "Mastodon インスタンス URL",
+	"access_code": "Access Code",
+    "access_key": "Access Key",
+    "obtain_access_code": "Obtain access code",
 	"url_form_needed": "インスタンス URL は次の形式で指定してください: http(s)://domain.tld",
 	"short_url_checkbox": "短縮 URL を使う (frama.link を使用)",
 	"save": "保存",

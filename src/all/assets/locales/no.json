@@ -1,6 +1,9 @@
 {
     "settings": "Innstillinger",
     "instance_url": "Mastodon-instans URL",
+    "access_code": "Access Code",
+    "access_key": "Access Key",
+    "obtain_access_code": "Obtain access code",
     "url_form_needed": "Instansen URL må vaere som : http(s)://domain.tld",
     "short_url_checkbox": "Forkorte URL (frama.link)",
     "save": "Lagre endringer",

@@ -1,6 +1,9 @@
 {
 	"settings": "Setări",
 	"instance_url": "URL-ul instanței Mastodon",
+	"access_code": "Access Code",
+    "access_key": "Access Key",
+    "obtain_access_code": "Obtain access code",
 	"url_form_needed": "URL-ul instanței trebuie să fie de genul: http(s)://domeniu.tld",
 	"short_url_checkbox": "URL-ul scurtăturii (frama.link)",
 	"save": "Salvează",

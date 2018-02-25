@@ -1,6 +1,9 @@
 {
 	"settings": "Postavke",
 	"instance_url": "Mastodonski URL primjer",
+	"access_code": "Access Code",
+    "access_key": "Access Key",
+    "obtain_access_code": "Obtain access code",
 	"url_form_needed": "URL primjer mora biti ovako: http(s)://domain.tld",
 	"short_url_checkbox": "URL precac (frama.link)",
 	"save": "Sacuvaj",

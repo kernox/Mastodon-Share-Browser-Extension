@@ -1,6 +1,9 @@
 {
 	"settings": "Подешавања",
 	"instance_url": "УРЛ Мастодон инстанце",
+	"access_code": "Access Code",
+    "access_key": "Access Key",
+    "obtain_access_code": "Obtain access code",
 	"url_form_needed": "УРЛ инстанце треба да изгледа као: http(s)://domen.tld",
 	"short_url_checkbox": "УРЛ пречица (frama.link)",
 	"save": "Сачувај",

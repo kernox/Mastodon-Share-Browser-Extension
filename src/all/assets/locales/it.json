@@ -1,6 +1,9 @@
 {
 	"settings": "Impostazioni",
 	"instance_url": "URL dell'istanza Mastodon",
+	"access_code": "Access Code",
+    "access_key": "Access Key",
+    "obtain_access_code": "Obtain access code",
 	"url_form_needed": "L'URL dell'istanza deve essere del tipo: http(s)://domain.tld",
 	"short_url_checkbox": "URL abbreviato (frama.link)",
 	"save": "Salva",
