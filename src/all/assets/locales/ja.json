@@ -1,9 +1,9 @@
 {
 	"settings": "設定",
 	"instance_url": "Mastodon インスタンス URL",
-	"access_code": "Access Code",
-	"access_key": "Access Key",
-	"obtain_access_code": "Obtain access code",
+	"access_code": "アクセスコード",
+	"access_key": "アクセスキー",
+	"obtain_access_code": "アクセスコードを取得",
 	"url_form_needed": "インスタンス URL は次の形式で指定してください: http(s)://domain.tld",
 	"short_url_checkbox": "短縮 URL を使う (frama.link を使用)",
 	"save": "保存",
@@ -12,11 +12,11 @@
 	"start_info": "最初にボタンをクリックする前に、Mastodon インスタンスを設定する必要があります。",
 	"language": "言語",
 	"share_selection": "選択範囲を Mastodon で共有",
-	"clear": "Clear",
-	"toot": "Toot !",
-	"public": "Public",
-	"direct": "Direct",
-	"private": "Private",
-	"unlisted": "Unlisted",
-	"cant_connect_instance": "Can't connect to the instance"
+	"clear": "クリア",
+	"toot": "トゥート！",
+	"public": "公開",
+	"direct": "ダイレクト",
+	"private": "非公開",
+	"unlisted": "未収載",
+	"cant_connect_instance": "インスタンスに接続できません"
 }
