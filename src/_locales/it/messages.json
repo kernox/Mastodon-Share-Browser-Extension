@@ -1,0 +1,62 @@
+{
+    "settings": {
+        "message": "Impostazioni"
+    },
+    "instance_url": {
+        "message": "URL dell'istanza Mastodon"
+    },
+    "access_code": {
+        "message": "Access Code"
+    },
+    "access_key": {
+        "message": "Access Key"
+    },
+    "obtain_access_code": {
+        "message": "Obtain access code"
+    },
+    "url_form_needed": {
+        "message": "L'URL dell'istanza deve essere del tipo: http(s):\/\/domain.tld"
+    },
+    "short_url_checkbox": {
+        "message": "URL abbreviato (frama.link)"
+    },
+    "save": {
+        "message": "Salva"
+    },
+    "options_saved": {
+        "message": "Opzioni salvate"
+    },
+    "mastodon_instance_opening": {
+        "message": "Apertura istanza Mastodon in corso..."
+    },
+    "start_info": {
+        "message": "Occorre impostare un'istanza Mastodon prima di fare clic sul pulsante per la prima volta"
+    },
+    "language": {
+        "message": "Lingua"
+    },
+    "share_selection": {
+        "message": "Condividi selezione su Mastodon"
+    },
+    "clear": {
+        "message": "Clear"
+    },
+    "toot": {
+        "message": "Toot !"
+    },
+    "public": {
+        "message": "Public"
+    },
+    "direct": {
+        "message": "Direct"
+    },
+    "private": {
+        "message": "Private"
+    },
+    "unlisted": {
+        "message": "Unlisted"
+    },
+    "cant_connect_instance": {
+        "message": "Can't connect to the instance"
+    }
+}

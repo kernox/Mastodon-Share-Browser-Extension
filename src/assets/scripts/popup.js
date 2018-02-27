@@ -6,13 +6,19 @@ var alert = document.getElementById('alert');
 var tootType = document.getElementById('tootType');
 var tootSize = 500;
 
+function init(){
+    console.log('test');
+    loadMessages();
+    /*chrome.storage.sync.get(null, function(items){
 
+    });*/
 
-(function init(){
-    chrome.storage.sync.get(null, function(items){
-        loadLocalePopup(items.language);
-    });
-})();
+};
+
+function loadMessages(){
+    document.getElementById('btnClear').innerText= chrome.i18n.getMessage('clear');
+    document.getElementById('btnToot').innerText= chrome.i18n.getMessage('toot');
+}
 
 (function loadTabUrl() {
 
@@ -108,6 +114,8 @@ function hideAlert(){
 
 btnToot.addEventListener('click', toot);
 btnClear.addEventListener('click', clear);
+
+document.addEventListener('DOMContentLoaded', init);
 
 setInterval(function(){
     var currentTootSize = message.value.toString().length;

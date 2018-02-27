@@ -1,0 +1,62 @@
+{
+    "settings": {
+        "message": "Paramètres"
+    },
+    "instance_url": {
+        "message": "URL de l'instance Mastodon"
+    },
+    "access_code": {
+        "message": "Code d'accès"
+    },
+    "access_key": {
+        "message": "Clé d'accès"
+    },
+    "obtain_access_code": {
+        "message": "Obtenir un code d'accès"
+    },
+    "url_form_needed": {
+        "message": "L'URL de l'instance doit être de la forme : http(s):\/\/domaine.tld"
+    },
+    "short_url_checkbox": {
+        "message": "Raccourcir les URL (frama.link)"
+    },
+    "save": {
+        "message": "Sauvegarder"
+    },
+    "options_saved": {
+        "message": "Options sauvegardées."
+    },
+    "mastodon_instance_opening": {
+        "message": "Ouverture de l'instance Mastodon"
+    },
+    "start_info": {
+        "message": "Vous devez parametrer votre instance Mastodon avant de cliquer sur le bouton pour la première fois."
+    },
+    "language": {
+        "message": "Langue"
+    },
+    "share_selection": {
+        "message": "Partager la sélection sur Mastodon"
+    },
+    "clear": {
+        "message": "Effacer"
+    },
+    "toot": {
+        "message": "Pouet !"
+    },
+    "public": {
+        "message": "Public"
+    },
+    "direct": {
+        "message": "Direct"
+    },
+    "private": {
+        "message": "Privé"
+    },
+    "unlisted": {
+        "message": "Non listé"
+    },
+    "cant_connect_instance": {
+        "message": "Impossible de se connecter à l'instance"
+    }
+}
