@@ -13,7 +13,7 @@ gulp.task('default',[
 
 gulp.task('watch', function(){
 
-	watch(['src/**/*.html'], {verbose: true})
+	watch(['src/**/*'], {verbose: true})
 	.pipe(preprocess({context: {ENV: 'chrome'}}))
 	.pipe(gulp.dest('build/chrome'))
 

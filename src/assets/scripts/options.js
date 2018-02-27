@@ -1,56 +1,55 @@
 function init() {
-    getJSON('assets/locales/locales.json', function(list){
 
-        for(id in list)
-        {
-            var option = document.createElement('option');
-            option.value=id;
-            option.innerText = list[id];
+	loadMessages();
+	loadOptions();
+    //loadInstancesList();
+}
 
-            document.querySelector('#language').appendChild(option);
-        }
-    });
-
-    if(document.location.hash == '#start'){
-        document.querySelector('#startInfo').classList.remove('hide');
-    }
-
-    loadOptions();
+function loadMessages(){
+	document.title = chrome.i18n.getMessage('settings');
+	document.querySelector('label[for="instanceUrl"]').innerText = chrome.i18n.getMessage('instance_url');
+	document.querySelector('#options .panel-heading').innerText = chrome.i18n.getMessage('settings');
+	document.getElementById('btnConnectInstance').value = chrome.i18n.getMessage('obtain_access_code');
+	document.querySelector('label[for="code"]').innerText = chrome.i18n.getMessage('access_code');
+	document.querySelector('label[for="accesskey"]').innerText = chrome.i18n.getMessage('access_key');
+	document.querySelector('label[for="shortner"]').innerText = chrome.i18n.getMessage('short_url_checkbox');
+	document.getElementById('save').value = chrome.i18n.getMessage('save');
 }
 
 function loadInstancesList() {
-    /* find all instances known to the browser */
+	/* find all instances known to the browser */
 
-    // @if ENV='chrome'
-    var browser = new ChromePromise();
-    // @endif
+    //@if ENV='chrome'
+    //var browser = chrome;
+    //var browser = new ChromePromise();
+    //@endif
 
     browser.cookies.getAll({name: "_mastodon_session"}).then((cookies) => {
 
-        const mastodonList = document.querySelector("#instanceUrlList");
-        const mastodonInput = document.querySelector("#instanceUrl");
-        var mastodonInstances = [];
+    	const mastodonList = document.querySelector("#instanceUrlList");
+    	const mastodonInput = document.querySelector("#instanceUrl");
+    	var mastodonInstances = [];
 
-        for (let cookie of cookies) {
-            let url = (cookie.secure ? "https://" : "http://") + cookie.domain;
-            mastodonInstances.push(url);
-            let option = document.createElement("option");
-            option.setAttribute("value", url);
-            mastodonList.appendChild(option);
-        }
+    	for (let cookie of cookies) {
+    		let url = (cookie.secure ? "https://" : "http://") + cookie.domain;
+    		mastodonInstances.push(url);
+    		let option = document.createElement("option");
+    		option.setAttribute("value", url);
+    		mastodonList.appendChild(option);
+    	}
 
-        if (mastodonInput.value.length)
-            return;
-        /* none configured, pick the first one with a user session */
-        browser.cookies.getAll({name: "remember_user_token"}).then((cookies) => {
-            for (let cookie of cookies) {
-                let url = (cookie.secure ? "https://" : "http://") + cookie.domain;
-                if (mastodonInstances.includes(url)) {
-                    mastodonInput.value = url;
-                    return;
-                }
-            }
-        });
+    	if (mastodonInput.value.length)
+    		return;
+    	/* none configured, pick the first one with a user session */
+    	browser.cookies.getAll({name: "remember_user_token"}).then((cookies) => {
+    		for (let cookie of cookies) {
+    			let url = (cookie.secure ? "https://" : "http://") + cookie.domain;
+    			if (mastodonInstances.includes(url)) {
+    				mastodonInput.value = url;
+    				return;
+    			}
+    		}
+    	});
     });
 }
 
@@ -58,7 +57,6 @@ function loadOptions() {
     chrome.storage.sync.get({
         instanceUrl: '',
         shortner: false,
-        language: 'fr',
         accessKey: '',
         code: ''
     }, function(items) {
@@ -67,13 +65,6 @@ function loadOptions() {
         document.querySelector('#accessKey').value = items.accessKey;
         document.querySelector('#code').value = items.code;
         document.querySelector('#accessKey').value = items.accessKey;
-
-        var lang = items.language;
-
-        loadInstancesList();
-
-        loadLocale(lang);
-        document.querySelector('#language').value = lang;
     });
 }
 
@@ -85,21 +76,22 @@ function saveOptions(e) {
     chrome.storage.sync.set({
         instanceUrl: document.querySelector('#instanceUrl').value,
         shortner: document.querySelector('#shortner').checked,
-        language: document.querySelector('#language').value,
         code: document.querySelector('#code').value
     }, function() {
 
         status.classList.remove('hide');
+        status.innerText = chrome.i18n.getMessage('options_saved');
         document.querySelector('#startInfo').classList.add('hide');
 
         setTimeout(function() {
             status.classList.add('hide');
-        }, 1000);
+        }, 2000);
 
         var api = new MastodonAPI({
             instance: instanceUrl.value,
             api_user_token: ""
         });
+
 
         chrome.storage.sync.get(null, function(items){
 
@@ -120,9 +112,6 @@ function saveOptions(e) {
                 );
             }
         });
-
-        var lang = document.querySelector('#language').value;
-        loadLocale(lang);
     });
 }
 

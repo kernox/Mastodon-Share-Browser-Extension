@@ -1,0 +1,62 @@
+{
+    "settings": {
+        "message": "Settings"
+    },
+    "instance_url": {
+        "message": "Mastodon instance URL"
+    },
+    "access_code": {
+        "message": "Access Code"
+    },
+    "access_key": {
+        "message": "Access Key"
+    },
+    "obtain_access_code": {
+        "message": "Obtain access code"
+    },
+    "url_form_needed": {
+        "message": "Instance URL must be like: http(s):\/\/domain.tld"
+    },
+    "short_url_checkbox": {
+        "message": "Shortcut URL (frama.link)"
+    },
+    "save": {
+        "message": "Save"
+    },
+    "options_saved": {
+        "message": "Options saved."
+    },
+    "mastodon_instance_opening": {
+        "message": "Mastodon instance opening"
+    },
+    "start_info": {
+        "message": "You need to set your Mastodon instance before clicking on the button for the first time."
+    },
+    "language": {
+        "message": "Language"
+    },
+    "share_selection": {
+        "message": "Share this selection on Mastodon"
+    },
+    "clear": {
+        "message": "Clear"
+    },
+    "toot": {
+        "message": "Toot !"
+    },
+    "public": {
+        "message": "Public"
+    },
+    "direct": {
+        "message": "Direct"
+    },
+    "private": {
+        "message": "Private"
+    },
+    "unlisted": {
+        "message": "Unlisted"
+    },
+    "cant_connect_instance": {
+        "message": "Can't connect to the instance"
+    }
+}

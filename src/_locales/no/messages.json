@@ -1,0 +1,62 @@
+{
+    "settings": {
+        "message": "Innstillinger"
+    },
+    "instance_url": {
+        "message": "Mastodon-instans URL"
+    },
+    "access_code": {
+        "message": "Access Code"
+    },
+    "access_key": {
+        "message": "Access Key"
+    },
+    "obtain_access_code": {
+        "message": "Obtain access code"
+    },
+    "url_form_needed": {
+        "message": "Instansen URL må vaere som : http(s):\/\/domain.tld"
+    },
+    "short_url_checkbox": {
+        "message": "Forkorte URL (frama.link)"
+    },
+    "save": {
+        "message": "Lagre endringer"
+    },
+    "options_saved": {
+        "message": "Vellykket lagring av endringer."
+    },
+    "mastodon_instance_opening": {
+        "message": "Mastodon-instans åpning"
+    },
+    "start_info": {
+        "message": "Du må angi Mastodon-instansen din før å klikk på knappe for forste gang."
+    },
+    "language": {
+        "message": "Språk"
+    },
+    "share_selection": {
+        "message": "Del dette utvalg på Mastodon"
+    },
+    "clear": {
+        "message": "Clear"
+    },
+    "toot": {
+        "message": "Toot !"
+    },
+    "public": {
+        "message": "Public"
+    },
+    "direct": {
+        "message": "Direct"
+    },
+    "private": {
+        "message": "Private"
+    },
+    "unlisted": {
+        "message": "Unlisted"
+    },
+    "cant_connect_instance": {
+        "message": "Can't connect to the instance"
+    }
+}

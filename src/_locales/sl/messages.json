@@ -1,0 +1,62 @@
+{
+    "settings": {
+        "message": "Nastavitve"
+    },
+    "instance_url": {
+        "message": "Mastodonov URL primerka"
+    },
+    "access_code": {
+        "message": "Access Code"
+    },
+    "access_key": {
+        "message": "Access Key"
+    },
+    "obtain_access_code": {
+        "message": "Obtain access code"
+    },
+    "url_form_needed": {
+        "message": "URL primerka mora biti v obliki: http(s):\/\/domain.ext"
+    },
+    "short_url_checkbox": {
+        "message": "URL blinjice (frama.link)"
+    },
+    "save": {
+        "message": "Shrani"
+    },
+    "options_saved": {
+        "message": "Nastavitve shranjene"
+    },
+    "mastodon_instance_opening": {
+        "message": "Odpiranje Mastodonovega primerka"
+    },
+    "start_info": {
+        "message": "Preden prviè kliknete gumb, morate nastaviti Mastodonov primerek."
+    },
+    "language": {
+        "message": "Jezik"
+    },
+    "share_selection": {
+        "message": "Delite izbrano v Mastodonu"
+    },
+    "clear": {
+        "message": "Clear"
+    },
+    "toot": {
+        "message": "Toot !"
+    },
+    "public": {
+        "message": "Public"
+    },
+    "direct": {
+        "message": "Direct"
+    },
+    "private": {
+        "message": "Private"
+    },
+    "unlisted": {
+        "message": "Unlisted"
+    },
+    "cant_connect_instance": {
+        "message": "Can't connect to the instance"
+    }
+}

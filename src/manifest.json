@@ -10,6 +10,7 @@
 	"name":"Mastodon Share",
 	"description":"A share button for Mastodon Instances",
 	"version":"0.4",
+	"default_locale": "en",
 
 	// @if ENV='firefox'
 	"options_ui":{"page":"options.html"},
