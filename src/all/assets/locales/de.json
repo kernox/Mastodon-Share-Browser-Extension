@@ -1,0 +1,22 @@
+{
+	"settings": "Einstellungen",
+	"instance_url": "URL der Mastodon Instanz",
+	"access_code": "Zugangs-Code",
+	"access_key": "Zugangs-Schlüssel",
+	"obtain_access_code": "Zugangs-Code holen",
+	"url_form_needed": "Die Instanz-URL muss in der Form http(s)://domaine.tld sein",
+	"short_url_checkbox": "URLs verkürzen (frama.link)",
+	"save": "Speichern",
+	"options_saved": "Einstellungen gespeichert.",
+	"mastodon_instance_opening": "Öffne Mastodon Instanz",
+	"start_info": "Die Mastodon Instanz muss konfiguriert sein bevor dieser Knopf das erste Mal geklickt wird.",
+	"language": "Sprache",
+	"share_selection": "Markierung auf Mastodon teilen",
+	"clear": "Löschen",
+	"toot": "Tröt !",
+	"public": "Öffentlich",
+	"direct": "Direkt",
+	"private": "Privat",
+	"unlisted": "Ungelistet",
+	"cant_connect_instance": "Verbindung zu Instanz nicht möglich"
+}
