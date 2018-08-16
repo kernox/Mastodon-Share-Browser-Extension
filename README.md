@@ -26,5 +26,22 @@ https://chrome.google.com/webstore/detail/mastodon-share/ngkommdldcakheaeoafgakb
 https://addons.mozilla.org/fr/firefox/addon/mastodon-share/
 
 
+## How to compile the extension from sources
+You need to have nodejs installed with gulp
+- Open command line console / terminal
+- Set "gulp"
+- The extension is compiled for chrome and firefox and placed on "build" directory (do not use "src" directory to install the extension in your browser)
+
+## How to help on translation
+
+In tools directory launch i18n.bat / i18n.sh
+
+- Choose the locale you want to test (default is "en" for English)
+- A chrome browser window opening in the selected lang.
+- Test the extension
+ 
+ You can edit the locales files in the "/src/_locales/" directory.
+
+
 
 
