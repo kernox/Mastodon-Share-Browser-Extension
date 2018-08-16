@@ -1,4 +1,7 @@
 {
+    "description": {
+        "message": "Share button for Mastodon instances"
+    },
     "settings": {
         "message": "Settings"
     },
