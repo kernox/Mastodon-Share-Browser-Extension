@@ -6,18 +6,22 @@ var alert = document.getElementById('alert');
 var tootType = document.getElementById('tootType');
 var tootSize = 500;
 
+var successMessage = '';
+
 function init(){
-    console.log('test');
     loadMessages();
-    /*chrome.storage.sync.get(null, function(items){
-
-    });*/
-
 };
 
 function loadMessages(){
+    successMessage = chrome.i18n.getMessage('success');
+
     document.getElementById('btnClear').innerText= chrome.i18n.getMessage('clear');
     document.getElementById('btnToot').innerText= chrome.i18n.getMessage('toot');
+
+    tootType.querySelector('option[value="public"]').text =  chrome.i18n.getMessage('public');
+    tootType.querySelector('option[value="direct"]').text =  chrome.i18n.getMessage('direct');
+    tootType.querySelector('option[value="private"]').text =  chrome.i18n.getMessage('private');
+    tootType.querySelector('option[value="unlisted"]').text =  chrome.i18n.getMessage('unlisted');
 }
 
 (function loadTabUrl() {
@@ -69,7 +73,7 @@ function toot(){
 
             var request = api.post("statuses", {status: finalMessage, visibility: visibility}, function(data){
 
-                showAlert('Message bien envoyé !', 'success');
+                showAlert(successMessage, 'success');
                 loaderIcon.classList.add('hidden');
                 btnToot.disabled = false;
 
@@ -114,7 +118,6 @@ function hideAlert(){
 
 btnToot.addEventListener('click', toot);
 btnClear.addEventListener('click', clear);
-
 document.addEventListener('DOMContentLoaded', init);
 
 setInterval(function(){

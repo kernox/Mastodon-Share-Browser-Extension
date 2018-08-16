@@ -1,4 +1,7 @@
 {
+    "description": {
+        "message": "Un bouton de partage pour les instances du réseau Mastodon"
+    },
     "settings": {
         "message": "Paramètres"
     },
@@ -58,5 +61,8 @@
     },
     "cant_connect_instance": {
         "message": "Impossible de se connecter à l'instance"
+    },
+    "success": {
+        "message": "Message envoyé !"
     }
 }

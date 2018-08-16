@@ -2,14 +2,15 @@
 	"manifest_version":2,
 	// @if ENV='firefox'
 	"applications":{
-		"gecko":{
+		"gecko": {
 			"id":"{09b14d46-21c3-4a7d-b244-e756f497935b}",
-		"strict_min_version":"52.0"}
+		    "strict_min_version":"52.0"
+        }
 	},
 	// @endif
 	"name":"Mastodon Share",
-	"description":"A share button for Mastodon Instances",
-	"version":"0.4",
+	"description": "__MSG_description__",
+	"version":"0.5",
 	"default_locale": "en",
 
 	// @if ENV='firefox'
