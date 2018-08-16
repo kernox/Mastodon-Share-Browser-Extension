@@ -4,7 +4,7 @@ chrome.storage.sync.get(null, function(items){
 
 function createMenuItem(items){
 	chrome.contextMenus.create({
-		title: "Partager",
+		title: chrome.i18n.getMessage('share_selection'),
 		contexts: ["selection"],
 		onclick: shareSelection
 	});
@@ -26,10 +26,9 @@ function shareSelection() {
 				}
 			}, function(){
 				chrome.browserAction.setBadgeText({
-					text: 'S'
+					text: "*"
 				});
 			});
 		});
-
 	});
 }

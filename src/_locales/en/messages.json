@@ -41,6 +41,9 @@
     "share_selection": {
         "message": "Share this selection on Mastodon"
     },
+    "share_twitter": {
+        "message": "Share to Mastodon"
+    },
     "clear": {
         "message": "Clear"
     },

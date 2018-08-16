@@ -1,13 +1,14 @@
 var stream = document.querySelector('#stream-items-id');
 
-stream.addEventListener('click', addMenu);
+if(stream != null){
+    stream.addEventListener('click', addMenu);
+}
 
 function addMenu(event){
-
 	var that = event.target;
 
-	if(that.className.match('ProfileTweet-actionButton'))
-	{
+    if(	that.className.match('ProfileTweet-actionButton') || that.parentElement.parentElement.className.match('ProfileTweet-actionButton'))	{
+
 		var menu = document.createElement('li');
 		menu.className='share-via-mastodon';
 		menu.dataset.nav = 'share_tweet_dm';
@@ -18,14 +19,14 @@ function addMenu(event){
 		button.type = 'button';
 		button.className ='dropdown-link';
 		button.setAttribute('role', 'menuitem');
-		button.innerText = 'Partager via Mastodon';
+		button.innerText = chrome.i18n.getMessage('share_twitter');
 
 		menu.appendChild(button);
 
 		var menu_action = that.parentNode.parentNode.parentNode.querySelector('ul');
 		var firstElementOfMenu = menu_action.firstElementChild;
 
-		if(firstElementOfMenu.className!=menu.className)
+		if(firstElementOfMenu.className != menu.className)
 			menu_action.insertBefore(menu, firstElementOfMenu);
 	}
 

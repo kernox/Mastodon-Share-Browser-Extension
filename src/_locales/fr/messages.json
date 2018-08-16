@@ -41,6 +41,9 @@
     "share_selection": {
         "message": "Partager la sélection sur Mastodon"
     },
+    "share_twitter": {
+      "message": "Partager via Mastodon"
+    },
     "clear": {
         "message": "Effacer"
     },
