@@ -1,4 +1,7 @@
 # Mastodon Share
+
+![Logo](src/assets/images/icon64.png)
+
 A share button for Mastodon Social Network
 
 ## First usage
@@ -18,7 +21,7 @@ Go to the option panel of the plugin and set your Mastodon instance url.
 
 ![Share from twitter](screenshots/share-from-twitter-feature.png)
 
-### Automatic hashtags
+#### Automatic hashtags
 When you share a page, hashtags has generated from page keywords
 
 #### Configuration panel
