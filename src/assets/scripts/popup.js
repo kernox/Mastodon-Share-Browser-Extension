@@ -1,5 +1,6 @@
 var message = document.getElementById('message');
 var btnToot = document.getElementById('btnToot');
+var disclaimer = document.getElementById('disclaimer');
 var btnClear = document.getElementById('btnClear');
 var loaderIcon = btnToot.querySelector('.loader');
 var alert = document.getElementById('alert');
@@ -10,6 +11,7 @@ var successMessage = '';
 
 function init(){
     loadMessages();
+    loadOptions();
 };
 
 function loadMessages(){
@@ -18,10 +20,23 @@ function loadMessages(){
     document.getElementById('btnClear').innerText= chrome.i18n.getMessage('clear');
     document.getElementById('btnToot').innerText= chrome.i18n.getMessage('toot');
 
+
+
+
     tootType.querySelector('option[value="public"]').text =  chrome.i18n.getMessage('public');
     tootType.querySelector('option[value="direct"]').text =  chrome.i18n.getMessage('direct');
     tootType.querySelector('option[value="private"]').text =  chrome.i18n.getMessage('private');
     tootType.querySelector('option[value="unlisted"]').text =  chrome.i18n.getMessage('unlisted');
+}
+
+function loadOptions(){
+    chrome.storage.sync.get({
+        defaultDisclaimer: '',
+        tootMaxSize: 500
+    }, function(items){
+        document.getElementById('disclaimer').value = items.defaultDisclaimer;
+        document.getElementById('message').maxLength = items.tootMaxSize;
+    });
 }
 
 (function loadTabUrl() {
@@ -70,8 +85,14 @@ function toot(){
 
             var finalMessage = message.value;
             var visibility = tootType.value;
+            var spoilerText = disclaimer.value;
 
-            var request = api.post("statuses", {status: finalMessage, visibility: visibility}, function(data){
+            var request = api.post("statuses", {
+                status: finalMessage,
+                visibility: visibility,
+                spoiler_text: spoilerText
+
+            }, function(data){
 
                 showAlert(successMessage, 'success');
                 loaderIcon.classList.add('hidden');

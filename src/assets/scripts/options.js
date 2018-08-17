@@ -13,6 +13,8 @@ function loadMessages(){
 	document.querySelector('label[for="code"]').innerText = chrome.i18n.getMessage('access_code');
 	document.querySelector('label[for="accesskey"]').innerText = chrome.i18n.getMessage('access_key');
 	document.querySelector('label[for="shortner"]').innerText = chrome.i18n.getMessage('short_url_checkbox');
+	document.querySelector('label[for="tootMaxSize"]').innerText = chrome.i18n.getMessage('toot_max_size');
+	document.querySelector('label[for="defaultDisclaimer"]').innerText = chrome.i18n.getMessage('default_disclaimer');
 	document.getElementById('save').value = chrome.i18n.getMessage('save');
 }
 
@@ -58,13 +60,17 @@ function loadOptions() {
         instanceUrl: '',
         shortner: false,
         accessKey: '',
-        code: ''
+        code: '',
+        tootMaxSize: 500,
+        defaultDisclaimer: ''
     }, function(items) {
         document.querySelector('#instanceUrl').value = items.instanceUrl;
         document.querySelector('#shortner').checked = items.shortner;
         document.querySelector('#accessKey').value = items.accessKey;
         document.querySelector('#code').value = items.code;
         document.querySelector('#accessKey').value = items.accessKey;
+        document.querySelector('#tootMaxSize').value = items.tootMaxSize;
+        document.querySelector('#defaultDisclaimer').value = items.defaultDisclaimer;
     });
 }
 
@@ -76,7 +82,9 @@ function saveOptions(e) {
     chrome.storage.sync.set({
         instanceUrl: document.querySelector('#instanceUrl').value,
         shortner: document.querySelector('#shortner').checked,
-        code: document.querySelector('#code').value
+        code: document.querySelector('#code').value,
+        tootMaxSize: document.querySelector('#tootMaxSize').value,
+        defaultDisclaimer: document.querySelector('#defaultDisclaimer').value
     }, function() {
 
         status.classList.remove('hide');

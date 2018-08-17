@@ -67,5 +67,11 @@
     },
     "success": {
         "message": "Message envoyé !"
+    },
+    "toot_max_size": {
+        "message": "Taille limite de pouet"
+    },
+    "default_disclaimer": {
+        "message": "Avertissement par defaut"
     }
 }

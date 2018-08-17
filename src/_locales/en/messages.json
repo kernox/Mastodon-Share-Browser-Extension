@@ -64,5 +64,11 @@
     },
     "cant_connect_instance": {
         "message": "Can't connect to the instance"
+    },
+    "toot_max_size": {
+        "message": "Toot max size"
+    },
+    "default_disclaimer": {
+        "message": "Default disclaimer"
     }
 }
