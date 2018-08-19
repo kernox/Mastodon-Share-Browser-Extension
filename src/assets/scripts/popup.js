@@ -1,11 +1,14 @@
 var message = document.getElementById('message');
 var btnToot = document.getElementById('btnToot');
+var btnPicture = document.getElementById('btnPicture');
 var disclaimer = document.getElementById('disclaimer');
 var btnClear = document.getElementById('btnClear');
 var loaderIcon = btnToot.querySelector('.loader');
 var alert = document.getElementById('alert');
 var tootType = document.getElementById('tootType');
 var tootSize = 500;
+var uploader = document.getElementById('uploader');
+var pictures = document.getElementById('pictures');
 
 var successMessage = '';
 
@@ -19,9 +22,6 @@ function loadMessages(){
 
     document.getElementById('btnClear').innerText= chrome.i18n.getMessage('clear');
     document.getElementById('btnToot').innerText= chrome.i18n.getMessage('toot');
-
-
-
 
     tootType.querySelector('option[value="public"]').text =  chrome.i18n.getMessage('public');
     tootType.querySelector('option[value="direct"]').text =  chrome.i18n.getMessage('direct');
@@ -70,6 +70,40 @@ function loadOptions(){
 
 })();
 
+function uploadPictures(){
+
+    btnPicture.querySelector('.icon').style.display = 'none';
+    btnPicture.querySelector('.loader').classList.remove('hidden');
+
+    var files = uploader.files;
+
+    for(var i=0; i< files.length; i++){
+
+        var data = new FormData();
+        data.append('file', files[i]);
+
+        chrome.storage.sync.get(null, function(items) {
+            var api = new MastodonAPI({
+                instance: items.instanceUrl,
+                api_user_token: items.accessKey
+            });
+
+            api.postMedia("media", data, function(response){
+                btnPicture.querySelector('.icon').style.display = '';
+                btnPicture.querySelector('.loader').classList.add('hidden');
+
+                var image = document.createElement('img');
+                image.src = response.preview_url;
+
+                var item = document.createElement('li');
+                item.appendChild(image);
+
+                pictures.append(item);
+            });
+        });
+    }
+}
+
 function toot(){
     chrome.storage.sync.get(null, function(items) {
 
@@ -78,11 +112,11 @@ function toot(){
 
         if (items.accessKey !== '') {
 
+
             var api = new MastodonAPI({
                 instance: items.instanceUrl,
                 api_user_token: items.accessKey
             });
-
             var finalMessage = message.value;
             var visibility = tootType.value;
             var spoilerText = disclaimer.value;
@@ -140,6 +174,8 @@ function hideAlert(){
 btnToot.addEventListener('click', toot);
 btnClear.addEventListener('click', clear);
 document.addEventListener('DOMContentLoaded', init);
+// btnPicture.addEventListener('click', addPicture);
+uploader.addEventListener('change', uploadPictures);
 
 setInterval(function(){
     var currentTootSize = message.value.toString().length;

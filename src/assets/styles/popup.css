@@ -16,3 +16,18 @@ textarea{
     width:100%;
     height: 300px;
 }
+
+#pictures{
+    padding: 0;
+}
+
+#pictures li{
+    display: inline-block;
+}
+
+#pictures li img{
+    width: 80px;
+    height: 80px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}

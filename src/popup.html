@@ -16,6 +16,9 @@
 				<div id="alert" class="alert hidden"></div>
 
 				<textarea name="message" id="message" maxlength="500"></textarea>
+				<ul id="pictures">
+
+				</ul>
 				<input style="margin-bottom: 10px" type="text" id="disclaimer" class="form-control" placeholder="Disclaimer">
 				<select name="tootType" id="tootType" class="form-control">
 					<option value="public"></option>
@@ -24,9 +27,14 @@
 					<option value="unlisted"></option>
 				</select>
 				<div style="margin:20px 0;">
-					<button id="btnClear" class="btn btn-warning" style="width:50%; float:left">
+					<input id="uploader" type="file" multiple>
+					<button id="btnPicture" class="pull-left btn btn-info" style="width: 20%">
+						<i class="fa fa-picture-o icon"></i>
+						<i class="loader fa fa-spinner fa-spin hidden"></i>
+					</button>
+					<button id="btnClear" class="btn btn-warning" style="width:40%; float:left">
 					Clear</button>
-					<button id="btnToot" class="btn btn-success" style="width:50%">
+					<button id="btnToot" class="btn btn-success" style="width:40%">
 						<i class="loader fa fa-spinner fa-spin hidden"></i>
 						<span>Toot !</span>
 					</button>
