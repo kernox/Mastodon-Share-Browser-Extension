@@ -1,0 +1,62 @@
+{
+    "settings": {
+        "message": "Beállítások"
+    },
+    "instance_url": {
+        "message": "Mastodon példányának URL-e"
+    },
+    "access_code": {
+        "message": "Access Code"
+    },
+    "access_key": {
+        "message": "Access Key"
+    },
+    "obtain_access_code": {
+        "message": "Obtain access code"
+    },
+    "url_form_needed": {
+        "message": "A példány URL-nek ilyennek kell lennie: http(s):\/\/domain.tld"
+    },
+    "short_url_checkbox": {
+        "message": "Rövidített URL (frama.link)"
+    },
+    "save": {
+        "message": "Mentés"
+    },
+    "options_saved": {
+        "message": "A beállítások elmentve."
+    },
+    "mastodon_instance_opening": {
+        "message": "Mastodon példányának megnyitása"
+    },
+    "start_info": {
+        "message": "Be kell állítania a Mastodon példányát, mielőtt első alkalommal a gombra kattintana."
+    },
+    "language": {
+        "message": "Nyelv"
+    },
+    "share_selection": {
+        "message": "Kijelölés megosztása a Mastodonon"
+    },
+    "clear": {
+        "message": "Clear"
+    },
+    "toot": {
+        "message": "Toot !"
+    },
+    "public": {
+        "message": "Public"
+    },
+    "direct": {
+        "message": "Direct"
+    },
+    "private": {
+        "message": "Private"
+    },
+    "unlisted": {
+        "message": "Unlisted"
+    },
+    "cant_connect_instance": {
+        "message": "Can't connect to the instance"
+    }
+}

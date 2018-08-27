@@ -1,7 +1,10 @@
+var fs = require('fs');
+
 var gulp = require('gulp');
 var zip = require('gulp-zip');
 var watch = require('gulp-watch');
 var preprocess = require('gulp-preprocess');
+var pp = require('preprocess');
 
 gulp.task('default',[
 	'build',
@@ -9,43 +12,40 @@ gulp.task('default',[
 ]);
 
 gulp.task('watch', function(){
-	watch(['src/all/**/*', '!src/all/**/*.html', '!src/all/**/*.js'], {verbose: true})
-	.pipe(gulp.dest('build/firefox'))
-	.pipe(gulp.dest('build/chrome'))
 
-	watch(['src/all/**/*.html', 'src/all/**/*.js'], {verbose: true})
+	watch(['src/**/*'], {verbose: true})
 	.pipe(preprocess({context: {ENV: 'chrome'}}))
 	.pipe(gulp.dest('build/chrome'))
 
-	watch(['src/all/**/*.html', 'src/all/**/*.js'])
+	watch(['src/**/*'])
 	.pipe(preprocess({context: {ENV: 'firefox'}}))
 	.pipe(gulp.dest('build/firefox'))
-
-	watch('src/firefox/**/*', {verbose: true})
-	.pipe(gulp.dest('build/firefox'))
-
-	watch('src/chrome/**/*', {verbose: true})
-	.pipe(gulp.dest('build/chrome'))
 });
 
 gulp.task('build', function(){
-	gulp.src(['src/all/**/*', '!src/all/**/*.html', '!src/all/**/*.js'])
-	.pipe(gulp.dest('build/firefox'))
-	.pipe(gulp.dest('build/chrome'))
 
-	gulp.src(['src/all/**/*.html', 'src/all/**/*.js'])
+	gulp.src(['src/**/*', '!src/manifest.json', '!src/**/*.png'])
 	.pipe(preprocess({context: {ENV: 'chrome'}}))
 	.pipe(gulp.dest('build/chrome'))
 
-	gulp.src(['src/all/**/*.html', 'src/all/**/*.js'])
+	gulp.src(['src/**/*', '!src/manifest.json', '!src/**/*.png'])
 	.pipe(preprocess({context: {ENV: 'firefox'}}))
 	.pipe(gulp.dest('build/firefox'))
 
-	gulp.src('src/firefox/**/*')
+	gulp.src(['src/manifest.json'])
+	.pipe(preprocess({context: {ENV: 'chrome'}, extension: 'js'}))
+	.pipe(gulp.dest('build/chrome'))
+
+	gulp.src(['src/manifest.json'])
+	.pipe(preprocess({context: {ENV: 'firefox'}, extension: 'js'}))
 	.pipe(gulp.dest('build/firefox'))
 
-	gulp.src('src/chrome/**/*')
+
+
+	gulp.src(['src/**/*.png'])
 	.pipe(gulp.dest('build/chrome'))
+	.pipe(gulp.dest('build/firefox'))
+
 });
 
 gulp.task('pack', function(){

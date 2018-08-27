@@ -1,0 +1,62 @@
+{
+    "settings": {
+        "message": "設定"
+    },
+    "instance_url": {
+        "message": "Mastodon インスタンス URL"
+    },
+    "access_code": {
+        "message": "アクセスコード"
+    },
+    "access_key": {
+        "message": "アクセスキー"
+    },
+    "obtain_access_code": {
+        "message": "アクセスコードを取得"
+    },
+    "url_form_needed": {
+        "message": "インスタンス URL は次の形式で指定してください: http(s):\/\/domain.tld"
+    },
+    "short_url_checkbox": {
+        "message": "短縮 URL を使う (frama.link を使用)"
+    },
+    "save": {
+        "message": "保存"
+    },
+    "options_saved": {
+        "message": "オプションを保存しました。"
+    },
+    "mastodon_instance_opening": {
+        "message": "Mastodon インスタンスを開いています"
+    },
+    "start_info": {
+        "message": "最初にボタンをクリックする前に、Mastodon インスタンスを設定する必要があります。"
+    },
+    "language": {
+        "message": "言語"
+    },
+    "share_selection": {
+        "message": "選択範囲を Mastodon で共有"
+    },
+    "clear": {
+        "message": "クリア"
+    },
+    "toot": {
+        "message": "トゥート！"
+    },
+    "public": {
+        "message": "公開"
+    },
+    "direct": {
+        "message": "ダイレクト"
+    },
+    "private": {
+        "message": "非公開"
+    },
+    "unlisted": {
+        "message": "未収載"
+    },
+    "cant_connect_instance": {
+        "message": "インスタンスに接続できません"
+    }
+}

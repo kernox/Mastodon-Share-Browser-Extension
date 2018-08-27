@@ -1,0 +1,62 @@
+{
+    "settings": {
+        "message": "Подешавања"
+    },
+    "instance_url": {
+        "message": "УРЛ Мастодон инстанце"
+    },
+    "access_code": {
+        "message": "Access Code"
+    },
+    "access_key": {
+        "message": "Access Key"
+    },
+    "obtain_access_code": {
+        "message": "Obtain access code"
+    },
+    "url_form_needed": {
+        "message": "УРЛ инстанце треба да изгледа као: http(s):\/\/domen.tld"
+    },
+    "short_url_checkbox": {
+        "message": "УРЛ пречица (frama.link)"
+    },
+    "save": {
+        "message": "Сачувај"
+    },
+    "options_saved": {
+        "message": "Опције су сачуване."
+    },
+    "mastodon_instance_opening": {
+        "message": "Мастодон инстанца се отвара"
+    },
+    "start_info": {
+        "message": "Морате прво подесити вашу Мастодон инстанцу пре него што први пут кликнете на дугме."
+    },
+    "language": {
+        "message": "Језик"
+    },
+    "share_selection": {
+        "message": "Подели одабрано на Мастодону"
+    },
+    "clear": {
+        "message": "Clear"
+    },
+    "toot": {
+        "message": "Toot !"
+    },
+    "public": {
+        "message": "Public"
+    },
+    "direct": {
+        "message": "Direct"
+    },
+    "private": {
+        "message": "Private"
+    },
+    "unlisted": {
+        "message": "Unlisted"
+    },
+    "cant_connect_instance": {
+        "message": "Can't connect to the instance"
+    }
+}

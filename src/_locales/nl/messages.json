@@ -1,0 +1,62 @@
+{
+    "settings": {
+        "message": "Instellingen"
+    },
+    "instance_url": {
+        "message": "Mastodon's instance-URL"
+    },
+    "access_code": {
+        "message": "Access Code"
+    },
+    "access_key": {
+        "message": "Access Key"
+    },
+    "obtain_access_code": {
+        "message": "Obtain access code"
+    },
+    "url_form_needed": {
+        "message": "Instance-URL dient er uit te zien als: http(s):\/\/domein.tld"
+    },
+    "short_url_checkbox": {
+        "message": "Verkorte URL (frama.link)"
+    },
+    "save": {
+        "message": "Opslaan"
+    },
+    "options_saved": {
+        "message": "Opties opgeslagen."
+    },
+    "mastodon_instance_opening": {
+        "message": "Mastodon-instance wordt geopend"
+    },
+    "start_info": {
+        "message": "U dient uw Mastodon-instance in te stellen voordat u voor het eerst op de knop klikt."
+    },
+    "language": {
+        "message": "Taal"
+    },
+    "share_selection": {
+        "message": "Deze selectie op Mastodon delen"
+    },
+    "clear": {
+        "message": "Duidelijk"
+    },
+    "toot": {
+        "message": "Toot !"
+    },
+    "public": {
+        "message": "Public"
+    },
+    "direct": {
+        "message": "Direct"
+    },
+    "private": {
+        "message": "Private"
+    },
+    "unlisted": {
+        "message": "Unlisted"
+    },
+    "cant_connect_instance": {
+        "message": "Can't connect to the instance"
+    }
+}

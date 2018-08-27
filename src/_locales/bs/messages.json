@@ -1,0 +1,62 @@
+{
+    "settings": {
+        "message": "Postavke"
+    },
+    "instance_url": {
+        "message": "Mastodonski URL primjer"
+    },
+    "access_code": {
+        "message": "Access Code"
+    },
+    "access_key": {
+        "message": "Access Key"
+    },
+    "obtain_access_code": {
+        "message": "Obtain access code BS"
+    },
+    "url_form_needed": {
+        "message": "URL primjer mora biti ovako: http(s):\/\/domain.tld"
+    },
+    "short_url_checkbox": {
+        "message": "URL precac (frama.link)"
+    },
+    "save": {
+        "message": "Sacuvaj"
+    },
+    "options_saved": {
+        "message": "Opcije sacuvane."
+    },
+    "mastodon_instance_opening": {
+        "message": "Otvaranje primjera Mastodona"
+    },
+    "start_info": {
+        "message": "Morate da podesite Mastodon instancu prije klika na dugme po prvi put."
+    },
+    "language": {
+        "message": "Jezik"
+    },
+    "share_selection": {
+        "message": "Podijelite ovaj izbor na Mastodonu"
+    },
+    "clear": {
+        "message": "Clear"
+    },
+    "toot": {
+        "message": "Toot !"
+    },
+    "public": {
+        "message": "Public"
+    },
+    "direct": {
+        "message": "Direct"
+    },
+    "private": {
+        "message": "Private"
+    },
+    "unlisted": {
+        "message": "Unlisted"
+    },
+    "cant_connect_instance": {
+        "message": "Can't connect to the instance"
+    }
+}

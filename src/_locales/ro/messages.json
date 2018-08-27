@@ -1,0 +1,62 @@
+{
+    "settings": {
+        "message": "Setări"
+    },
+    "instance_url": {
+        "message": "URL-ul instanței Mastodon"
+    },
+    "access_code": {
+        "message": "Access Code"
+    },
+    "access_key": {
+        "message": "Access Key"
+    },
+    "obtain_access_code": {
+        "message": "Obtain access code"
+    },
+    "url_form_needed": {
+        "message": "URL-ul instanței trebuie să fie de genul: http(s):\/\/domeniu.tld"
+    },
+    "short_url_checkbox": {
+        "message": "URL-ul scurtăturii (frama.link)"
+    },
+    "save": {
+        "message": "Salvează"
+    },
+    "options_saved": {
+        "message": "Opțiuni salvate."
+    },
+    "mastodon_instance_opening": {
+        "message": "Deschiderea instanței Mastodon"
+    },
+    "start_info": {
+        "message": "Trebuie să setezi instanța Mastodon înainte de a da clic pe buton pentru prima dată."
+    },
+    "language": {
+        "message": "Limbă"
+    },
+    "share_selection": {
+        "message": "Partajează această selecție pe Mastodon"
+    },
+    "clear": {
+        "message": "Clear"
+    },
+    "toot": {
+        "message": "Toot !"
+    },
+    "public": {
+        "message": "Public"
+    },
+    "direct": {
+        "message": "Direct"
+    },
+    "private": {
+        "message": "Private"
+    },
+    "unlisted": {
+        "message": "Unlisted"
+    },
+    "cant_connect_instance": {
+        "message": "Can't connect to the instance"
+    }
+}
