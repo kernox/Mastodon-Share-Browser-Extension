@@ -1,0 +1,68 @@
+{
+    "description": {
+        "message": "Teilen-Knopf für Mastodon-Instanzen"
+    },
+    "settings": {
+        "message": "Einstellungen"
+    },
+    "instance_url": {
+        "message": "URL der Mastodon Instanz"
+    },
+    "access_code": {
+        "message": "Zugangs-Code"
+    },
+    "access_key": {
+        "message": "Zugangs-Schlüssel"
+    },
+    "obtain_access_code": {
+        "message": "Zugangs-Code holen"
+    },
+    "url_form_needed": {
+        "message": "Die Instanz-URL muss in der Form http(s):\/\/domaine.tld sein"
+    },
+    "short_url_checkbox": {
+        "message": "URLs verkürzen URL (frama.link)"
+    },
+    "save": {
+        "message": "Speichern"
+    },
+    "options_saved": {
+        "message": "Einstellungen gespeichert."
+    },
+    "mastodon_instance_opening": {
+        "message": "Öffne Mastodon Instanz"
+    },
+    "start_info": {
+        "message": "Die Mastodon Instanz muss konfiguriert sein bevor dieser Knopf das erste Mal geklickt wird."
+    },
+    "language": {
+        "message": "Sprache"
+    },
+    "share_selection": {
+        "message": "Markierung auf Mastodon teilen"
+    },
+    "share_twitter": {
+        "message": "Auf Mastodon teilen"
+    },
+    "clear": {
+        "message": "Löschen"
+    },
+    "toot": {
+        "message": "Tröt !"
+    },
+    "public": {
+        "message": "Öffentlich"
+    },
+    "direct": {
+        "message": "Direkt"
+    },
+    "private": {
+        "message": "Privat"
+    },
+    "unlisted": {
+        "message": "Ungelistet"
+    },
+    "cant_connect_instance": {
+        "message": "Verbindung zu Instanz nicht möglich"
+    }
+}
