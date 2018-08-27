@@ -1,0 +1,62 @@
+{
+    "settings": {
+        "message": "Configuració"
+    },
+    "instance_url": {
+        "message": "URL del Mastodon"
+    },
+    "access_code": {
+        "message": "Access Code"
+    },
+    "access_key": {
+        "message": "Access Key"
+    },
+    "obtain_access_code": {
+        "message": "Obtain access code"
+    },
+    "url_form_needed": {
+        "message": "L'URL de la instància ha de ser del tipus: http(s):\/\/domini.tld"
+    },
+    "short_url_checkbox": {
+        "message": "Escurça les URL (frama.link)"
+    },
+    "save": {
+        "message": "Desa"
+    },
+    "options_saved": {
+        "message": "S'ha desat la configuració."
+    },
+    "mastodon_instance_opening": {
+        "message": "Apertura de la instància al Mastodon"
+    },
+    "start_info": {
+        "message": "Configureu la instància del Mastodon abans de fer clic per primera vegada al botó."
+    },
+    "language": {
+        "message": "Idioma"
+    },
+    "share_selection": {
+        "message": "Comparteix la selecció mitjançant el Mastodon"
+    },
+    "clear": {
+        "message": "Clear"
+    },
+    "toot": {
+        "message": "Toot !"
+    },
+    "public": {
+        "message": "Public"
+    },
+    "direct": {
+        "message": "Direct"
+    },
+    "private": {
+        "message": "Private"
+    },
+    "unlisted": {
+        "message": "Unlisted"
+    },
+    "cant_connect_instance": {
+        "message": "Can't connect to the instance"
+    }
+}
