@@ -19,6 +19,7 @@ img{border:0;vertical-align:middle}
 svg:not(:root){overflow:hidden}
 hr{box-sizing:content-box;height:0}
 pre,textarea{overflow:auto}
+textarea{background-color: #fff}
 code,kbd,pre,samp{font-size:1em}
 button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}
 button{overflow:visible}
