@@ -11,6 +11,10 @@ if [ "x${chrome}" == "x" ]; then
   chrome=$( which chromium-browser )
 fi
 
+if [ "x${chrome}" == "x" ]; then
+  chrome=$( which chromium )
+fi
+
 echo Availables locales for Mastodon Share
 echo
 ls ../src/_locales -b
