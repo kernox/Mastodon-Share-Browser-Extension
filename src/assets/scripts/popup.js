@@ -117,6 +117,14 @@ function hideAlert(){
 }
 
 btnToot.addEventListener('click', toot);
+
+$(window).keydown(function(event) {
+  if(event.ctrlKey && event.keyCode == 13) { 
+    toot();
+    event.preventDefault(); 
+  }
+});
+
 btnClear.addEventListener('click', clear);
 document.addEventListener('DOMContentLoaded', init);
 
