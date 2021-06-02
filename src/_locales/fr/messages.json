@@ -33,7 +33,7 @@
         "message": "Ouverture de l'instance Mastodon"
     },
     "start_info": {
-        "message": "Vous devez parametrer votre instance Mastodon avant de cliquer sur le bouton pour la première fois."
+        "message": "Vous devez paramétrer votre instance Mastodon avant de cliquer sur le bouton pour la première fois."
     },
     "language": {
         "message": "Langue"

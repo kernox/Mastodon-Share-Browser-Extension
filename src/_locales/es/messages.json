@@ -1,0 +1,68 @@
+{
+    "description": {
+        "message": "Botón de compartir para instancias de Mastodon"
+    },
+    "settings": {
+        "message": "Ajustes"
+    },
+    "instance_url": {
+        "message": "URL de la instancia de Mastodon"
+    },
+    "access_code": {
+        "message": "Código de Acceso"
+    },
+    "access_key": {
+        "message": "Clave de Acceso"
+    },
+    "obtain_access_code": {
+        "message": "Obtener código de acceso"
+    },
+    "url_form_needed": {
+        "message": "La URL de la instancia debe ser de la forma: http(s):\/\/domain.tld"
+    },
+    "short_url_checkbox": {
+        "message": "URL abreviada (frama.link)"
+    },
+    "save": {
+        "message": "Guardar"
+    },
+    "options_saved": {
+        "message": "Opciones guardadas."
+    },
+    "mastodon_instance_opening": {
+        "message": "Abriendo instancia de Mastodon"
+    },
+    "start_info": {
+        "message": "Necesita configurar su instancia de Mastodon antes de hacer click en el botón por primera vez."
+    },
+    "language": {
+        "message": "Idioma"
+    },
+    "share_selection": {
+        "message": "Compartir esta selección en Mastodon"
+    },
+    "share_twitter": {
+        "message": "Compartir en Mastodon"
+    },
+    "clear": {
+        "message": "Limpiar"
+    },
+    "toot": {
+        "message": "Tootear !"
+    },
+    "public": {
+        "message": "Público"
+    },
+    "direct": {
+        "message": "Directo"
+    },
+    "private": {
+        "message": "Privado"
+    },
+    "unlisted": {
+        "message": "Sin federar"
+    },
+    "cant_connect_instance": {
+        "message": "No se puede conectar a la instancia"
+    }
+}
