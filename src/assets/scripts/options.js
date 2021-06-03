@@ -17,25 +17,22 @@ var app = new Vue({
         instanceUrl : "",
         accessKey: "",
         accessCode: "",
-        defaultDisclaimer,
-        shortner: false
+        defaultDisclaimer: "",
+        shortner: false,
+        showStatus: false,
+        status: "",
+        tootMaxSize: 800
     },
     mounted: function(){
         this.loadOptions();
-        // console.log(chrome.storage.sync.get({
-        //     instanceUrl: ''
-        // }));
     },
     methods: {
-        create: function() {
-            console.log('start');
-        },
         connectInstance: function(){
             chrome.storage.sync.set({
                 accessKey: ''
             }, function(){
                 this.accessKey = '';
-                this.accessCode = 'nop';
+                this.accessCode = '';
             });   
         
             this.api = new MastodonAPI({
@@ -67,11 +64,12 @@ var app = new Vue({
                 //Open the authentification window
                 chrome.tabs.create({url: authorization});
             });
-
-            console.log(this.api);
         },
         loadOptions: function(){
             console.log('Loading options...');
+
+            var that = this;
+
             chrome.storage.sync.get({
                 instanceUrl: '',
                 shortner: false,
@@ -80,34 +78,33 @@ var app = new Vue({
                 tootMaxSize: 500,
                 defaultDisclaimer: ''
             }, function(items) {
-                this.instanceUrl = items.instanceUrl;
-                this.shortner = items.shortner;
-                this.accessKey = items.accessKey;
-                this.code = items.code;
-                this.tootMaxSize = items.tootMaxSize;
-                this.defaultDisclaimer = items.defaultDisclaimer;
+
+                that.instanceUrl = items.instanceUrl;
+                that.shortner = items.shortner;
+                that.accessKey = items.accessKey;
+                that.accessCode = items.code;
+                that.tootMaxSize = items.tootMaxSize;
+                that.defaultDisclaimer = items.defaultDisclaimer;
             });
         },
         saveOptions: function() {
 
             var that = this;
 
-            var status = document.querySelector('#status');
-
             chrome.storage.sync.set({
-                instanceUrl: instanceUrl,
+                instanceUrl: this.instanceUrl,
                 shortner: this.useShortner,
                 code: this.accessCode,
                 tootMaxSize: this.tootMaxSize,
                 defaultDisclaimer: this.defaultDisclaimer
             }, function() {
 
-                status.classList.remove('hide');
+                that.showStatus = true;
                 that.status = that.labels.optionsSaved;
-                document.querySelector('#startInfo').classList.add('hide');
+                that.showStartInfo = false;
 
                 setTimeout(function() {
-                    status.classList.add('hide');
+                    that.showStatus = false;
                 }, 2000);
 
                 that.api = new MastodonAPI({
@@ -119,18 +116,17 @@ var app = new Vue({
 
                     if (items.accessKey === ''){
 
-                        console.log(items);
-
-                        api.getAccessTokenFromAuthCode(
+                        that.api.getAccessTokenFromAuthCode(
                             items.mastodon_client_id,
                             items.mastodon_client_secret,
                             items.mastodon_client_redirect_uri,
                             items.code,
                             function(data) {
+                                
                                 chrome.storage.sync.set({
-                                    accessKey: data.access_token
+                                    accessKey: data.accessKey
                                 }, function(){
-                                    this.accessKey = data.access_token;
+                                    that.accessKey = data.accessKey;
                                 });
                             }
                         );
@@ -144,14 +140,6 @@ var app = new Vue({
 
 
 /*
-
-
-function init() {
-
-	loadMessages();
-	loadOptions();
-    //loadInstancesList();
-}
 
 function loadInstancesList() {
 	// find all instances known to the browser
