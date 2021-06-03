@@ -16,7 +16,9 @@ var app = new Vue({
         message: "",
         showTootSpinner: false,
         showPictureSpinner: false,
-        canToot: false
+        canToot: false,
+        error: false,
+        alert:  ""
     },
     methods: {
         loadOptions: function() {
@@ -72,9 +74,9 @@ var app = new Vue({
             });
         },
         loadTabUrl: function() {
-
+            
             var that = this;
-
+            
             chrome.storage.sync.get(null, function(items){
                 
                 if(items.clipboard != undefined){
@@ -89,7 +91,7 @@ var app = new Vue({
                 } else {
                     chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
                         that.message = tabs[0].title + "\n\n" + tabs[0].url;
-
+                        
                         // extract page keywords to use as hashtags
                         chrome.tabs.executeScript( {
                             code: "var kw = document.querySelector('meta[name=keywords]'); var keywords = kw.getAttribute('content'); keywords;"
@@ -103,9 +105,29 @@ var app = new Vue({
                 }
             });
             
+        },
+        clearToot: function() {
+            this.message = '';
+            
+            chrome.storage.sync.remove('clipboard', function(){
+                chrome.browserAction.setBadgeText({
+                    text: ''
+                });
+            });
+        },
+        isEmpty: function(){
+            return this.message.length == 0;
         }
     }
 })
+
+//Ctrl + Enter feature
+// $(window).keydown(function(event) {
+//   if(event.ctrlKey && event.keyCode == 13) { 
+//     toot();
+//     event.preventDefault(); 
+//   }
+// });
 
 // function uploadPictures(){
 
@@ -140,35 +162,3 @@ var app = new Vue({
 //         });
 //     }
 // }
-
-
-
-// function clear(){
-//     message.value = '';
-
-//     chrome.storage.sync.remove('clipboard', function(){
-//         chrome.browserAction.setBadgeText({
-//             text: ''
-//         });
-
-//         btnToot.disabled='disabled';
-//     });
-// }
-
-// function showAlert(content, type = 'info'){
-//     alert.innerHTML = '<p>'+ content +'</p>';
-//     alert.classList.add('alert-'+ type);
-//     alert.classList.remove('hidden');
-// }
-
-// function hideAlert(){
-//     alert.classList.add('hidden');
-//     alert.classList.remove('alert-success alert-danger alert-info alert-warning');
-// }
-
-// $(window).keydown(function(event) {
-//   if(event.ctrlKey && event.keyCode == 13) { 
-//     toot();
-//     event.preventDefault(); 
-//   }
-// });
