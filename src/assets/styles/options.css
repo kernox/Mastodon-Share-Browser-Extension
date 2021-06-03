@@ -9,3 +9,7 @@ input{
 #options{
 	margin-top: 20px;
 }
+
+[v-cloak] {
+	display: none;
+}

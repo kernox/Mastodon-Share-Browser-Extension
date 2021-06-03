@@ -9,34 +9,34 @@
       type="text/css" rel="stylesheet" />
 </head>
 <body>
-	<div class="container-fluid">
+	<div id="app" class="container-fluid">
 		<div class="row" style="margin-top:20px">
 			<div class="col-md-12">
-
 				<div id="alert" class="alert hidden"></div>
 
-				<textarea name="message" id="message" maxlength="500"></textarea>
-				<ul id="pictures">
+				<textarea name="message" id="message" maxlength="500" v-model="message"></textarea>
+				<!-- <ul id="pictures">
 
-				</ul>
+				</ul> -->
 				<input style="margin-bottom: 10px" type="text" id="disclaimer" class="form-control" placeholder="Disclaimer">
 				<select name="tootType" id="tootType" class="form-control">
-					<option value="public"></option>
-					<option value="direct"></option>
-					<option value="private"></option>
-					<option value="unlisted"></option>
+					<option value="public">{{labels.public}}</option>
+					<option value="direct">{{labels.direct}}</option>
+					<option value="private">{{labels.private}}</option>
+					<option value="unlisted">{{labels.unlisted}}</option>
 				</select>
 				<div style="margin:20px 0;">
-					<input id="uploader" type="file" multiple>
-					<button id="btnPicture" class="pull-left btn btn-info" style="width: 20%">
+					<!-- <input id="uploader" type="file" multiple> -->
+					<!-- <button id="btnPicture" class="pull-left btn btn-info" style="width: 20%">
 						<i class="fa fa-picture-o icon"></i>
 						<i class="loader fa fa-spinner fa-spin hidden"></i>
+					</button> -->
+					<button id="btnClear" class="btn btn-warning" style="width:50%; float:left">
+						{{labels.btnClear}}
 					</button>
-					<button id="btnClear" class="btn btn-warning" style="width:40%; float:left">
-					Clear</button>
-					<button id="btnToot" class="btn btn-success" style="width:40%">
+					<button id="btnToot" class="btn btn-success" style="width:50%" v-on:click="toot" v-bind:class="(message.length < 3) ? 'disabled' : ''">
 						<i class="loader fa fa-spinner fa-spin hidden"></i>
-						<span>Toot !</span>
+						<span>{{labels.btnToot}}</span>
 					</button>
 				</div>
 			</div>
@@ -46,6 +46,8 @@
 	<script src="assets/scripts/functions.js"></script>
 	<script src="assets/scripts/jquery.min.js"></script>
 	<script src="assets/scripts/mastodon.js"></script>
+
+	<script src="assets/scripts/vue.dev.js"></script>
 	<script src="assets/scripts/popup.js"></script>
 </body>
 </html>
