@@ -12,7 +12,8 @@
 	<div id="app" class="container-fluid">
 		<div class="row" style="margin-top:20px">
 			<div class="col-md-12">
-				<div id="alert" class="alert hidden" v-bind:class="(!showAlert) ? 'hidden': ''">{{alert}}</div>
+				
+				<div id="alert" class="alert" 	v-bind:class="{hidden: !showAlert, 'alert-danger': alertType == 'danger', 'alert-success': alertType == 'success'}" >{{alert}}</div>
 
 				<textarea name="message" id="message" maxlength="500" v-model="message"></textarea>
 				<!-- <ul id="pictures">

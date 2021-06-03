@@ -40,8 +40,7 @@ var app = new Vue({
             chrome.storage.sync.get(null, function(items) {
                 
                 that.showTootSpinner = true;
-
-                
+                                
                 if (items.accessKey !== '') {
                     
                     var api = new MastodonAPI({
@@ -58,19 +57,27 @@ var app = new Vue({
                         
                         that.alertType='success';
                         that.alert = that.labels.successMessage;
+                        that.showAlert = true;
                         
                         that.showTootSpinner = false;
                         
                         that.message = '';
+
+                        setTimeout(function(){
+                            that.showAlert = false;
+                        },4000);
                     });
                     
                     request.fail(function(data){
-                        // showAlert('Can\'t connect to the instance !', 'danger');
+                        that.alertType = 'danger';
+                        that.alert = 'Can\'t connect to the instance !';
+                        that.showAlert = true;
+
                         that.showTootSpinner = false;
                         
                         setTimeout(function(){
-                            hideAlert();
-                        },2000);
+                            that.showAlert = false;
+                        },4000);
                     });
                 }
             });
