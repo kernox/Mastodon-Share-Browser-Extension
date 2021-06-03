@@ -116,9 +116,10 @@ var app = new Vue({
                 });
             });
         },
-        isEmpty: function(){
-            return this.message.length == 0;
-        }
+        // isEmpty: function(){
+        //     // return this.message.length == 0;
+        //     return false;
+        // }
     }
 })
 

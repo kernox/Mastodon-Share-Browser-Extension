@@ -31,10 +31,10 @@
 						<i class="fa fa-picture-o icon"></i>
 						<i class="loader fa fa-spinner fa-spin hidden"></i>
 					</button> -->
-					<button id="btnClear" class="btn btn-warning" style="width:50%; float:left" v-on:click="clearToot">
+					<button id="btnClear" class="btn btn-warning" style="width:50%; float:left" v-on:click="clearToot" v-bind:disabled="message.length == 0">
 						{{labels.btnClear}}
 					</button>
-					<button id="btnToot" class="btn btn-success" style="width:50%" v-on:click="toot" v-bind:disable="isEmpty">
+					<button id="btnToot" class="btn btn-success" style="width:50%" v-on:click="toot" v-bind:disabled="message.length < 5">
 						<i class="loader fa fa-spinner fa-spin hidden"></i>
 						<span>{{labels.btnToot}}</span>
 					</button>
