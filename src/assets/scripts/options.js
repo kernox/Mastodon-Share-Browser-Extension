@@ -123,11 +123,13 @@ var app = new Vue({
                             items.mastodon_client_redirect_uri,
                             items.code,
                             function(data) {
+
+                                console.log(data);
                                 
                                 chrome.storage.sync.set({
-                                    accessKey: data.accessKey
+                                    accessKey: data.access_token
                                 }, function(){
-                                    that.accessKey = data.accessKey;
+                                    that.accessKey = data.access_token;
                                 });
                             }
                         );
