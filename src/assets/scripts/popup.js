@@ -18,7 +18,8 @@ var app = new Vue({
         showPictureSpinner: false,
         canToot: false,
         error: false,
-        alert:  ""
+        alert:  "",
+        showAlert: false
     },
     methods: {
         loadOptions: function() {

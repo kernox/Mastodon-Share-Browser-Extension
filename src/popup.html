@@ -12,7 +12,7 @@
 	<div id="app" class="container-fluid">
 		<div class="row" style="margin-top:20px">
 			<div class="col-md-12">
-				<div id="alert" class="alert">{{alert}}</div>
+				<div id="alert" class="alert hidden" v-bind:class="(!showAlert) ? 'hidden': ''">{{alert}}</div>
 
 				<textarea name="message" id="message" maxlength="500" v-model="message"></textarea>
 				<!-- <ul id="pictures">
@@ -31,10 +31,10 @@
 						<i class="fa fa-picture-o icon"></i>
 						<i class="loader fa fa-spinner fa-spin hidden"></i>
 					</button> -->
-					<button id="btnClear" class="btn btn-warning" style="width:50%; float:left" v-click="clearToot">
+					<button id="btnClear" class="btn btn-warning" style="width:50%; float:left" v-on:click="clearToot">
 						{{labels.btnClear}}
 					</button>
-					<button id="btnToot" class="btn btn-success" style="width:50%" v-on:click="toot" v-bind:class="(isEmpty) ? 'disabled' : ''">
+					<button id="btnToot" class="btn btn-success" style="width:50%" v-on:click="toot" v-bind:disable="isEmpty">
 						<i class="loader fa fa-spinner fa-spin hidden"></i>
 						<span>{{labels.btnToot}}</span>
 					</button>
