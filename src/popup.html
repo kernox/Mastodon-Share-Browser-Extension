@@ -18,8 +18,8 @@
 				<!-- <ul id="pictures">
 
 				</ul> -->
-				<input style="margin-bottom: 10px" type="text" id="disclaimer" class="form-control" placeholder="Disclaimer">
-				<select name="tootType" id="tootType" class="form-control">
+				<input style="margin-bottom: 10px" type="text" id="disclaimer" class="form-control" placeholder="Disclaimer" v-model="disclaimer">
+				<select name="tootType" id="tootType" class="form-control" v-model="visibility">
 					<option value="public">{{labels.public}}</option>
 					<option value="direct">{{labels.direct}}</option>
 					<option value="private">{{labels.private}}</option>
@@ -35,7 +35,7 @@
 						{{labels.btnClear}}
 					</button>
 					<button id="btnToot" class="btn btn-success" style="width:50%" v-on:click="toot" v-bind:disabled="message.length < 5">
-						<i class="loader fa fa-spinner fa-spin hidden"></i>
+						<i class="loader fa fa-spinner fa-spin" v-bind:class="!showTootSpinner ? 'hidden' : ''"></i>
 						<span>{{labels.btnToot}}</span>
 					</button>
 				</div>

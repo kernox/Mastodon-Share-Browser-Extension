@@ -19,7 +19,9 @@ var app = new Vue({
         canToot: false,
         error: false,
         alert:  "",
-        showAlert: false
+        showAlert: false,
+        visibility: "public",
+        disclaimer: "DEBUG"
     },
     methods: {
         loadOptions: function() {
@@ -32,11 +34,13 @@ var app = new Vue({
             });
         },
         toot: function() {
+
+            var that = this;
             
             chrome.storage.sync.get(null, function(items) {
                 
-                loaderIcon.classList.remove('hidden');
-                btnToot.disabled = true;
+                that.showTootSpinner = true;
+
                 
                 if (items.accessKey !== '') {
                     
@@ -44,28 +48,25 @@ var app = new Vue({
                         instance: items.instanceUrl,
                         api_user_token: items.accessKey
                     });
-                    var finalMessage = message.value;
-                    var visibility = tootType.value;
-                    var spoilerText = disclaimer.value;
                     
                     var request = api.post("statuses", {
-                        status: finalMessage,
-                        visibility: visibility,
-                        spoiler_text: spoilerText
+                        status: that.message,
+                        visibility: that.visibility,
+                        spoiler_text: that.disclaimer
                         
                     }, function(data){
                         
-                        showAlert(successMessage, 'success');
-                        loaderIcon.classList.add('hidden');
-                        btnToot.disabled = false;
+                        that.alertType='success';
+                        that.alert = that.labels.successMessage;
                         
-                        message.value = '';
+                        that.showTootSpinner = false;
+                        
+                        that.message = '';
                     });
                     
                     request.fail(function(data){
-                        showAlert('Can\'t connect to the instance !', 'danger');
-                        btnToot.disabled = false;
-                        loaderIcon.classList.add('hidden');
+                        // showAlert('Can\'t connect to the instance !', 'danger');
+                        that.showTootSpinner = false;
                         
                         setTimeout(function(){
                             hideAlert();
