@@ -18,7 +18,8 @@ var app = new Vue({
         showPictureSpinner: false,
         canToot: false,
         error: false,
-        alert:  "",
+        alert: "",
+        alertType: "",
         showAlert: false,
         visibility: "public",
         disclaimer: "DEBUG"
@@ -89,6 +90,8 @@ var app = new Vue({
             chrome.storage.sync.get(null, function(items){
                 
                 if(items.clipboard != undefined){
+
+                    console.log(items);
                     
                     var clipboard = items.clipboard;
                     
@@ -96,7 +99,7 @@ var app = new Vue({
                     "\n\n" + clipboard.textSelection +
                     "\n\n"+clipboard.url;
                     
-                    this.message = draft;
+                    that.message = draft;
                 } else {
                     chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
                         that.message = tabs[0].title + "\n\n" + tabs[0].url;
