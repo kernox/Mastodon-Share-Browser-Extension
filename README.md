@@ -31,7 +31,7 @@ When you share a page, hashtags has generated from page keywords
 https://chrome.google.com/webstore/detail/mastodon-share/ngkommdldcakheaeoafgakbbiinkohom?hl=fr
 
 #### Mozilla Firefox
-https://addons.mozilla.org/fr/firefox/addon/mastodon-share/
+https://addons.mozilla.org/firefox/addon/mastodon-share/
 
 
 ## How to build the extension from sources
