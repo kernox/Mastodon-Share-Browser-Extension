@@ -25,7 +25,7 @@ function shareSelection() {
 					textSelection: selection
 				}
 			}, function(){
-				chrome.browserAction.setBadgeText({
+				chrome.action.setBadgeText({
 					text: "*"
 				});
 			});
