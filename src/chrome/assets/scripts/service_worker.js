@@ -1,6 +1,6 @@
 importScripts(
-			"assets/scripts/interceptor.js",
+			"interceptor.js",
 			// "assets/scripts/menu.js",
-			"assets/scripts/functions.js",
+			"functions.js",
 			// "assets/scripts/twitter.js"
 )
