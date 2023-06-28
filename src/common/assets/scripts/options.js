@@ -19,11 +19,6 @@ function loadMessages(){
 function loadInstancesList() {
 	/* find all instances known to the browser */
 
-    //@if ENV='chrome'
-    //var browser = chrome;
-    //var browser = new ChromePromise();
-    //@endif
-
     browser.cookies.getAll({name: "_mastodon_session"}).then((cookies) => {
 
     	const mastodonList = document.querySelector("#instanceUrlList");

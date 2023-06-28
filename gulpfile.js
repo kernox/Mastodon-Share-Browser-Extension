@@ -1,31 +1,22 @@
 const gulp = require('gulp');
 const watch = require('gulp-watch');
-const preprocess = require('gulp-preprocess');
 const zip = require('gulp-zip');
-
 
 function build(cb) {
 	console.log('> Construction of browsers extensions');
 
-	gulp.src(['src/**/*', '!src/manifest.json', '!src/**/*.png'])
-	.pipe(preprocess({context: {ENV: 'chrome'}}))
-	.pipe(gulp.dest('build/chrome'))
+	//Common files
+	gulp.src(['src/common/**/*'])
+	.pipe(gulp.dest('build/chrome/'))
+	.pipe(gulp.dest('build/firefox/'))
 
-	gulp.src(['src/**/*', '!src/manifest.json', '!src/**/*.png'])
-	.pipe(preprocess({context: {ENV: 'firefox'}}))
-	.pipe(gulp.dest('build/firefox'))
+	//Chrome specifics files
+	gulp.src(['src/chrome/**/*'])
+	.pipe(gulp.dest('build/chrome/'))
 
-	gulp.src(['src/manifest.json'])
-	.pipe(preprocess({context: {ENV: 'chrome'}, extension: 'js'}))
-	.pipe(gulp.dest('build/chrome'))
-
-	gulp.src(['src/manifest.json'])
-	.pipe(preprocess({context: {ENV: 'firefox'}, extension: 'js'}))
-	.pipe(gulp.dest('build/firefox'))
-
-	gulp.src(['src/**/*.png'])
-	.pipe(gulp.dest('build/chrome'))
-	.pipe(gulp.dest('build/firefox'))
+	//Firefox specifics files
+	gulp.src(['src/firefox/**/*'])
+	.pipe(gulp.dest('build/firefox/'))
 
 	console.log('> Construction done ! Look at build folder');
 
@@ -34,13 +25,20 @@ function build(cb) {
 
 function livewatch(cb) {
 	console.log('> Livewatch autoreload on !')
-	watch(['src/**/*'], {verbose: true})
-	.pipe(preprocess({context: {ENV: 'chrome'}}))
-	.pipe(gulp.dest('build/chrome'))
 
-	watch(['src/**/*'])
-	.pipe(preprocess({context: {ENV: 'firefox'}}))
-	.pipe(gulp.dest('build/firefox'))
+	//Watch on common files
+	watch(['src/common/**/*'], {verbose: true})
+	.pipe(gulp.dest('build/chrome/'))
+	.pipe(gulp.dest('build/firefox/'))
+
+	//Watch on chrome files
+	watch(['src/chrome/**/*'], {verbose: true})
+	.pipe(gulp.dest('build/chrome/'))
+	
+
+	//Watch on firefox files
+	watch(['src/firefox/**/*'], {verbose: true})
+	.pipe(gulp.dest('build/firefox/'))
 
 	cb();
 }
