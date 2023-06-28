@@ -43,7 +43,8 @@
 		"cookies",
 		"tabs",
 		"activeTab",
-		"storage"
+		"storage",
+		"scripting"
 	],
 	"icons":{
 		"16":"assets/images/icon16.png",

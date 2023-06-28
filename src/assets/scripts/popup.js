@@ -24,6 +24,18 @@ function loadMessages(){
     tootType.querySelector('option[value="unlisted"]').text =  chrome.i18n.getMessage('unlisted');
 }
 
+function captureKeywords(){
+    const meta = document.querySelector('meta[name=keywords]');
+    
+    if(meta){
+        const keywords = meta.getAttribute('content');
+        console.log(keywords + "a   ");
+    }
+    
+    return;
+    
+}
+
 (function loadTabUrl() {
 
     chrome.storage.sync.get(null, function(items){
@@ -40,15 +52,23 @@ function loadMessages(){
         } else {
             chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
                 message.value= tabs[0].title + "\n" + tabs[0].url;
+
+                const tabId = tabs[0].id;
+                
                 // extract page keywords to use as hashtags
-                chrome.tabs.executeScript( {
-                    code: "var kw = document.querySelector('meta[name=keywords]'); var keywords = kw.getAttribute('content'); keywords;"
-                }, function(keywords) {
-                    if (!keywords[0])
-                        return;
-                    // TODO: sanitize better
-                    message.value += "\n\n" + keywords[0].split(',').map(function (e) {return e ? '#' + e.trim().replace(' ', '_').replace("'", '') : '';}).join(' ');
-                });
+                chrome.scripting.executeScript({
+                    target: { tabId },
+                    func: captureKeywords
+                }).then((res) => console.log(res));
+
+                // chrome.scripting.executeScript( {
+                //     code: "var kw = document.querySelector('meta[name=keywords]'); var keywords = kw.getAttribute('content'); keywords;"
+                // }, function(keywords) {
+                //     if (!keywords[0])
+                //         return;
+                //     // TODO: sanitize better
+                //     message.value += "\n\n" + keywords[0].split(',').map(function (e) {return e ? '#' + e.trim().replace(' ', '_').replace("'", '') : '';}).join(' ');
+                // });
             });
         }
     });
@@ -97,7 +117,7 @@ function clear(){
     message.value = '';
 
     chrome.storage.sync.remove('clipboard', function(){
-        chrome.browserAction.setBadgeText({
+        chrome.action.setBadgeText({
             text: ''
         });
 

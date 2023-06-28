@@ -5,7 +5,7 @@ chrome.runtime.onMessage.addListener(
             chrome.storage.sync.set({
                 clipboard: request.mastoshare
             }, function(){
-                chrome.browserAction.setBadgeText({
+                chrome.action.setBadgeText({
                     text: 'T'
                 });
             });
