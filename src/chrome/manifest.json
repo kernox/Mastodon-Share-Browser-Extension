@@ -21,7 +21,7 @@
 		}
 	],
 	"background": {
-		"service_worker": "service_worker.js"
+		"service_worker": "assets/scripts/service_worker.js"
 	},
 	"permissions": [
 		"contextMenus",
