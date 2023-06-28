@@ -6,7 +6,7 @@ set lang=en
 
 echo Availables locales for Mastodon Share
 echo.
-dir ..\src\_locales /B
+dir ..\src\common\_locales /B
 echo.
 
 set /p lang="Please set a locale code [en]: "
