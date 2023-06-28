@@ -1,28 +1,11 @@
-var fs = require('fs');
+const gulp = require('gulp');
+const watch = require('gulp-watch');
+const preprocess = require('gulp-preprocess');
+const zip = require('gulp-zip');
 
-var gulp = require('gulp');
-var zip = require('gulp-zip');
-var watch = require('gulp-watch');
-var preprocess = require('gulp-preprocess');
-var pp = require('preprocess');
 
-gulp.task('default',[
-	'build',
-	'watch'
-]);
-
-gulp.task('watch', function(){
-
-	watch(['src/**/*'], {verbose: true})
-	.pipe(preprocess({context: {ENV: 'chrome'}}))
-	.pipe(gulp.dest('build/chrome'))
-
-	watch(['src/**/*'])
-	.pipe(preprocess({context: {ENV: 'firefox'}}))
-	.pipe(gulp.dest('build/firefox'))
-});
-
-gulp.task('build', function(){
+function build(cb) {
+	console.log('> Construction of browsers extensions');
 
 	gulp.src(['src/**/*', '!src/manifest.json', '!src/**/*.png'])
 	.pipe(preprocess({context: {ENV: 'chrome'}}))
@@ -40,15 +23,30 @@ gulp.task('build', function(){
 	.pipe(preprocess({context: {ENV: 'firefox'}, extension: 'js'}))
 	.pipe(gulp.dest('build/firefox'))
 
-
-
 	gulp.src(['src/**/*.png'])
 	.pipe(gulp.dest('build/chrome'))
 	.pipe(gulp.dest('build/firefox'))
 
-});
+	console.log('> Construction done ! Look at build folder');
 
-gulp.task('pack', function(){
+	cb();
+}
+
+function livewatch(cb) {
+	console.log('> Livewatch autoreload on !')
+	watch(['src/**/*'], {verbose: true})
+	.pipe(preprocess({context: {ENV: 'chrome'}}))
+	.pipe(gulp.dest('build/chrome'))
+
+	watch(['src/**/*'])
+	.pipe(preprocess({context: {ENV: 'firefox'}}))
+	.pipe(gulp.dest('build/firefox'))
+
+	cb();
+}
+
+function pack(cb) {
+	console.log('> Building zip packages');
 
 	gulp.src('build/firefox/**/*')
 		.pipe(zip('firefox.zip'))
@@ -57,4 +55,12 @@ gulp.task('pack', function(){
 	gulp.src('build/chrome/**/*')
 		.pipe(zip('chrome.zip'))
 		.pipe(gulp.dest('build'))
-});
+
+	console.log('> Packages builded ! Look at build folder');
+	cb();
+}
+  
+exports.default = gulp.parallel(build, livewatch)
+exports.watch = livewatch;
+exports.build = build;
+exports.pack = pack;
