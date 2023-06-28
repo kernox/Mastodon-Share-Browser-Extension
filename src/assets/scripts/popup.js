@@ -29,10 +29,12 @@ function captureKeywords(){
     
     if(meta){
         const keywords = meta.getAttribute('content');
-        console.log(keywords + "a   ");
+        const list = keywords.split(',').map((keyword) => keyword.trim());
+
+        return list;
     }
     
-    return;
+    return [];
     
 }
 
@@ -59,16 +61,13 @@ function captureKeywords(){
                 chrome.scripting.executeScript({
                     target: { tabId },
                     func: captureKeywords
-                }).then((res) => console.log(res));
-
-                // chrome.scripting.executeScript( {
-                //     code: "var kw = document.querySelector('meta[name=keywords]'); var keywords = kw.getAttribute('content'); keywords;"
-                // }, function(keywords) {
-                //     if (!keywords[0])
-                //         return;
-                //     // TODO: sanitize better
-                //     message.value += "\n\n" + keywords[0].split(',').map(function (e) {return e ? '#' + e.trim().replace(' ', '_').replace("'", '') : '';}).join(' ');
-                // });
+                }).then((res) => {
+                    const keywords = res[0].result;
+                    
+                    if(keywords.length > 0){
+                        message.value += "\n\n" + keywords.map(keyword => '#' + keyword).join(' ');
+                    }
+                });
             });
         }
     });
