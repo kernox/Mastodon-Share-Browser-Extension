@@ -1,5 +1,5 @@
 {
-	"manifest_version":2,
+	"manifest_version":3,
 	// @if ENV='firefox'
 	"applications":{
 		"gecko": {
@@ -20,12 +20,11 @@
 	// @if ENV='chrome'
 	"options_page": "options.html",
 	// @endif
-
-	"browser_action":{
-		"default_icon":"assets/images/icon.png",
-		"default_popup":"popup.html"
+	
+	"action": {
+		"default_popup":"popup.html",
+		"default_icon":"assets/images/icon.png"		
 	},
-
 	"content_scripts":[
 		{
 			"matches":[
@@ -37,17 +36,11 @@
 		}
 	],
 	"background":{
-		"scripts":[
-			"assets/scripts/interceptor.js",
-			"assets/scripts/menu.js",
-			"assets/scripts/functions.js",
-			"assets/scripts/twitter.js"
-		]
-	},
+		"service_worker": "service_worker.js"
+	},	
 	"permissions":[
 		"contextMenus",
 		"cookies",
-		"<all_urls>",
 		"tabs",
 		"activeTab",
 		"storage"
