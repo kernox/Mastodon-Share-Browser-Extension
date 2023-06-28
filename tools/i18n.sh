@@ -17,7 +17,7 @@ fi
 
 echo Availables locales for Mastodon Share
 echo
-ls ../src/_locales -b
+ls ../src/common/_locales -b
 echo
 
 read -p "Please set a locale code [en]: " lang
