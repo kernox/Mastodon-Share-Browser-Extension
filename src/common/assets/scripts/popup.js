@@ -1,10 +1,11 @@
-var message = document.getElementById('message');
-var btnToot = document.getElementById('btnToot');
-var btnClear = document.getElementById('btnClear');
-var loaderIcon = btnToot.querySelector('.loader');
-var alert = document.getElementById('alert');
-var tootType = document.getElementById('tootType');
-var tootSize = 500;
+let message = document.getElementById('message');
+let btnToot = document.getElementById('btnToot');
+let btnClear = document.getElementById('btnClear');
+let loaderIcon = btnToot.querySelector('.loader');
+let alert = document.getElementById('alert');
+let tootType = document.getElementById('tootType');
+let tootSizeCounter = document.getElementById('tootSizeCounter');
+let tootSize = 500;
 
 var successMessage = '';
 
@@ -12,8 +13,8 @@ var successMessage = '';
 chrome = window?.browser || chrome;
 
 function init() {
-
     checkConfiguration();
+    loadConfiguration();
     loadMessages();
 };
 
@@ -24,6 +25,28 @@ function checkConfiguration() {
             chrome.tabs.create({ 'url': "/options.html" });
         }
     })
+}
+
+function loadConfiguration(){
+    chrome.storage.sync.get(null, function (items) {
+        const api = new MastodonAPI({
+            instance: items.instanceUrl,
+            api_user_token: items.accessKey
+        });
+
+        api.get("/instance").then(res => {            
+            tootSize = res?.configuration?.statuses?.max_characters || 500;
+            message.maxLength = tootSize;
+
+            updateCharsCounter()
+            
+        });
+
+    })
+}
+
+function updateCharsCounter(){
+    tootSizeCounter.innerHTML=message.value.length + " / "+ tootSize;
 }
 
 function loadMessages() {
@@ -121,6 +144,8 @@ function toot() {
                 api_user_token: items.accessKey
             });
 
+            console.log(api);
+
             var finalMessage = message.value;
             var visibility = tootType.value;
 
@@ -173,6 +198,8 @@ function clear() {
         })
     
     })
+
+    updateCharsCounter();
 }
 
 function showAlert(content, type = 'info') {
@@ -211,6 +238,8 @@ function saveTabMessage(){
             obj[currentMessageKey] = message.value;
             chrome.storage.local.set(obj);
         })
+
+        updateCharsCounter();
     
     })
     
