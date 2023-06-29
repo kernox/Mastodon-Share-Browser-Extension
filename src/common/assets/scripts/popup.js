@@ -8,6 +8,9 @@ var tootSize = 500;
 
 var successMessage = '';
 
+//Hack firefox
+chrome = window?.browser || chrome;
+
 function init() {
 
     checkConfiguration();
