@@ -130,7 +130,7 @@ function toot() {
                 loaderIcon.classList.add('hidden');
                 btnToot.disabled = false;
 
-                message.value = '';
+                clear();
             });
 
             request.fail(function (data) {
