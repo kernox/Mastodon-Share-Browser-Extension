@@ -29,7 +29,10 @@
 		}
 	],
 	"background": {
-		"scripts": []
+		"scripts": [
+			"assets/scripts/interceptor.js",
+			"assets/scripts/functions.js"
+		]
 	},
 	"permissions": [
 		"contextMenus",
