@@ -16,7 +16,7 @@ function init() {
 
 function checkConfiguration() {
     chrome.storage.sync.get(null, function (items) {
-        console.log(items);
+
         if (!items.instanceUrl || !items.accessKey) {
             chrome.tabs.create({ 'url': "/options.html" });
         }
@@ -51,6 +51,8 @@ function captureKeywords() {
 
 (function loadTabUrl() {
 
+
+
     chrome.storage.sync.get(null, function (items) {
 
         if (items.clipboard != undefined) {
@@ -63,22 +65,40 @@ function captureKeywords() {
 
             message.value = draft;
         } else {
+
+            console.log(message);
             chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-                message.value = tabs[0].title + "\n" + tabs[0].url;
 
-                const tabId = tabs[0].id;
+                const currentTab = tabs[0];
+                const tabId = currentTab.id;
 
-                // extract page keywords to use as hashtags
-                chrome.scripting.executeScript({
-                    target: { tabId },
-                    func: captureKeywords
-                }).then((res) => {
-                    const keywords = res[0].result;
+                const currentMessageKey = 'message_' + tabId;                
 
-                    if (keywords.length > 0) {
-                        message.value += "\n\n" + keywords.map(keyword => '#' + keyword).join(' ');
+                chrome.storage.local.get(currentMessageKey).then(res => {
+                    if(res[currentMessageKey]){
+                        message.value = res[currentMessageKey];
+                    } else {
+                        message.value =currentTab.title + "\n" + currentTab.url;        
+                        
+                        //Store message value for current tab
+                        const obj = {};
+                        obj[currentMessageKey] = message.value;        
+                        chrome.storage.local.set(obj);
+                        
+                        // extract page keywords to use as hashtags
+                        chrome.scripting.executeScript({
+                            target: { tabId },
+                            func: captureKeywords
+                        }).then((res) => {
+                            const keywords = res[0].result;
+        
+                            if (keywords.length > 0) {
+                                message.value += "\n\n" + keywords.map(keyword => '#' + keyword).join(' ');
+                            }
+                        });
                     }
                 });
+
             });
         }
     });
@@ -133,6 +153,23 @@ function clear() {
 
         btnToot.disabled = 'disabled';
     });
+
+    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+
+        const currentTab = tabs[0];
+        const tabId = currentTab.id;
+
+        const currentMessageKey = 'message_' + tabId;
+
+        chrome.storage.local.get(currentMessageKey).then(res => {
+
+            console.log(res);
+            if(res[currentMessageKey]){
+                chrome.storage.local.remove(currentMessageKey);
+            }
+        })
+    
+    })
 }
 
 function showAlert(content, type = 'info') {
@@ -155,8 +192,30 @@ $(window).keydown(function (event) {
     }
 });
 
+function saveTabMessage(){
+
+
+    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+
+        const currentTab = tabs[0];
+        const tabId = currentTab.id;
+
+        const currentMessageKey = 'message_' + tabId;        
+
+        //Save message on tab (prevent popup auto close message deleting)
+        chrome.storage.local.get(currentMessageKey).then(res => {
+            const obj = {};
+            obj[currentMessageKey] = message.value;
+            chrome.storage.local.set(obj);
+        })
+    
+    })
+    
+}
+
 btnClear.addEventListener('click', clear);
 document.addEventListener('DOMContentLoaded', init);
+message.addEventListener('keyup', saveTabMessage);
 
 setInterval(function () {
     var currentTootSize = message.value.toString().length;
