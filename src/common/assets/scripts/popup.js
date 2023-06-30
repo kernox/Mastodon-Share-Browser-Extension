@@ -77,8 +77,6 @@ function captureKeywords() {
 
 (function loadTabUrl() {
 
-
-
     chrome.storage.sync.get(null, function (items) {
 
         if (items.clipboard != undefined) {

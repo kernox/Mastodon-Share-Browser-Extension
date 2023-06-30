@@ -1,6 +1,7 @@
+console.log('Service Worker');
 importScripts(
-			"interceptor.js",
-			// "assets/scripts/menu.js",
-			"functions.js",
-			// "assets/scripts/twitter.js"
+	"interceptor.js",
+	"menu.js",
+	"functions.js",
+	//"twitter.js"
 )
