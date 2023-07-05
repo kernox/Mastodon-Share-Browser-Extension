@@ -9,17 +9,6 @@
 		"default_popup": "popup.html",
 		"default_icon": "assets/images/icon.png"
 	},
-	"content_scripts": [
-		{
-			"matches": [
-				"https://twitter.com/*"
-			],
-			"js": [
-				"assets/scripts/functions.js",
-				"assets/scripts/twitter.js"
-			]
-		}
-	],
 	"background": {
 		"service_worker": "assets/scripts/service_worker.js"
 	},
