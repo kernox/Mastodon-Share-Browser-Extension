@@ -149,7 +149,12 @@ function toot() {
             var finalMessage = message.value;
             var visibility = tootType.value;
 
-            var request = api.post("statuses", { status: finalMessage, visibility: visibility }, function (data) {
+            var request = api.post("statuses", { 
+                status: finalMessage, 
+                visibility: visibility,
+                // sensitive: true,
+                // spoiler_text: "Essai"
+            }, function (data) {
 
                 showAlert(successMessage, 'success');
                 loaderIcon.classList.add('hidden');

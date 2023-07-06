@@ -5,18 +5,17 @@
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="assets/styles/theme.min.css">
 	<link rel="stylesheet" href="assets/styles/popup.css">
-	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-      type="text/css" rel="stylesheet" />
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
 	<div class="container-fluid">
-		<div class="row" style="margin-top:20px">
-			<div class="col-md-12">
+		<div class="row" style="margin-top:20px; margin-bottom: 20px">
+			<div class="col-md-12" style="margin-bottom: 10px">
 
 				<div id="alert" class="alert hidden"></div>
 
-				<textarea name="message" id="message" maxlength="0"></textarea>
-				<div id="tootSizeCounter" style="text-align: right; margin-bottom: 20px"></div>
+				<textarea name="message" id="message" maxlength="0"></textarea>				
+				
 				<select name="tootType" id="tootType" class="form-control">
 					<option value="public"></option>
 					<option value="direct"></option>
@@ -24,15 +23,24 @@
 					<option value="unlisted"></option>
 				</select>
 
+			</div>
 
-				<div style="margin:20px 0;">
-					<button id="btnClear" class="btn btn-warning" style="width:50%; float:left">
-					Clear</button>
-					<button id="btnToot" class="btn btn-success" style="width:50%">
-						<i class="loader fa fa-spinner fa-spin hidden"></i>
-						<span>Toot !</span>
-					</button>
-				</div>
+			<div class="col-xs-8">
+				<label for="sensitive" style="margin-right: 1em;">Sensitive content</label>	
+				<input type="checkbox" name="sensitive">
+			</div>
+			<div class="col-xs-4">
+				<div id="tootSizeCounter" style="text-align: right; margin-bottom: 20px"></div>
+			</div>
+
+			<div class="col-xs-6">
+				<button id="btnClear" class="btn btn-warning">Clear</button>
+			</div>
+			<div class="col-xs-6">
+				<button id="btnToot" class="btn btn-success">
+					<i class="loader fa fa-spinner fa-spin hidden"></i>
+					<span>Toot !</span>
+				</button>
 			</div>
 		</div>
 
