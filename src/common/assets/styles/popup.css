@@ -1,18 +1,21 @@
 body{
     background-image: url(../images/mastodon.png);
+    background-size: contain;
     background-size: 60%;
     background-repeat: no-repeat;
-    background-position: center center;
+    background-position: center 50px;
     width: 350px;
 }
 
-#btnToot{
+#btnToot, #btnClear{
     width: 100%;
 }
 
 textarea{
-    opacity: 0.8;
+
+    resize: vertical; 
+    opacity: 0.9;
     padding: 10px;
     width:100%;
-    height: 400px;
+    height: 300px;
 }
