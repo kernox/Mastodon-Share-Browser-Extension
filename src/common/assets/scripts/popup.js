@@ -16,6 +16,7 @@ function init() {
     checkConfiguration();
     loadConfiguration();
     loadMessages();
+    loadTabUrl();
 };
 
 function checkConfiguration() {
@@ -75,11 +76,9 @@ function captureKeywords() {
 
 }
 
-(function loadTabUrl() {
+function loadTabUrl() {
 
-
-
-    chrome.storage.sync.get(null, function (items) {
+    chrome.storage.sync.get(null, async function (items) {
 
         if (items.clipboard != undefined) {
 
@@ -91,45 +90,42 @@ function captureKeywords() {
 
             message.value = draft;
         } else {
+        
+            const storedMessage = await getData('message');
 
-            console.log(message);
             chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
 
                 const currentTab = tabs[0];
                 const tabId = currentTab.id;
 
-                const currentMessageKey = 'message_' + tabId;                
+                if (storedMessage) {
+                    message.value = storedMessage;
+                } else {
+                    message.value = currentTab.title + "\n" + currentTab.url;
 
-                chrome.storage.local.get(currentMessageKey).then(res => {
-                    if(res[currentMessageKey]){
-                        message.value = res[currentMessageKey];
-                    } else {
-                        message.value =currentTab.title + "\n" + currentTab.url;        
-                        
-                        //Store message value for current tab
-                        const obj = {};
-                        obj[currentMessageKey] = message.value;        
-                        chrome.storage.local.set(obj);
-                        
-                        // extract page keywords to use as hashtags
-                        chrome.scripting.executeScript({
-                            target: { tabId },
-                            func: captureKeywords
-                        }).then((res) => {
-                            const keywords = res[0].result;
-        
-                            if (keywords.length > 0) {
-                                message.value += "\n\n" + keywords.map(keyword => '#' + keyword).join(' ');
-                            }
-                        });
-                    }
-                });
+                    //Store message value for current tab
+                    saveData('message', message.value);
+
+                    // extract page keywords to use as hashtags
+                    chrome.scripting.executeScript({
+                        target: { tabId },
+                        func: captureKeywords
+                    }).then((res) => {
+
+                        const keywords = res[0].result;
+
+                        if (keywords.length > 0) {
+                            message.value += "\n\n" + keywords.map(keyword => '#' + keyword).join(' ');
+                        }
+                    });
+                }
+
 
             });
         }
     });
 
-})();
+}
 
 function toot() {
     chrome.storage.sync.get(null, function (items) {
@@ -187,22 +183,8 @@ function clear() {
         btnToot.disabled = 'disabled';
     });
 
-    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-
-        const currentTab = tabs[0];
-        const tabId = currentTab.id;
-
-        const currentMessageKey = 'message_' + tabId;
-
-        chrome.storage.local.get(currentMessageKey).then(res => {
-
-            console.log(res);
-            if(res[currentMessageKey]){
-                chrome.storage.local.remove(currentMessageKey);
-            }
-        })
+    removeData('message');
     
-    })
 
     updateCharsCounter();
 }
@@ -227,27 +209,9 @@ $(window).keydown(function (event) {
     }
 });
 
-function saveTabMessage(){
-
-
-    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-
-        const currentTab = tabs[0];
-        const tabId = currentTab.id;
-
-        const currentMessageKey = 'message_' + tabId;        
-
-        //Save message on tab (prevent popup auto close message deleting)
-        chrome.storage.local.get(currentMessageKey).then(res => {
-            const obj = {};
-            obj[currentMessageKey] = message.value;
-            chrome.storage.local.set(obj);
-        })
-
-        updateCharsCounter();
-    
-    })
-    
+function saveTabMessage() {
+    saveData('message', message.value);
+    updateCharsCounter();
 }
 
 btnClear.addEventListener('click', clear);

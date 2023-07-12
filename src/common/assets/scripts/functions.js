@@ -1,32 +1,75 @@
-function getShortUrl(url, callback)
-{
-	post('https://frama.link/a', {format: 'json', lsturl: url}, 'json', function(data){
+function saveData(key, value) {
+	chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
 
-		if(data.success)
+		const currentTab = tabs[0];
+		const tabId = currentTab.id;
+
+		const currentMessageKey = key + '_' + tabId;
+
+		const obj = {};
+		obj[currentMessageKey] = message.value;
+		chrome.storage.local.set(obj);
+	})
+}
+
+async function getData(key) {
+	
+	const tabs = await chrome.tabs.query({ active: true, currentWindow: true })
+	
+	const currentTab = tabs[0];
+	const tabId = currentTab.id;	
+	const currentTabKey = key + '_' + tabId;
+
+	const res = await chrome.storage.local.get(currentTabKey);
+	return res[currentTabKey];
+	
+}
+
+function removeData(key){
+	chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+        
+        const currentTab = tabs[0];
+        const tabId = currentTab.id;
+
+        const currentMessageKey = key + '_' + tabId;
+
+        chrome.storage.local.get(currentMessageKey).then(res => {
+
+            if (res[currentMessageKey]) {
+                chrome.storage.local.remove(currentMessageKey);
+            }
+        })
+    })
+}
+
+function getShortUrl(url, callback) {
+	post('https://frama.link/a', { format: 'json', lsturl: url }, 'json', function (data) {
+
+		if (data.success)
 			return callback(data.short);
 	});
 }
 
 
-function sendToMastodon(instanceUrl, message){
-	chrome.storage.sync.set({message: message});
-	chrome.tabs.create({url: instanceUrl+'/web/statuses/new'});
+function sendToMastodon(instanceUrl, message) {
+	chrome.storage.sync.set({ message: message });
+	chrome.tabs.create({ url: instanceUrl + '/web/statuses/new' });
 }
 
-function sendToMastodonFromTwitter(instanceUrl, message){
+function sendToMastodonFromTwitter(instanceUrl, message) {
 	console.log(message);
 }
 
-function loadLocale(code){
+function loadLocale(code) {
 
-	getJSON('assets/locales/' + code + '.json', function(lang){
-		document.querySelector('#startInfo').innerText= lang.start_info;
-		document.querySelector('#status').innerText=lang.options_saved;
-		document.querySelector('#options .panel-heading').innerText=lang.settings;
-		document.querySelector('label[for="instanceUrl"]').innerText=lang.instance_url;
-		document.querySelector('label[for="shortner"]').innerText=lang.short_url_checkbox;
-		document.querySelector('label[for="language"]').innerText=lang.language;
-		document.querySelector('#instanceUrlHelp').innerText=lang.url_form_needed;
+	getJSON('assets/locales/' + code + '.json', function (lang) {
+		document.querySelector('#startInfo').innerText = lang.start_info;
+		document.querySelector('#status').innerText = lang.options_saved;
+		document.querySelector('#options .panel-heading').innerText = lang.settings;
+		document.querySelector('label[for="instanceUrl"]').innerText = lang.instance_url;
+		document.querySelector('label[for="shortner"]').innerText = lang.short_url_checkbox;
+		document.querySelector('label[for="language"]').innerText = lang.language;
+		document.querySelector('#instanceUrlHelp').innerText = lang.url_form_needed;
 		document.querySelector('#save').value = lang.save;
 
 		chrome.storage.sync.set({
@@ -36,9 +79,9 @@ function loadLocale(code){
 	});
 }
 
-function loadLocalePopup(code){
+function loadLocalePopup(code) {
 
-	getJSON('assets/locales/' + code + '.json', function(lang){
+	getJSON('assets/locales/' + code + '.json', function (lang) {
 		console.log(lang);
 		document.querySelector('#btnClear').innerText = lang.clear;
 		document.querySelector('#btnToot span').innerText = lang.toot;
@@ -49,50 +92,43 @@ function loadLocalePopup(code){
 	});
 }
 
-function getJSON(url, callback)
-{
+function getJSON(url, callback) {
 	return ajax('GET', url, null, 'json', callback);
 }
 
-function post(url, data, type, callback)
-{
+function post(url, data, type, callback) {
 	return ajax('POST', url, data, type, callback);
 }
 
-function ajax(method, url, data, type, callback)
-{
+function ajax(method, url, data, type, callback) {
 	var xhr = new XMLHttpRequest();
 	xhr.open(method, url, true);
 	xhr.overrideMimeType('application/json');
 
-	xhr.onload = function(){
-		if(xhr.status >= 200 && xhr.status < 400)
-		{
-			if(type == 'json')
+	xhr.onload = function () {
+		if (xhr.status >= 200 && xhr.status < 400) {
+			if (type == 'json')
 				var response = JSON.parse(xhr.responseText);
 			else
 				var response = xhr.responseText;
 
 			return callback(response);
 		}
-		else
-		{
+		else {
 			console.log('erf');
 		}
 	}
 
-	if(data!=null)
-	{
+	if (data != null) {
 		var formData = new FormData();
 
-		for ( var key in data ) {
-	    	formData.append(key, data[key]);
+		for (var key in data) {
+			formData.append(key, data[key]);
 		}
 
 		xhr.send(formData);
 	}
-	else
-	{
+	else {
 		xhr.send();
 	}
 
