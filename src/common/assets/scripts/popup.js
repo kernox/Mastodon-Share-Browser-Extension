@@ -1,8 +1,10 @@
 let message = document.getElementById('message');
 let btnToot = document.getElementById('btnToot');
 
+const contentWarningPanel = document.getElementById('contentWarningPanel');
 const contentWarning = document.getElementById('contentWarning');
 const btnContentWarning = document.getElementById('btnContentWarning');
+const btnClearContentWarning = document.getElementById('btnClearContentWarning');
 
 let btnClear = document.getElementById('btnClear');
 let loaderIcon = btnToot.querySelector('.loader');
@@ -106,7 +108,7 @@ function loadTabUrl() {
             const cwValue= await getData('cw');
 
             if(cwOpen){
-                contentWarning.classList.remove('hide');
+                contentWarningPanel.classList.remove('hide');
             }
 
             if(cwValue?.length != 0){
@@ -159,8 +161,6 @@ function toot() {
                 instance: items.instanceUrl,
                 api_user_token: items.accessKey
             });
-
-            console.log(api);
 
             var finalMessage = message.value;
             var visibility = tootType.value;
@@ -232,6 +232,11 @@ $(window).keydown(function (event) {
     }
 });
 
+function clearContentWarning(){
+    saveData('cw', '');
+    contentWarning.value = '';
+}
+
 function saveTabMessage() {
     saveData('message', message.value);
     updateCharsCounter();
@@ -241,10 +246,10 @@ function saveTabContentWarning() {
     saveData('cw', contentWarning.value.trim());
 }
 
-function toggleContentWarning() {
-    contentWarning.classList.toggle('hide');
+function toggleContentWarningPanel() {
+    contentWarningPanel.classList.toggle('hide');
 
-    const isOpen = !contentWarning.classList.contains('hide');
+    const isOpen = !contentWarningPanel.classList.contains('hide');
     saveData('cw_is_open', isOpen);
 }
 
@@ -253,8 +258,9 @@ btnToot.addEventListener('click', toot);
 btnClear.addEventListener('click', clear);
 document.addEventListener('DOMContentLoaded', init);
 message.addEventListener('keyup', saveTabMessage);
-btnContentWarning.addEventListener('click', toggleContentWarning);
+btnContentWarning.addEventListener('click', toggleContentWarningPanel);
 contentWarning.addEventListener('keyup', saveTabContentWarning)
+btnClearContentWarning.addEventListener('click', clearContentWarning);
 
 setInterval(function () {
     var currentTootSize = message.value.toString().length;
