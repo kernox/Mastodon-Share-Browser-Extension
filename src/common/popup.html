@@ -25,16 +25,22 @@
 
 			</div>
 
-			<div class="col-xs-8">
-				<button id="btnContentWarning" class="btn btn-primary" title="Content Warning">CW</button>
+			<div class="col-xs-8" style="margin-bottom: 10px">
+				<button id="btnContentWarning" class="btn btn-primary" title="Content Warning">⚠️</button>
+				<button id="btnSchedule" class="btn btn-primary" title="Schedule">⏰</button>
+
 			</div>
 			<div class="col-xs-4">
 				<div id="tootSizeCounter" style="text-align: right; margin-bottom: 20px"></div>
 			</div>
 			
 			<div id="contentWarningPanel" class="col-xs-12 hide" style="margin-bottom: 20px; display: flex;">
-				<input id="contentWarning" class="form-control " type="text" placeholder="Content warning message"/>
+				<input id="contentWarning" class="form-control" type="text" placeholder="Content warning message"/>
 				<button id="btnClearContentWarning" class="btn btn-info">X</button>
+			</div>
+
+			<div id="schedulePanel" class="col-xs-12 hide" style="margin-bottom: 20px;">
+				<input id="scheduleChoice" type="datetime-local" class="form-control" style="font-size: 14px; font-weight: normal;">
 			</div>
 
 			<div class="col-xs-6">

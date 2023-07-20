@@ -12,6 +12,10 @@ const alert = document.getElementById('alert');
 const tootType = document.getElementById('tootType');
 const tootSizeCounter = document.getElementById('tootSizeCounter');
 
+const btnSchedule = document.getElementById('btnSchedule');
+const schedulePanel = document.getElementById('schedulePanel');
+const scheduleChoice = document.getElementById('scheduleChoice');
+
 let tootSize = 500;
 let successMessage = '';
 
@@ -106,9 +110,19 @@ function loadTabUrl() {
             const storedMessage = await getData('message');
             const cwOpen = await getData('cw_is_open');
             const cwValue= await getData('cw');
+            const scheduleOpen = await getData('schedule_is_open');
+            const scheduleAt = await getData('schedule_at');
+
+            if(scheduleAt != null){
+                scheduleChoice.value = scheduleAt;
+            }
 
             if(cwOpen){
                 contentWarningPanel.classList.remove('hide');
+            }
+
+            if(scheduleOpen){
+                schedulePanel.classList.remove('hide');
             }
 
             if(cwValue?.length != 0){
@@ -141,8 +155,6 @@ function loadTabUrl() {
                         }
                     });
                 }
-
-
             });
         }
     });
@@ -165,13 +177,16 @@ function toot() {
             const finalMessage = message.value;
             const visibility = tootType.value;
 
-            const contentWarningValue = (await getData('cw')).trim();
+            const contentWarningValue = (await getData('cw') || "").trim();
+
+            const scheduledAt = scheduleChoice?.value;
 
             const request = api.post("statuses", {
                 status: finalMessage,
                 visibility: visibility,
                 sensitive: (contentWarningValue.length > 0),
-                spoiler_text: (contentWarningValue.length > 0) ? contentWarningValue : null
+                spoiler_text: (contentWarningValue.length > 0) ? contentWarningValue : null,
+                scheduled_at: scheduledAt
             }, function (data) {
 
                 showAlert(successMessage, 'success');
@@ -208,7 +223,7 @@ function clear() {
     removeData('message');
     removeData('cw_is_open');
     removeData('cw');
-
+    removeData('schedule_at');
 
     updateCharsCounter();
 }
@@ -233,7 +248,7 @@ $(window).keydown(function (event) {
 });
 
 function clearContentWarning(){
-    saveData('cw', '');
+    removeData('cw');
     contentWarning.value = '';
 }
 
@@ -246,11 +261,22 @@ function saveTabContentWarning() {
     saveData('cw', contentWarning.value.trim());
 }
 
+function saveTabSchedule(){
+    saveData('schedule_at', scheduleChoice.value);
+}
+
 function toggleContentWarningPanel() {
     contentWarningPanel.classList.toggle('hide');
 
     const isOpen = !contentWarningPanel.classList.contains('hide');
     saveData('cw_is_open', isOpen);
+}
+
+function toggleSchedulePanel() {
+    schedulePanel.classList.toggle('hide');
+
+    const isOpen = !schedulePanel.classList.contains('hide');
+    saveData('schedule_is_open', isOpen);
 }
 
 //Events
@@ -259,8 +285,11 @@ btnClear.addEventListener('click', clear);
 document.addEventListener('DOMContentLoaded', init);
 message.addEventListener('keyup', saveTabMessage);
 btnContentWarning.addEventListener('click', toggleContentWarningPanel);
+btnSchedule.addEventListener('click', toggleSchedulePanel);
 contentWarning.addEventListener('keyup', saveTabContentWarning)
 btnClearContentWarning.addEventListener('click', clearContentWarning);
+
+scheduleChoice.addEventListener('change', saveTabSchedule);
 
 setInterval(function () {
     const currentTootSize = message.value.toString().length;
