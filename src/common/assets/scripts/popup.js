@@ -1,5 +1,9 @@
 let message = document.getElementById('message');
 let btnToot = document.getElementById('btnToot');
+
+const contentWarning = document.getElementById('contentWarning');
+const btnContentWarning = document.getElementById('btnContentWarning');
+
 let btnClear = document.getElementById('btnClear');
 let loaderIcon = btnToot.querySelector('.loader');
 let alert = document.getElementById('alert');
@@ -28,26 +32,32 @@ function checkConfiguration() {
     })
 }
 
-function loadConfiguration(){
+function loadConfiguration() {
+    
+    chrome.storage.local.get(null, function (items) {
+        console.table(items);
+    })
+
     chrome.storage.sync.get(null, function (items) {
+
         const api = new MastodonAPI({
             instance: items.instanceUrl,
             api_user_token: items.accessKey
         });
 
-        api.get("/instance").then(res => {            
+        api.get("/instance").then(res => {
             tootSize = res?.configuration?.statuses?.max_characters || 500;
             message.maxLength = tootSize;
 
             updateCharsCounter()
-            
+
         });
 
     })
 }
 
-function updateCharsCounter(){
-    tootSizeCounter.innerHTML=message.value.length + " / "+ tootSize;
+function updateCharsCounter() {
+    tootSizeCounter.innerHTML = message.value.length + " / " + tootSize;
 }
 
 function loadMessages() {
@@ -90,8 +100,18 @@ function loadTabUrl() {
 
             message.value = draft;
         } else {
-        
+
             const storedMessage = await getData('message');
+            const cwOpen = await getData('cw_is_open');
+            const cwValue= await getData('cw');
+
+            if(cwOpen){
+                contentWarning.classList.remove('hide');
+            }
+
+            if(cwValue?.length != 0){
+                contentWarning.value = cwValue;
+            }
 
             chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
 
@@ -128,7 +148,7 @@ function loadTabUrl() {
 }
 
 function toot() {
-    chrome.storage.sync.get(null, function (items) {
+    chrome.storage.sync.get(null, async function (items) {
 
         loaderIcon.classList.remove('hidden');
         btnToot.disabled = true;
@@ -145,11 +165,13 @@ function toot() {
             var finalMessage = message.value;
             var visibility = tootType.value;
 
-            var request = api.post("statuses", { 
-                status: finalMessage, 
+            const contentWarningValue = (await getData('cw')).trim();
+
+            var request = api.post("statuses", {
+                status: finalMessage,
                 visibility: visibility,
-                // sensitive: true,
-                // spoiler_text: "Essai"
+                sensitive: (contentWarningValue.length > 0),
+                spoiler_text: (contentWarningValue.length > 0) ? contentWarningValue : null
             }, function (data) {
 
                 showAlert(successMessage, 'success');
@@ -184,7 +206,9 @@ function clear() {
     });
 
     removeData('message');
-    
+    removeData('cw_is_open');
+    removeData('cw');
+
 
     updateCharsCounter();
 }
@@ -200,7 +224,6 @@ function hideAlert() {
     alert.classList.remove('alert-success alert-danger alert-info alert-warning');
 }
 
-btnToot.addEventListener('click', toot);
 
 $(window).keydown(function (event) {
     if (event.ctrlKey && event.keyCode == 13) {
@@ -214,9 +237,24 @@ function saveTabMessage() {
     updateCharsCounter();
 }
 
+function saveTabContentWarning() {
+    saveData('cw', contentWarning.value.trim());
+}
+
+function toggleContentWarning() {
+    contentWarning.classList.toggle('hide');
+
+    const isOpen = !contentWarning.classList.contains('hide');
+    saveData('cw_is_open', isOpen);
+}
+
+//Events
+btnToot.addEventListener('click', toot);
 btnClear.addEventListener('click', clear);
 document.addEventListener('DOMContentLoaded', init);
 message.addEventListener('keyup', saveTabMessage);
+btnContentWarning.addEventListener('click', toggleContentWarning);
+contentWarning.addEventListener('keyup', saveTabContentWarning)
 
 setInterval(function () {
     var currentTootSize = message.value.toString().length;
