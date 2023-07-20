@@ -10,7 +10,7 @@
 <body>
 	<div class="container-fluid">
 		<div class="row" style="margin-top:20px; margin-bottom: 20px">
-			<div class="col-md-12" style="margin-bottom: 10px">
+			<div class="col-xs-12" style="margin-bottom: 10px">
 
 				<div id="alert" class="alert hidden"></div>
 
@@ -27,10 +27,14 @@
 
 			<div class="col-xs-8">
 				<button id="btnContentWarning" class="btn btn-primary" title="Content Warning">CW</button>
-				<input id="contentWarning" class="form-control hide" type="text" placeholder="Content warning message"/>
 			</div>
 			<div class="col-xs-4">
 				<div id="tootSizeCounter" style="text-align: right; margin-bottom: 20px"></div>
+			</div>
+			
+			<div id="contentWarningPanel" class="col-xs-12 hide" style="margin-bottom: 20px; display: flex;">
+				<input id="contentWarning" class="form-control " type="text" placeholder="Content warning message"/>
+				<button id="btnClearContentWarning" class="btn btn-info">X</button>
 			</div>
 
 			<div class="col-xs-6">
