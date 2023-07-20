@@ -7,7 +7,7 @@ function saveData(key, value) {
 		const currentMessageKey = key + '_' + tabId;
 
 		const obj = {};
-		obj[currentMessageKey] = message.value;
+		obj[currentMessageKey] = value;
 		chrome.storage.local.set(obj);
 	})
 }
@@ -18,10 +18,16 @@ async function getData(key) {
 	
 	const currentTab = tabs[0];
 	const tabId = currentTab.id;	
-	const currentTabKey = key + '_' + tabId;
-
+	const currentTabKey = key + '_' + tabId;	
+	
 	const res = await chrome.storage.local.get(currentTabKey);
-	return res[currentTabKey];
+
+	if(Object.keys(res).length == 1){
+		return res[currentTabKey];
+	} else {
+		return null;
+	}
+	
 	
 }
 
