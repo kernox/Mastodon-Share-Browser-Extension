@@ -1,19 +1,19 @@
-let message = document.getElementById('message');
-let btnToot = document.getElementById('btnToot');
+const message = document.getElementById('message');
+const btnToot = document.getElementById('btnToot');
 
 const contentWarningPanel = document.getElementById('contentWarningPanel');
 const contentWarning = document.getElementById('contentWarning');
 const btnContentWarning = document.getElementById('btnContentWarning');
 const btnClearContentWarning = document.getElementById('btnClearContentWarning');
 
-let btnClear = document.getElementById('btnClear');
-let loaderIcon = btnToot.querySelector('.loader');
-let alert = document.getElementById('alert');
-let tootType = document.getElementById('tootType');
-let tootSizeCounter = document.getElementById('tootSizeCounter');
-let tootSize = 500;
+const btnClear = document.getElementById('btnClear');
+const loaderIcon = btnToot.querySelector('.loader');
+const alert = document.getElementById('alert');
+const tootType = document.getElementById('tootType');
+const tootSizeCounter = document.getElementById('tootSizeCounter');
 
-var successMessage = '';
+let tootSize = 500;
+let successMessage = '';
 
 //Hack firefox
 chrome = window?.browser || chrome;
@@ -94,9 +94,9 @@ function loadTabUrl() {
 
         if (items.clipboard != undefined) {
 
-            var clipboard = items.clipboard;
+            const clipboard = items.clipboard;
 
-            var draft = clipboard.title +
+            const draft = clipboard.title +
                 "\n\n" + clipboard.textSelection +
                 "\n\n" + clipboard.url;
 
@@ -157,17 +157,17 @@ function toot() {
 
         if (items.accessKey !== '') {
 
-            var api = new MastodonAPI({
+            const api = new MastodonAPI({
                 instance: items.instanceUrl,
                 api_user_token: items.accessKey
             });
 
-            var finalMessage = message.value;
-            var visibility = tootType.value;
+            const finalMessage = message.value;
+            const visibility = tootType.value;
 
             const contentWarningValue = (await getData('cw')).trim();
 
-            var request = api.post("statuses", {
+            const request = api.post("statuses", {
                 status: finalMessage,
                 visibility: visibility,
                 sensitive: (contentWarningValue.length > 0),
@@ -263,7 +263,7 @@ contentWarning.addEventListener('keyup', saveTabContentWarning)
 btnClearContentWarning.addEventListener('click', clearContentWarning);
 
 setInterval(function () {
-    var currentTootSize = message.value.toString().length;
+    const currentTootSize = message.value.toString().length;
 
     if (currentTootSize == 0 || currentTootSize > 500) {
         btnToot.disabled = true;
