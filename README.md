@@ -1,3 +1,11 @@
+TEMPORARY ISSUE WITH STORES
+- Firefox: Due to an issue with firefox, the extension is not anymore on the store.
+- Chrome: Due to the new and unnecessary complicated conditions to post the extension is not anymore on the store.
+
+⚠️ Please use the zip in the build directory until a solution.
+
+Sorry for the inconvenience.
+
 # Mastodon Share
 A share button for Mastodon Social Network
 
@@ -27,10 +35,10 @@ When you share a page, hashtags has generated from page keywords
 
 ## Download the public extension
 
-#### Google Chrome
+#### Google Chrome (Not available, broken, please use the zip on build directory)
 https://chrome.google.com/webstore/detail/mastodon-share/ngkommdldcakheaeoafgakbbiinkohom?hl=fr
 
-#### Mozilla Firefox
+#### Mozilla Firefox (Not available, broken, please use the zip on build directory)
 https://addons.mozilla.org/firefox/addon/mastodon-share/
 
 
