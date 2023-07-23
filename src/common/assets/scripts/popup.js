@@ -5,6 +5,8 @@ const contentWarningPanel = document.getElementById('contentWarningPanel');
 const contentWarning = document.getElementById('contentWarning');
 const btnContentWarning = document.getElementById('btnContentWarning');
 const btnClearContentWarning = document.getElementById('btnClearContentWarning');
+const btnLang = document.getElementById('btnLang');
+
 
 const btnClear = document.getElementById('btnClear');
 const loaderIcon = btnToot.querySelector('.loader');
@@ -13,8 +15,12 @@ const tootType = document.getElementById('tootType');
 const tootSizeCounter = document.getElementById('tootSizeCounter');
 
 const btnSchedule = document.getElementById('btnSchedule');
+
 const schedulePanel = document.getElementById('schedulePanel');
 const scheduleChoice = document.getElementById('scheduleChoice');
+
+const langPanel = document.getElementById('langPanel');
+const langSelect = document.getElementById('langSelect');
 
 let tootSize = 500;
 let successMessage = '';
@@ -27,6 +33,7 @@ function init() {
     loadConfiguration();
     loadMessages();
     loadTabUrl();
+    loadLanguages();
 };
 
 function checkConfiguration() {
@@ -60,6 +67,17 @@ function loadConfiguration() {
         });
 
     })
+}
+
+function loadLanguages(){
+    for(let code in lang){
+        let option = document.createElement('option');
+        option.value = code;
+        option.innerText = lang[code];
+
+        langSelect.add(option);
+        
+    }
 }
 
 function updateCharsCounter() {
@@ -279,6 +297,10 @@ function toggleSchedulePanel() {
     saveData('schedule_is_open', isOpen);
 }
 
+function toggleLangPanel(){
+    langPanel.classList.toggle('hide');
+}
+
 //Events
 btnToot.addEventListener('click', toot);
 btnClear.addEventListener('click', clear);
@@ -288,8 +310,9 @@ btnContentWarning.addEventListener('click', toggleContentWarningPanel);
 btnSchedule.addEventListener('click', toggleSchedulePanel);
 contentWarning.addEventListener('keyup', saveTabContentWarning)
 btnClearContentWarning.addEventListener('click', clearContentWarning);
-
+btnLang.addEventListener('click', toggleLangPanel);
 scheduleChoice.addEventListener('change', saveTabSchedule);
+
 
 setInterval(function () {
     const currentTootSize = message.value.toString().length;
