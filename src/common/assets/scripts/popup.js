@@ -213,13 +213,13 @@ function toot() {
 function clear() {
     message.value = '';
 
-    chrome.storage.sync.remove('clipboard', function () {
-        chrome.action.setBadgeText({
-            text: ''
-        });
+    // chrome.storage.sync.remove('clipboard', function () {
+    //     chrome.action.setBadgeText({
+    //         text: ''
+    //     });
 
-        btnToot.disabled = 'disabled';
-    });
+    //     btnToot.disabled = 'disabled';
+    // });
 
     removeData('message');
     removeData('cw_is_open');
