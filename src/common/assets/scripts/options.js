@@ -1,8 +1,11 @@
+let selectedInstance = null;
+const btnRemoveInstance = document.getElementById('btnRemoveInstance');
+
 function init() {
 
 	loadMessages();
-	loadOptions();
-    //loadInstancesList();
+    loadUserInstances();
+    // loadInstancesList();
 }
 
 function loadMessages(){
@@ -14,6 +17,65 @@ function loadMessages(){
 	document.querySelector('label[for="accesskey"]').innerText = chrome.i18n.getMessage('access_key');
 	document.querySelector('label[for="shortner"]').innerText = chrome.i18n.getMessage('short_url_checkbox');
 	document.getElementById('save').value = chrome.i18n.getMessage('save');
+}
+
+function loadUserInstances(){
+
+    
+    chrome.storage.sync.get({
+        instances: []
+    }).then(res => {
+
+        if(res['instances'].length > 0){
+
+            for(let index in res['instances']){
+
+                const instance = res['instances'][index];
+                const list = document.getElementById('instancesList');
+                const icon = document.createElement('img');
+                icon.width = 16;
+                icon.height = 16;
+                icon.src=`${instance.url}/favicon.ico`;
+                icon.style="margin-right: 1em;"
+    
+                const li = document.createElement('li');
+                li.classList.add('list-group-item');
+                li.append(icon);
+    
+                const a = document.createElement('a');
+                a.href="#";
+                a.append(instance.url);
+                li.append(a);
+                li.onclick = () => loadOptions(index, instance);
+    
+                list.append(li);
+            }
+            
+        } else {
+            console.log('No instances');
+        }
+    })
+}
+
+function removeUserInstance(){
+
+    chrome.storage.sync.get({
+        instances: []
+    }, (res) => {
+        
+        const updatedInstances = res['instances'].filter((instance, index) => {
+            if(index != selectedInstance){
+                return instance;
+            }
+        })
+
+        chrome.storage.sync.set({
+            instances: updatedInstances
+        }, () => {
+            location.reload();
+        })
+
+    })
 }
 
 function loadInstancesList() {
@@ -48,66 +110,121 @@ function loadInstancesList() {
     });
 }
 
-function loadOptions() {
-    chrome.storage.sync.get({
-        instanceUrl: '',
-        shortner: false,
-        accessKey: '',
-        code: ''
-    }, function(items) {
-        document.querySelector('#instanceUrl').value = items.instanceUrl;
-        document.querySelector('#shortner').checked = items.shortner;
-        document.querySelector('#accessKey').value = items.accessKey;
-        document.querySelector('#code').value = items.code;
-        document.querySelector('#accessKey').value = items.accessKey;
-    });
+function loadOptions(index, instance) {
+
+    selectedInstance = index;
+
+    console.log(selectedInstance);
+
+    document.querySelector('#instanceUrl').value = instance.url;
+    document.querySelector('#shortner').checked = instance.shortner;
+    document.querySelector('#accessKey').value = instance.accessKey;
+    document.querySelector('#code').value = instance.code;
 }
 
 function saveOptions(e) {
     e.preventDefault();
 
-    var status = document.querySelector('#status');
-
-    chrome.storage.sync.set({
-        instanceUrl: document.querySelector('#instanceUrl').value,
-        shortner: document.querySelector('#shortner').checked,
-        code: document.querySelector('#code').value
-    }, function() {
-
-        status.classList.remove('hide');
-        status.innerText = chrome.i18n.getMessage('options_saved');
-        document.querySelector('#startInfo').classList.add('hide');
-
-        setTimeout(function() {
-            status.classList.add('hide');
-        }, 2000);
-
-        var api = new MastodonAPI({
-            instance: instanceUrl.value,
-            api_user_token: ""
-        });
+    const instanceUrl = document.querySelector('#instanceUrl').value;
+    const code = document.querySelector('#code').value;
+    const shortner = document.querySelector('#shortner').checked;
+    let accessKey = null;
 
 
-        chrome.storage.sync.get(null, function(items){
-
-            if (items.accessKey === ''){
-
-                api.getAccessTokenFromAuthCode(
-                    items.mastodon_client_id,
-                    items.mastodon_client_secret,
-                    items.mastodon_client_redirect_uri,
-                    items.code,
-                    function(data) {
-                        chrome.storage.sync.set({
-                            accessKey: data.access_token
-                        }, function(){
-                            document.querySelector('#accessKey').value = data.access_token;
-                        });
-                    }
-                );
-            }
-        });
+    //Retrieve the access key
+    const api = new MastodonAPI({
+        instance: instanceUrl.value,
+        api_user_token: ""
     });
+
+    chrome.storage.sync.get(null, function(items){
+        // if (accessKey == null){
+
+        //     api.getAccessTokenFromAuthCode(
+        //         items.mastodon_client_id,
+        //         items.mastodon_client_secret,
+        //         items.mastodon_client_redirect_uri,
+        //         items.code,
+        //         function(data) {
+        //             chrome.storage.sync.set({
+        //                 accessKey: data.access_token
+        //             }, function(){
+        //                 document.querySelector('#accessKey').value = data.access_token;
+        //             });
+        //         }
+        //     );
+        // }
+        return;
+    });
+
+    //Load exists instances
+    chrome.storage.sync.get({instances: []}).then(res => {
+
+        let instances = res['instances'];
+        
+        const instance = {
+            url: instanceUrl,
+            code,
+            shortner,
+            accessKey
+        }
+
+        //Add the new instance
+        instances.push(instance);
+        
+        chrome.storage.sync.set({
+            instances
+        },() => {
+            console.log('ok');
+        })
+    })
+
+
+
+
+
+    // var status = document.querySelector('#status');    
+
+    // chrome.storage.sync.set({
+    //     instanceUrl: document.querySelector('#instanceUrl').value,
+    //     shortner: document.querySelector('#shortner').checked,
+    //     code: document.querySelector('#code').value
+    // }, function() {
+
+    //     status.classList.remove('hide');
+    //     status.innerText = chrome.i18n.getMessage('options_saved');
+    //     document.querySelector('#startInfo').classList.add('hide');
+
+    //     setTimeout(function() {
+    //         status.classList.add('hide');
+    //     }, 2000);
+
+    //     var api = new MastodonAPI({
+    //         instance: instanceUrl.value,
+    //         api_user_token: ""
+    //     });
+
+
+    //     chrome.storage.sync.get(null, function(items){
+
+    //         if (items.accessKey === ''){
+
+    //             api.getAccessTokenFromAuthCode(
+    //                 items.mastodon_client_id,
+    //                 items.mastodon_client_secret,
+    //                 items.mastodon_client_redirect_uri,
+    //                 items.code,
+    //                 function(data) {
+    //                     chrome.storage.sync.set({
+    //                         accessKey: data.access_token
+    //                     }, function(){
+    //                         document.querySelector('#accessKey').value = data.access_token;
+    //                     });
+    //                 }
+    //             );
+    //         }
+    //     });
+    // });
 }
 
 function connectInstance(){
@@ -156,3 +273,4 @@ function openAuthDialog(api){
 document.addEventListener('DOMContentLoaded', init);
 document.querySelector('#options').addEventListener('submit', saveOptions);
 document.getElementById('btnConnectInstance').addEventListener('click', connectInstance);
+btnRemoveInstance.addEventListener('click', removeUserInstance);
