@@ -9,6 +9,7 @@ const btnClearContentWarning = document.getElementById('btnClearContentWarning')
 const btnClear = document.getElementById('btnClear');
 const loaderIcon = btnToot.querySelector('.loader');
 const alert = document.getElementById('alert');
+const alertContent = document.getElementById('alertContent');
 const tootType = document.getElementById('tootType');
 const tootSizeCounter = document.getElementById('tootSizeCounter');
 
@@ -63,7 +64,7 @@ function loadConfiguration() {
 }
 
 function updateCharsCounter() {
-    tootSizeCounter.innerHTML = message.value.length + " / " + tootSize;
+    tootSizeCounter.innerText = message.value.length + " / " + tootSize;
 }
 
 function loadMessages() {
@@ -229,7 +230,7 @@ function clear() {
 }
 
 function showAlert(content, type = 'info') {
-    alert.innerHTML = '<p>' + content + '</p>';
+    alertContent.innerText = content;
     alert.classList.add('alert-' + type);
     alert.classList.remove('hidden');
 }
