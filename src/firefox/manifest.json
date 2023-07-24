@@ -1,11 +1,5 @@
 {
 	"manifest_version": 2,
-	"applications": {
-		"gecko": {
-			"id": "{09b14d46-21c3-4a7d-b244-e756f497935b}",
-			"strict_min_version": "52.0"
-		}
-	},
 	"name": "Mastodon Share",
 	"description": "__MSG_description__",
 	"version": "0.8",
@@ -17,30 +11,16 @@
 		"default_popup": "popup.html",
 		"default_icon": "assets/images/icon.png"
 	},
-	"content_scripts": [
-		{
-			"matches": [
-				"https://twitter.com/*"
-			],
-			"js": [
-				"assets/scripts/functions.js",
-				"assets/scripts/twitter.js"
-			]
-		}
-	],
 	"background": {
 		"scripts": [
-			"assets/scripts/interceptor.js",
 			"assets/scripts/functions.js"
 		]
 	},
 	"permissions": [
-		"contextMenus",
 		"cookies",
 		"tabs",
 		"activeTab",
-		"storage",
-		"scripting"
+		"storage"
 	],
 	"icons": {
 		"16": "assets/images/icon16.png",
