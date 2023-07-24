@@ -16,8 +16,12 @@ const btnSchedule = document.getElementById('btnSchedule');
 const schedulePanel = document.getElementById('schedulePanel');
 const scheduleChoice = document.getElementById('scheduleChoice');
 
+const selectedInstance = document.getElementById('selectedInstance');
+let selectedInstanceIndex = 0;
+
 let tootSize = 500;
 let successMessage = '';
+let instances = [];
 
 //Hack firefox
 chrome = window?.browser || chrome;
@@ -30,9 +34,9 @@ function init() {
 };
 
 function checkConfiguration() {
-    chrome.storage.sync.get(null, function (items) {
+    chrome.storage.sync.get({instances: []}, function (res) {
 
-        if (!items.instanceUrl || !items.accessKey) {
+        if(res.instances.length == 0){
             chrome.tabs.create({ 'url': "/options.html" });
         }
     })
@@ -46,9 +50,23 @@ function loadConfiguration() {
 
     chrome.storage.sync.get(null, function (items) {
 
+        instances = items['instances'];
+
+        for(let index in instances){
+            const instance = instances[index];
+
+            const option = document.createElement('option');       
+            option.value=index;
+            option.append(instance.url);
+
+            selectedInstance.append(option);
+        }
+
+        const instance = instances[selectedInstanceIndex];
+
         const api = new MastodonAPI({
-            instance: items.instanceUrl,
-            api_user_token: items.accessKey
+            instance: instance.url,
+            api_user_token: instance.accessKey
         });
 
         api.get("/instance").then(res => {
@@ -279,6 +297,10 @@ function toggleSchedulePanel() {
     saveData('schedule_is_open', isOpen);
 }
 
+function selectInstance(){
+
+}
+
 //Events
 btnToot.addEventListener('click', toot);
 btnClear.addEventListener('click', clear);
@@ -290,6 +312,7 @@ contentWarning.addEventListener('keyup', saveTabContentWarning)
 btnClearContentWarning.addEventListener('click', clearContentWarning);
 
 scheduleChoice.addEventListener('change', saveTabSchedule);
+selectedInstance.addEventListener('change', selectInstance);
 
 setInterval(function () {
     const currentTootSize = message.value.toString().length;

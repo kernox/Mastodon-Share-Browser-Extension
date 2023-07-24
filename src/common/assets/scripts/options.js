@@ -1,6 +1,9 @@
 let selectedInstance = null;
 const btnRemoveInstance = document.getElementById('btnRemoveInstance');
 
+//Hack firefox
+chrome = window?.browser || chrome;
+
 function init() {
     
     loadMessages();
