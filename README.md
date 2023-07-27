@@ -17,15 +17,6 @@ Go to the option panel of the plugin and set your Mastodon instance url.
 #### Share pages on Mastodon
 ![Share pages](screenshots/share-pages.png)
 
-
-#### Share a text selection on Mastodon
-![Share a text selection](screenshots/share-selection-feature.png)
-
-
-#### Share from Twitter to Mastodon
-
-![Share from twitter](screenshots/share-from-twitter-feature.png)
-
 ### Automatic hashtags
 When you share a page, hashtags has generated from page keywords
 
