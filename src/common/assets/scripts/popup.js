@@ -17,8 +17,12 @@ const btnSchedule = document.getElementById('btnSchedule');
 const schedulePanel = document.getElementById('schedulePanel');
 const scheduleChoice = document.getElementById('scheduleChoice');
 
+const selectedInstance = document.getElementById('selectedInstance');
+let selectedInstanceIndex = 0;
+
 let tootSize = 500;
 let successMessage = '';
+let instances = [];
 
 //Hack firefox
 chrome = window?.browser || chrome;
@@ -31,9 +35,9 @@ function init() {
 };
 
 function checkConfiguration() {
-    chrome.storage.sync.get(null, function (items) {
+    chrome.storage.sync.get({instances: []}, function (res) {
 
-        if (!items.instanceUrl || !items.accessKey) {
+        if(res.instances.length == 0){
             chrome.tabs.create({ 'url': "/options.html" });
         }
     })
@@ -47,9 +51,23 @@ function loadConfiguration() {
 
     chrome.storage.sync.get(null, function (items) {
 
+        instances = items['instances'];
+
+        for(let index in instances){
+            const instance = instances[index];
+
+            const option = document.createElement('option');       
+            option.value=index;
+            option.append(instance.url);
+
+            selectedInstance.append(option);
+        }
+
+        const instance = instances[selectedInstanceIndex];
+
         const api = new MastodonAPI({
-            instance: items.instanceUrl,
-            api_user_token: items.accessKey
+            instance: instance.url,
+            api_user_token: instance.accessKey
         });
 
         api.get("/instance").then(res => {
@@ -96,6 +114,15 @@ function captureKeywords() {
 function loadTabUrl() {
 
     chrome.storage.sync.get(null, async function (items) {
+
+        const instances = items['instances'];
+
+        if(instances.length < 2){
+            selectedInstance.classList.add('hide');
+        }else {
+            selectedInstanceIndex = await getData('selected_instance_index') || 0;
+            selectedInstance.value = selectedInstanceIndex;
+        }
 
         if (items.clipboard != undefined) {
 
@@ -163,16 +190,23 @@ function loadTabUrl() {
 }
 
 function toot() {
-    chrome.storage.sync.get(null, async function (items) {
 
+    chrome.storage.sync.get(null, async function (items) {
+        
+        console.log(items);
         loaderIcon.classList.remove('hidden');
         btnToot.disabled = true;
 
-        if (items.accessKey !== '') {
+        const instances = items['instances'];
+
+        const instance = instances[selectedInstanceIndex];
+
+        if (instance.accessKey !== '') {
+
 
             const api = new MastodonAPI({
-                instance: items.instanceUrl,
-                api_user_token: items.accessKey
+                instance: instance.url,
+                api_user_token: instance.accessKey
             });
 
             const finalMessage = message.value;
@@ -280,6 +314,11 @@ function toggleSchedulePanel() {
     saveData('schedule_is_open', isOpen);
 }
 
+function selectInstance(){
+    selectedInstanceIndex = selectedInstance.value;
+    saveData('selected_instance_index', selectedInstanceIndex);
+}
+
 //Events
 btnToot.addEventListener('click', toot);
 btnClear.addEventListener('click', clear);
@@ -291,6 +330,7 @@ contentWarning.addEventListener('keyup', saveTabContentWarning)
 btnClearContentWarning.addEventListener('click', clearContentWarning);
 
 scheduleChoice.addEventListener('change', saveTabSchedule);
+selectedInstance.addEventListener('change', selectInstance);
 
 setInterval(function () {
     const currentTootSize = message.value.toString().length;
