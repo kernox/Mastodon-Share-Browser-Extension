@@ -13,7 +13,6 @@
 		"service_worker": "assets/scripts/service_worker.js"
 	},
 	"permissions": [
-		"contextMenus",
 		"cookies",
 		"tabs",
 		"activeTab",
