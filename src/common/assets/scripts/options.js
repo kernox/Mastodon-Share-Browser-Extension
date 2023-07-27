@@ -198,13 +198,6 @@ function saveOptions(e) {
     
     function connectInstance(){
         
-        chrome.storage.sync.set({
-            accessKey: ''
-        }, function(){
-            document.querySelector('#accessKey').value='';
-            document.querySelector('#code').value='';
-        });
-        
         var instanceUrl = document.getElementById('instanceUrl').value;
         
         var api = new MastodonAPI({
