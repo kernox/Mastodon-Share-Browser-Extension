@@ -1,3 +1,6 @@
+### v0.9
+- Add multi instances feature
+
 ### v0.8
 - Add content warning feature
 - Add toot scheduling feature
