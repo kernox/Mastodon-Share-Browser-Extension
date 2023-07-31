@@ -11,6 +11,7 @@ const btnLang = document.getElementById('btnLang');
 const btnClear = document.getElementById('btnClear');
 const loaderIcon = btnToot.querySelector('.loader');
 const alert = document.getElementById('alert');
+const alertContent = document.getElementById('alertContent');
 const tootType = document.getElementById('tootType');
 const tootSizeCounter = document.getElementById('tootSizeCounter');
 
@@ -98,7 +99,7 @@ function loadLanguages(){
 }
 
 function updateCharsCounter() {
-    tootSizeCounter.innerHTML = message.value.length + " / " + tootSize;
+    tootSizeCounter.innerText = message.value.length + " / " + tootSize;
 }
 
 function loadMessages() {
@@ -263,13 +264,13 @@ function toot() {
 function clear() {
     message.value = '';
 
-    chrome.storage.sync.remove('clipboard', function () {
-        chrome.action.setBadgeText({
-            text: ''
-        });
+    // chrome.storage.sync.remove('clipboard', function () {
+    //     chrome.action.setBadgeText({
+    //         text: ''
+    //     });
 
-        btnToot.disabled = 'disabled';
-    });
+    //     btnToot.disabled = 'disabled';
+    // });
 
     removeData('message');
     removeData('cw_is_open');
@@ -280,7 +281,7 @@ function clear() {
 }
 
 function showAlert(content, type = 'info') {
-    alert.innerHTML = '<p>' + content + '</p>';
+    alertContent.innerText = content;
     alert.classList.add('alert-' + type);
     alert.classList.remove('hidden');
 }
