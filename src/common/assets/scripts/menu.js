@@ -1,5 +1,5 @@
 //Will be fixed in future version
-// chrome.storage.sync.get(null, function(items){
+// chrome.storage.local.get(null, function(items){
 // 	createMenuItem(items);
 // });
 
@@ -19,7 +19,7 @@
 // 		chrome.tabs.query({active: true}, function(tabs) {
 
 // 			//Save title and selection
-// 			chrome.storage.sync.set({
+// 			chrome.storage.local.set({
 // 				clipboard: {
 // 					title: tabs[0].title,
 // 					url: tabs[0].url,

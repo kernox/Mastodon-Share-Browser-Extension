@@ -58,7 +58,7 @@ function getShortUrl(url, callback) {
 
 
 function sendToMastodon(instanceUrl, message) {
-	chrome.storage.sync.set({ message: message });
+	chrome.storage.local.set({ message: message });
 	chrome.tabs.create({ url: instanceUrl + '/web/statuses/new' });
 }
 
@@ -78,7 +78,7 @@ function loadLocale(code) {
 		document.querySelector('#instanceUrlHelp').innerText = lang.url_form_needed;
 		document.querySelector('#save').value = lang.save;
 
-		chrome.storage.sync.set({
+		chrome.storage.local.set({
 			loading_message: lang.mastodon_instance_opening.split(' ').join('\u00a0'),
 			share_selection: lang.share_selection
 		});

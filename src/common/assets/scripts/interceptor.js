@@ -3,7 +3,7 @@
 //     function(request, sender, sendResponse){
 
 //         if (request.mastoshare != undefined){
-//             chrome.storage.sync.set({
+//             chrome.storage.local.set({
 //                 clipboard: request.mastoshare
 //             }, function(){
 //                 chrome.action.setBadgeText({
