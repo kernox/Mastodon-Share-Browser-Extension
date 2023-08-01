@@ -28,7 +28,7 @@ When you share a page, hashtags has generated from page keywords
 #### Google Chrome (Not available, broken, please use the zip on build directory)
 <strike>https://chrome.google.com/webstore/detail/mastodon-share/ngkommdldcakheaeoafgakbbiinkohom?hl=fr</strike>
 
-#### Mozilla Firefox (Not available, broken, please use the zip on build directory)
+#### Mozilla Firefox
 https://addons.mozilla.org/fr/firefox/addon/mastodon-share-for-browser/
 
 
