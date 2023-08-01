@@ -1,7 +1,5 @@
-<strong style="color:red">TEMPORARY ISSUE WITH STORES
-- Firefox: Due to an issue with firefox, the extension is not anymore on the store.
-- Chrome: Due to the new and unnecessary complicated conditions to post the extension is not anymore on the store.
-
+<strong style="color:red">TEMPORARY ISSUE WITH CHROME WEBSTORE
+- Chrome: We waiting chrome accept the new version of the extension.
 ⚠️ Please use the zip in the build directory until a solution.
 
 Sorry for the inconvenience.
@@ -31,7 +29,7 @@ When you share a page, hashtags has generated from page keywords
 <strike>https://chrome.google.com/webstore/detail/mastodon-share/ngkommdldcakheaeoafgakbbiinkohom?hl=fr</strike>
 
 #### Mozilla Firefox (Not available, broken, please use the zip on build directory)
-<strike>https://addons.mozilla.org/firefox/addon/mastodon-share/</strike>
+https://addons.mozilla.org/fr/firefox/addon/mastodon-share-for-browser/
 
 
 ## How to build the extension from sources
