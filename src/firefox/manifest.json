@@ -2,6 +2,12 @@
 	"manifest_version": 2,
 	"name": "Mastodon Share",
 	"description": "__MSG_description__",
+	"browser_specific_settings": {
+		"gecko": {
+			"id": "mastodon-share@hellexis.fr",
+			"strict_min_version": "65.0"
+		}
+	},
 	"version": "0.9",
 	"default_locale": "en",
 	"options_ui": {
