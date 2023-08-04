@@ -8,7 +8,7 @@ function init() {
     
     loadMessages();
     loadUserInstances();
-    // loadInstancesList();
+    loadInstancesList();
 }
 
 function loadMessages(){
@@ -115,8 +115,8 @@ function loadInstancesList() {
 function loadOptions(index, instance) {
     
     selectedInstance = index;
-    
-    console.log(selectedInstance);
+
+    btnRemoveInstance.classList.remove('hide');
     
     document.querySelector('#instanceUrl').value = instance.url;
     document.querySelector('#shortner').checked = instance.shortner;
