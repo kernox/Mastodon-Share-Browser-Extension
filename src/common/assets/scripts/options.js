@@ -8,7 +8,7 @@ function init() {
     
     loadMessages();
     loadUserInstances();
-    // loadInstancesList();
+    loadInstancesList();
 }
 
 function loadMessages(){
