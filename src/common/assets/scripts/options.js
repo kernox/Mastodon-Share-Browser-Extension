@@ -8,7 +8,7 @@ function init() {
     
     loadMessages();
     loadUserInstances();
-    // loadInstancesList();
+    loadInstancesList();
 }
 
 function loadMessages(){
@@ -24,7 +24,7 @@ function loadMessages(){
 
 function loadUserInstances(){    
     
-    chrome.storage.sync.get({
+    chrome.storage.local.get({
         instances: []
     }).then(res => {
         
@@ -61,7 +61,7 @@ function loadUserInstances(){
 
 function removeUserInstance(){
     
-    chrome.storage.sync.get({
+    chrome.storage.local.get({
         instances: []
     }, (res) => {
         
@@ -71,7 +71,7 @@ function removeUserInstance(){
             }
         })
         
-        chrome.storage.sync.set({
+        chrome.storage.local.set({
             instances: updatedInstances
         }, () => {
             location.reload();
@@ -115,8 +115,8 @@ function loadInstancesList() {
 function loadOptions(index, instance) {
     
     selectedInstance = index;
-    
-    console.log(selectedInstance);
+
+    btnRemoveInstance.classList.remove('hide');
     
     document.querySelector('#instanceUrl').value = instance.url;
     document.querySelector('#shortner').checked = instance.shortner;
@@ -140,7 +140,7 @@ function saveOptions(e) {
         api_user_token: ""
     });    
     
-    chrome.storage.sync.get(null, function(items){
+    chrome.storage.local.get(null, function(items){
         
         if (accessKey == null){
             
@@ -156,7 +156,7 @@ function saveOptions(e) {
                     accessKeyField.value = accessKey;
                     
                     //Load exists instances
-                    chrome.storage.sync.get({instances: []}).then(res => {
+                    chrome.storage.local.get({instances: []}).then(res => {
                         
                         let instances = res['instances'];
                         
@@ -170,7 +170,7 @@ function saveOptions(e) {
                         //Add the new instance
                         instances.push(instance);
                         
-                        chrome.storage.sync.set({
+                        chrome.storage.local.set({
                             instances
                         },() => {
                             location.reload();
@@ -214,7 +214,7 @@ function saveOptions(e) {
         api.registerApplication("Mastodon Share", 'urn:ietf:wg:oauth:2.0:oob', ['read', 'write'],'', function(data) {
             
             //Save client id, secret and redirect uri
-            chrome.storage.sync.set({
+            chrome.storage.local.set({
                 "mastodon_client_id": data["client_id"],
                 "mastodon_client_secret": data["client_secret"],
                 "mastodon_client_redirect_uri": data['redirect_uri']

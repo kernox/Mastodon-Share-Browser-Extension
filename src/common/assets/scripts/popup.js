@@ -41,7 +41,7 @@ function init() {
 };
 
 function checkConfiguration() {
-    chrome.storage.sync.get({instances: []}, function (res) {
+    chrome.storage.local.get({instances: []}, function (res) {
 
         if(res.instances.length == 0){
             chrome.tabs.create({ 'url': "/options.html" });
@@ -55,7 +55,7 @@ function loadConfiguration() {
         console.table(items);
     })
 
-    chrome.storage.sync.get(null, function (items) {
+    chrome.storage.local.get(null, function (items) {
 
         instances = items['instances'];
 
@@ -130,7 +130,7 @@ function captureKeywords() {
 
 function loadTabUrl() {
 
-    chrome.storage.sync.get(null, async function (items) {
+    chrome.storage.local.get(null, async function (items) {
 
         const instances = items['instances'];
 
@@ -208,7 +208,7 @@ function loadTabUrl() {
 
 function toot() {
 
-    chrome.storage.sync.get(null, async function (items) {
+    chrome.storage.local.get(null, async function (items) {
         
         console.log(items);
         loaderIcon.classList.remove('hidden');
@@ -264,7 +264,7 @@ function toot() {
 function clear() {
     message.value = '';
 
-    // chrome.storage.sync.remove('clipboard', function () {
+    // chrome.storage.local.remove('clipboard', function () {
     //     chrome.action.setBadgeText({
     //         text: ''
     //     });
