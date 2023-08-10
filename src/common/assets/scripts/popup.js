@@ -17,12 +17,18 @@ const btnSchedule = document.getElementById('btnSchedule');
 const schedulePanel = document.getElementById('schedulePanel');
 const scheduleChoice = document.getElementById('scheduleChoice');
 
+const btnPicture = document.getElementById('btnPicture');
+const selectedPictures = document.getElementById('pictures')
+const picturePanel = document.getElementById('picturePanel');
+
 const selectedInstance = document.getElementById('selectedInstance');
+const templatePicture = document.getElementById('tplPicture')
 let selectedInstanceIndex = 0;
 
 let tootSize = 500;
 let successMessage = '';
 let instances = [];
+let picturesList = [];
 
 //Hack firefox
 chrome = window?.browser || chrome;
@@ -140,6 +146,7 @@ function loadTabUrl() {
             const cwValue= await getData('cw');
             const scheduleOpen = await getData('schedule_is_open');
             const scheduleAt = await getData('schedule_at');
+            const pictures = await getData('pictures');
 
             if(scheduleAt != null){
                 scheduleChoice.value = scheduleAt;
@@ -155,6 +162,11 @@ function loadTabUrl() {
 
             if(cwValue?.length != 0){
                 contentWarning.value = cwValue;
+            }
+
+            if(pictures?.length > 0){
+                picturesList = pictures;
+                renderPictures();
             }
 
             chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
@@ -319,6 +331,60 @@ function selectInstance(){
     saveData('selected_instance_index', selectedInstanceIndex);
 }
 
+function openDialogPictures(){
+    selectedPictures.click();
+}
+
+function addPictures(e) {
+
+    const pictures = e.target.files;    
+    
+    for(let index in pictures){
+        const id = 'pic' + index;
+        const picture = pictures[index];
+
+        if(picture instanceof File){
+            picturesList.push({
+                blob: URL.createObjectURL(picture)
+            });
+        }
+    }
+    
+    
+    saveData('pictures', picturesList);
+    renderPictures();
+}
+
+function removePicture(id){
+
+    picturesList = picturesList.filter((value, index) => index != id);
+    saveData('pictures', picturesList);
+    renderPictures();
+}
+
+
+function renderPictures(){
+
+    picturePanel.replaceChildren();
+
+    for (let index in picturesList){
+        const picture = picturesList[index];
+
+        const template = templatePicture.content.cloneNode(true);
+        const link = template.querySelector('a');
+        
+        link.dataset.id = index;
+        link.addEventListener('click', (e) => {
+            const id = e.target.dataset.id;
+            removePicture(id);
+        });
+        
+        template.querySelector('img').src=picture.blob;
+        
+        picturePanel.appendChild(template);
+    }
+}
+
 //Events
 btnToot.addEventListener('click', toot);
 btnClear.addEventListener('click', clear);
@@ -328,6 +394,8 @@ btnContentWarning.addEventListener('click', toggleContentWarningPanel);
 btnSchedule.addEventListener('click', toggleSchedulePanel);
 contentWarning.addEventListener('keyup', saveTabContentWarning)
 btnClearContentWarning.addEventListener('click', clearContentWarning);
+btnPicture.addEventListener('click', openDialogPictures);
+selectedPictures.addEventListener('change', addPictures)
 
 scheduleChoice.addEventListener('change', saveTabSchedule);
 selectedInstance.addEventListener('change', selectInstance);
